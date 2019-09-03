@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E68342</color>
+    <color name="colorPrimaryDark">#C35312</color>
+    <color name="colorAccent">#7D1003</color>
+    <color name="colorBackground">#C35312</color>
+    <color name="colorBackgroundIn">#F2F2F2</color>
+    <color name="colorPattern">#FFFFFF</color>
+
+    <color name="colorField">#77869E</color>
+    <color name="colorTitle">#501E11</color>
+
+    <color name="colorBtnPrimary">#70300B</color>
+    <color name="colorBtnEdge2">#501E11</color>
+    <color name="colorBtnEdge1">#A44812</color>
+    <!--  Cadastro em etapas -->
+    <color name="colorBtnUpload">#FBBB00</color>
+    <color name="colorStep2">#FBD55C</color>
+    <color name="colorBackground2">#FCF4CD</color>
+    <color name="colorStep1">#E68342</color>
+    <color name="colorSecondary">#765BFC</color>
+    <color name="colorSecondaryS">#4A41CE</color>
+</resources>
