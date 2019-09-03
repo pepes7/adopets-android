@@ -1,0 +1,1 @@
+# adopets-android
