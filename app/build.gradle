@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.0"
     defaultConfig {
         applicationId "com.example.adopets"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -20,6 +20,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    //slider
+    dataBinding{
+        enabled = true
     }
 }
 
@@ -33,12 +38,17 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
 
+    /* implementações do firebase*/
     implementation 'com.google.firebase:firebase-core:16.0.4'
     implementation 'com.google.firebase:firebase-database:16.0.4'
     implementation 'com.google.firebase:firebase-auth:16.0.4'
-
     implementation 'com.google.android.gms:play-services-auth:16.0.0'
+
+    //carView
     implementation 'com.android.support:cardview-v7:28.0.0'
+
+    //Slider
+    implementation 'com.heinrichreimersoftware:material-intro:1.6'
 }
 
 apply plugin: 'com.google.gms.google-services'
