@@ -100,4 +100,3 @@ class CadastroActivity : AppCompatActivity() {
         }
 
     }
-
