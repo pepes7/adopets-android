@@ -12,6 +12,7 @@
 
         <activity android:name=".activity.HomeActivity"
                   android:screenOrientation="portrait">
+
         </activity>
         <activity
                 android:name=".activity.CadastroActivity"
@@ -27,7 +28,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
         <activity
                 android:name=".activity.MainActivity"
