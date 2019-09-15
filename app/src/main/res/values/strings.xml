@@ -2,4 +2,29 @@
     <string name="app_name">Adopets</string>
     <string name="email">E-mail</string>
     <string name="senha">Senha</string>
+    <string name="dados">Dados Pessoais</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    //Fragments home
+    <string name="seu_pefil">SEU PERFIL</string>
+    <string name="ajustes">AJUSTES</string>
+
+    //Ajustes
+    <string name="gerais">GERAIS</string>
+    <string name="ajustes_perfil">Ajustes do perfil</string>
+    <string name="descricao_ajustes_perfil">Animais, atividades e outros</string>
+    <string name="privacidade">Privacidade</string>
+    <string name="descricao_privacidade">Mudar a senha e visibilidade dos dados</string>
+    <string name="notificacoes">Notificações</string>
+    <string name="descricao_notificacoes">Ativas e inativas</string>
+
 </resources>

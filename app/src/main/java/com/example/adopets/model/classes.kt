@@ -4,11 +4,11 @@ import java.util.*
 
 open class Usuario(
     open var email: String = "",
+    open var nome: String = "",
     open var senha: String = "",
     open var dataNasc: Date = Date(),
     open var foto: ByteArray = "".toByteArray(),
     open var telefone: String = "",
-    open var nome: String = "",
     open var bairro: String = "",
     open var rua: String = "",
     open var numero: String = "",
@@ -16,32 +16,32 @@ open class Usuario(
     open var cep: String = ""
 )
 
-class Doador(override var email: String = "", override var senha: String = "",
-             override var dataNasc: Date = Date(), override var foto: ByteArray = "".toByteArray(),
-             override var telefone: String = "", override var nome: String = "", override var bairro: String = "",
+class Doador(override var email: String = "", override var nome: String = "",
+             override var senha: String = "", override var dataNasc: Date = Date(),
+             override var foto: ByteArray = "".toByteArray(), override var telefone: String = "", override var bairro: String = "",
              override var rua: String = "", override var numero: String = "", override var complemento: String = "",
-             override var cep: String = ""): Usuario(email, senha, dataNasc, foto, telefone, nome, bairro, rua, numero, complemento, cep)
+             override var cep: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
 
-class Adotante(override var email: String = "", override var senha: String = "",
-               override var dataNasc: Date = Date(), override var foto: ByteArray = "".toByteArray(),
-               override var telefone: String = "", override var nome: String = "", override var bairro: String = "",
+class Adotante(override var email: String = "", override var nome: String = "",
+               override var senha: String = "", override var dataNasc: Date = Date(),
+               override var foto: ByteArray = "".toByteArray(), override var telefone: String = "", override var bairro: String = "",
                override var rua: String = "", override var numero: String = "", override var complemento: String = "",
-               override var cep: String = ""): Usuario(email, senha, dataNasc, foto, telefone, nome, bairro, rua, numero, complemento, cep)
+               override var cep: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
 
-class Voluntario(override var email: String = "", override var senha: String = "",
-                 override var dataNasc: Date = Date(), override var foto: ByteArray = "".toByteArray(),
-                 override var telefone: String = "", override var nome: String = "", override var bairro: String = "",
+class Voluntario(override var email: String = "", override var nome: String = "",
+                 override var senha: String = "", override var dataNasc: Date = Date(),
+                 override var foto: ByteArray = "".toByteArray(), override var telefone: String = "", override var bairro: String = "",
                  override var rua: String = "", override var numero: String = "", override var complemento: String = "",
-                 override var cep: String = "", var pontuacao: Float = 0F): Usuario(email, senha, dataNasc, foto, telefone, nome, bairro, rua, numero, complemento, cep)
+                 override var cep: String = "", var pontuacao: Float = 0F): Usuario(email, nome, senha,dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
 
-class Contratante(override var email: String = "", override var senha: String = "",
-                  override var dataNasc: Date = Date(), override var foto: ByteArray = "".toByteArray(),
-                  override var telefone: String = "", override var nome: String = "", override var bairro: String = "",
+class Contratante(override var email: String = "", override var nome: String = "",
+                  override var senha: String = "", override var dataNasc: Date = Date(),
+                  override var foto: ByteArray = "".toByteArray(), override var telefone: String = "", override var bairro: String = "",
                   override var rua: String = "", override var numero: String = "", override var complemento: String = "",
-                  override var cep: String = ""): Usuario(email, senha, dataNasc, foto, telefone, nome, bairro, rua, numero, complemento, cep)
+                  override var cep: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
 
 class Processo(
-    var codigo: Long = 0L,
+    var id: String = "",
     var motivo: String = "",
     var situacao: String = "",
     var dataCriacao: Date = Date(),
@@ -55,7 +55,7 @@ class AdotanteProcesso(
 )
 
 class Servico(
-    var codigo: Long = 0L,
+    var id: String = "",
     var tipo: String = "",
     var dataInicio: Date = Date(),
     var dataFim: Date = Date(),
@@ -69,7 +69,7 @@ class ContratanteServico(
 )
 
 class Animal(
-    var codigo: Long = 0L,
+    var id: String = "",
     var foto: ByteArray = "".toByteArray(),
     var situacao: String = "",
     var raca: String = "",

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground2" tools:context=".activity.CadastroEtapasActivity">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="81dp"
+                android:layout_marginTop="11dp"
+                android:contentDescription="@string/app_name" app:srcCompat="@drawable/logo"/>
+        <com.kofigyan.stateprogressbar.StateProgressBar
+                android:id="@+id/progresso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginEnd="60dp"
+                app:spb_animateToCurrentProgressState="true"
+                app:spb_checkStateCompleted="true"
+                app:spb_currentStateNumber="two"
+                app:spb_maxStateNumber="two"
+                app:spb_stateBackgroundColor="@color/colorStep2"
+                app:spb_stateForegroundColor="@color/colorStep1"
+                app:spb_stateSize="50dp"
+                app:spb_stateTextSize="24sp"
+        />
+        <LinearLayout
+                android:id="@+id/step1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp" android:visibility="visible">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="@string/dados"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" android:textStyle="bold"/>
+
+            <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageProfile"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/ic_default_profile"
+                        app:civ_circle_background_color="@color/colorBackground2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                <Button
+                        android:id="@+id/insere_foto"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="120dp"
+                        android:background="@drawable/btn_step2"
+                        android:drawableLeft="@drawable/ic_media"
+                        android:padding="15dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
+                        app:layout_constraintStart_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/imageProfile"
+                        app:layout_constraintTop_toTopOf="@+id/imageProfile"
+                        app:layout_constraintVertical_bias="0.98"/>
+
+                <Button
+                        android:id="@+id/exclue_foto"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="120dp"
+                        android:background="@drawable/btn_step1"
+                        android:drawableLeft="@drawable/ic_x"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.85"
+                        app:layout_constraintStart_toStartOf="@+id/imageProfile"
+                        app:layout_constraintTop_toTopOf="@+id/imageProfile"
+                        app:layout_constraintVertical_bias="0.98"/>
+                <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp" android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nunito_light" android:text="Enviar"
+                        android:textColor="@color/colorField"
+                        app:layout_constraintStart_toStartOf="@+id/imageProfile"
+                        app:layout_constraintTop_toBottomOf="@+id/insere_foto"/>
+                <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
+                        android:fontFamily="@font/nunito_light"
+                        android:text="Excluir"
+                        android:textColor="@color/colorField"
+                        app:layout_constraintEnd_toEndOf="@+id/imageProfile"
+                        app:layout_constraintTop_toBottomOf="@+id/exclue_foto"/>
+
+            </android.support.constraint.ConstraintLayout>
+            <EditText
+                    android:id="@+id/telefone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:drawableStart="@drawable/ic_telefone"
+                    android:drawableLeft="@drawable/ic_telefone"
+                    android:drawablePadding="6dp"
+                    android:ems="10"
+                    android:hint="Número de Telefone"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o"/>
+            <EditText
+                    android:id="@+id/dataNasc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:drawableLeft="@drawable/ic_calendar"
+                    android:drawablePadding="6dp"
+                    android:ems="10"
+                    android:hint="Data de Nascimento"
+                    android:importantForAutofill="no"
+                    android:inputType="date"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o"/>
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/step2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp" android:visibility="gone">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:text="ENDEREÇO"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" android:textStyle="bold"/>
+            <EditText
+                    android:id="@+id/cep"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:drawableStart="@drawable/ic_home"
+                    android:drawableLeft="@drawable/ic_home"
+                    android:drawablePadding="6dp"
+                    android:ems="10"
+                    android:hint="CEP da residência"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o"/>
+            <EditText
+                    android:id="@+id/rua"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:ems="10"
+                    android:hint="Rua"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o"/>
+
+            <EditText
+                    android:id="@+id/bairro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:ems="10"
+                    android:hint="Bairro"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o"/>
+
+            <EditText
+                    android:id="@+id/complemento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:ems="10"
+                    android:hint="Complemento"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="60dp"
+                android:orientation="horizontal"
+       >
+
+            <Button
+                    android:id="@+id/btn_voltar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="37dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:text="VOLTAR"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+            android:background="@drawable/btn_login"
+            android:layout_marginRight="10dp"
+                    android:textSize="20sp"
+                    android:visibility="gone"/>
+
+            <Button
+                    android:id="@+id/btn_continuar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="37dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_adotar"
+                    android:text="CONTINUAR"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white" android:textSize="20sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

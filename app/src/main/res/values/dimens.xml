@@ -1,0 +1,5 @@
+<resources>
+    <!-- valores globais para os componentes-->
+    <dimen name="border_radius_cardView">12dp</dimen>
+    <dimen name="title_home">36dp</dimen>
+</resources>
