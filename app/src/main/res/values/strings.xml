@@ -2,7 +2,9 @@
     <string name="app_name">Adopets</string>
     <string name="email">E-mail</string>
     <string name="senha">Senha</string>
+
     <string name="dados">Dados Pessoais</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
