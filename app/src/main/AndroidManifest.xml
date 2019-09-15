@@ -40,6 +40,10 @@
                 android:name=".activity.CadastroActivity"
                 android:screenOrientation="portrait"></activity>
         <activity
+                android:name=".activity.CadastroEtapasActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
                 android:name=".activity.SplashActivity"
                 android:noHistory="true"
                 android:screenOrientation="portrait"

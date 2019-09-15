@@ -79,7 +79,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" android:layout_marginLeft="20dp"
                             android:layout_marginTop="7dp" android:layout_marginRight="15dp"
-                            android:drawableLeft="@drawable/ic_phone" android:drawablePadding="6dp"
+                            android:drawableLeft="@drawable/ic_telefone" android:drawablePadding="6dp"
                             android:fontFamily="@font/nunito_regular" android:text="996-669-2631"
                             android:textColor="@color/colorBackground" android:textSize="20sp"/>
                     <TextView
@@ -87,7 +87,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" android:layout_marginLeft="20dp"
                             android:layout_marginTop="7dp" android:layout_marginRight="15dp"
-                            android:drawableLeft="@drawable/ic_calendario" android:drawablePadding="6dp"
+                            android:drawableLeft="@drawable/ic_calendar" android:drawablePadding="6dp"
                             android:fontFamily="@font/nunito_regular" android:text="23/07/2002"
                             android:textColor="@color/colorBackground" android:textSize="20sp"/>
                     <Button
