@@ -53,6 +53,10 @@ class MapaFragment : Fragment() {
 
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 5000, null)
 
+            mMap.setOnMapClickListener {
+                
+            }
+
             mMap.addMarker(
                 MarkerOptions()
                     .position(LatLng(-3.074601, -60.039474))

@@ -6,21 +6,28 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import com.example.adopets.R
-import com.example.adopets.model.Usuario
 import com.kofigyan.stateprogressbar.StateProgressBar
 import kotlinx.android.synthetic.main.activity_cadastro_etapas.*
 
 class CadastroEtapasActivity : AppCompatActivity() {
 
-    val stateProgressBar: StateProgressBar = findViewById(R.id.progresso)
-    val btn_continuar: Button = findViewById(R.id.btn_continuar)
-    val btn_voltar: Button = findViewById(R.id.btn_voltar)
-    val linear1: LinearLayout = findViewById(R.id.step1)
-    val linear2: LinearLayout = findViewById(R.id.step2)
+    private lateinit var stateProgressBar: StateProgressBar
+    private lateinit var  btn_continuar: Button
+    private lateinit var  btn_voltar: Button
+    private lateinit var  linear1: LinearLayout
+    private lateinit var linear2: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_etapas)
+
+        stateProgressBar = findViewById(R.id.progresso)
+        btn_continuar = findViewById(R.id.btn_continuar)
+        btn_voltar = findViewById(R.id.btn_voltar)
+        linear1 = findViewById(R.id.step1)
+        linear2 = findViewById(R.id.step2)
+
+        stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.ONE)
 
         //verifica se a barra de progresso esta ativa
         if (progresso != null) {
@@ -30,29 +37,28 @@ class CadastroEtapasActivity : AppCompatActivity() {
                 //se a barra estiver na etapa 1, tornara a etapa 2 desativada
 
                 if (stateProgressBar.currentStateNumber == 1) {
-                    btn_voltar.visibility = View.GONE
+                    btn_voltar.visibility = View.VISIBLE
 
-                    stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.ONE)
+                    stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO)
 
-                    linear2.visibility = View.GONE
-                    linear1.visibility = View.VISIBLE
+                    linear1.visibility = View.GONE
+                    linear2.visibility = View.VISIBLE
 
                     confirma(1)
 
                 } else if (progresso.currentStateNumber == 2) {
-                    btn_voltar.visibility = View.VISIBLE
                     confirma(2)
                 }
             }
 
             btn_voltar.setOnClickListener() {
 
-                stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO)
+                stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.ONE)
 
-                linear1.visibility = View.GONE
-                linear2.visibility = View.VISIBLE
+                linear1.visibility = View.VISIBLE
+                linear2.visibility = View.GONE
 
-
+                btn_voltar.visibility = View.GONE
             }
 
         }
