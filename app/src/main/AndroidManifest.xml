@@ -29,10 +29,6 @@
                 android:name="com.google.android.geo.API_KEY"
                 android:value="@string/google_maps_key" />
 
-        <activity
-                android:name=".activity.MapsActivity"
-                android:label="@string/title_activity_maps"></activity>
-
         <uses-library
                 android:name="org.apache.http.legacy"
                 android:required="false" />

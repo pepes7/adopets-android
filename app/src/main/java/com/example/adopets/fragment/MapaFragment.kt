@@ -45,13 +45,13 @@ class MapaFragment : Fragment() {
             mMap.clear() //clear old markers
 
             val lugar = CameraPosition.builder()
-                .target(LatLng(-3.074601, -60.039474))
-                .zoom(10f)
+                .target(LatLng(-3.0589489,-59.9930218))
+                .zoom(11.5F)
                 .bearing(0f)
                 .tilt(45f)
                 .build()
 
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 10000, null)
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 5000, null)
 
             mMap.addMarker(
                 MarkerOptions()
@@ -62,15 +62,15 @@ class MapaFragment : Fragment() {
 
             mMap.addMarker(
                 MarkerOptions()
-                    .position(LatLng(37.4629101, -122.2449094))
-                    .title("Iron Man")
-                    .snippet("His Talent : Plenty of money")
+                    .position(LatLng(-3.115378, -59.977482))
+                    .title("Cão 2")
+                    .snippet("Talentoso")
             )
 
             mMap.addMarker(
                 MarkerOptions()
-                    .position(LatLng(37.3092293, -122.1136845))
-                    .title("Captain America")
+                    .position(LatLng(-3.134159, -60.013139))
+                    .title("Gato")
             )
         }
 
