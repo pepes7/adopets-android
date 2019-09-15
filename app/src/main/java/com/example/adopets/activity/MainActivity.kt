@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, senha)
                 .addOnCompleteListener{ task ->
                     if (task.isSuccessful) {
-//                        startActivity(Intent(applicationContext, HomeActivity::class.java))
+                        startActivity(Intent(applicationContext, HomeActivity::class.java))
                     } else {
                         try {
                             throw task.exception!!
