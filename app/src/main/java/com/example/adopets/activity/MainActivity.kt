@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         botaoEntrar = entrar
         botaoGoogle = sign_in_button
 
-        botaoEntrar.setOnClickListener{logar()}
+        botaoEntrar.setOnClickListener{startActivity(Intent(applicationContext, NavigationActivity::class.java))}
         botaoGoogle.setOnClickListener{telaGoogle()}
     }
 
@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, senha)
                 .addOnCompleteListener{ task ->
                     if (task.isSuccessful) {
-//                        startActivity(Intent(applicationContext, HomeActivity::class.java))
+                        startActivity(Intent(applicationContext, NavigationActivity::class.java))
                     } else {
                         try {
                             throw task.exception!!
