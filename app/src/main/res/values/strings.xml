@@ -14,5 +14,17 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
 
+    //Fragments home
+    <string name="seu_pefil">SEU PERFIL</string>
+    <string name="ajustes">AJUSTES</string>
+
+    //Ajustes
+    <string name="gerais">GERAIS</string>
+    <string name="ajustes_perfil">Ajustes do perfil</string>
+    <string name="descricao_ajustes_perfil">Animais, atividades e outros</string>
+    <string name="privacidade">Privacidade</string>
+    <string name="descricao_privacidade">Mudar a senha e visibilidade dos dados</string>
+    <string name="notificacoes">Notificações</string>
+    <string name="descricao_notificacoes">Ativas e inativas</string>
 
 </resources>

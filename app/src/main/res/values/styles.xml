@@ -25,6 +25,7 @@
     <style name="NunitoButton" parent="android:Widget.Holo.Button">
         <item name="android:fontFamily">@font/nunito</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
