@@ -173,7 +173,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito"
-                    android:text="ENDEREÇO"
+                    android:text="Endereço"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp" android:textStyle="bold"/>
@@ -195,6 +195,23 @@
                     android:paddingRight="10dp"
                     android:textColor="@android:color/black"
                     tools:targetApi="o"/>
+
+            <EditText
+                    android:id="@+id/numero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:ems="10"
+                    android:hint="Número da casa"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@android:color/black"
+                    tools:targetApi="o"/>
+
             <EditText
                     android:id="@+id/rua"
                     android:layout_width="match_parent"
@@ -265,8 +282,8 @@
                     android:text="VOLTAR"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
-            android:background="@drawable/btn_login"
-            android:layout_marginRight="10dp"
+                    android:background="@drawable/btn_login"
+                    android:layout_marginRight="10dp"
                     android:textSize="20sp"
                     android:visibility="gone"/>
 
