@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         botaoEntrar = entrar
         botaoGoogle = sign_in_button
 
-        botaoEntrar.setOnClickListener{startActivity(Intent(applicationContext, HomeActivity::class.java))}
+        botaoEntrar.setOnClickListener{logar()}
         botaoGoogle.setOnClickListener{telaGoogle()}
     }
 

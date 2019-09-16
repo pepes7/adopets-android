@@ -51,10 +51,12 @@ class MapaFragment : Fragment() {
                 .tilt(45f)
                 .build()
 
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 5000, null)
+//            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 5000, null)
+
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 1, null)
 
             mMap.setOnMapClickListener {
-                
+
             }
 
             mMap.addMarker(
