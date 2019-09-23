@@ -107,18 +107,27 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp" android:layout_marginTop="24dp"/>
+
         <TextView
-                android:text="Não tem uma conta? "
+                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView4" android:drawableLeft="@drawable/ic_sign"
-                android:drawablePadding="6dp" app:fontFamily="@font/nunito_light"
+                android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:drawableLeft="@drawable/ic_sign"
+                android:drawablePadding="6dp"
+                android:text="Não tem uma conta? "
                 android:textColor="@android:color/black"
-                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/sign_in_button"
-                android:layout_marginStart="2dp" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="2dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.402"/>
-    <TextView
+                app:fontFamily="@font/nunito_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.319"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sign_in_button" />
+
+        <TextView
             android:text="Cadastre-se"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
