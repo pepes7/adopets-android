@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/bottom_sheet_layout"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+              android:orientation="vertical"
+              app:behavior_hideable="true"
+              app:behavior_peekHeight="56dp"
+              app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+              tools:context=".BottomSheetActivity">
+    <Button
+            android:id="@+id/btnBottomSheet"
+            android:layout_width="44dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ic_bar_bottom_sheet"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Realize alguma atividade"
+            android:textSize="20sp"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+        <LinearLayout
+                android:layout_width="269dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" android:orientation="vertical">
+            <ImageView
+                    android:id="@+id/bottom_doe"
+                    android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"
+                    app:srcCompat="@drawable/bottom_doe"/>
+            <Button
+                    android:id="@+id/btn_doe"
+                    android:layout_width="112dp"
+                    android:layout_height="27dp" android:layout_weight="1" android:text="Doe"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="301dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" android:orientation="vertical">
+            <ImageView
+                    android:id="@+id/bottom_adote"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/bottom_adote"/>
+            <Button
+                    android:id="@+id/btn_adote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:text="Adote"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="313dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" android:orientation="vertical">
+            <ImageView
+                    android:id="@+id/bottom_voluntariese"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" app:srcCompat="@drawable/bottom_voluntariese"/>
+            <Button
+                    android:id="@+id/btn_voluntarie_se"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="Voluntarie-se"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
