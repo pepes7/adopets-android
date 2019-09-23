@@ -22,7 +22,7 @@ class BottomSheetActivity : AppCompatActivity() {
             }
         }
 
-    behavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+        bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, newState: Int) {
             // React to state change
             when (newState) {
