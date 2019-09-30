@@ -72,7 +72,7 @@
                         app:layout_constraintTop_toTopOf="parent"/>
 
                 <Button
-                        android:id="@+id/insere_foto"
+                        android:id="@+id/btn_inserir_foto"
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:layout_marginTop="120dp"
@@ -99,16 +99,20 @@
                         app:layout_constraintStart_toStartOf="@+id/imageProfile"
                         app:layout_constraintTop_toTopOf="@+id/imageProfile"
                         app:layout_constraintVertical_bias="0.98"/>
+
                 <TextView
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp" android:layout_marginTop="8dp"
-                        android:fontFamily="@font/nunito_light" android:text="Enviar"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nunito_light"
+                        android:text="Enviar"
                         android:textColor="@color/colorField"
                         app:layout_constraintStart_toStartOf="@+id/imageProfile"
-                        app:layout_constraintTop_toBottomOf="@+id/insere_foto"/>
+                        app:layout_constraintTop_toBottomOf="@+id/btn_inserir_foto" />
+
                 <TextView
                         android:id="@+id/textView9"
                         android:layout_width="wrap_content"
