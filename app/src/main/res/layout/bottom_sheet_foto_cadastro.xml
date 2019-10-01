@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:background="#fafafa" android:layout_marginTop="40dp"
+        android:layout_height="match_parent" android:background="#fafafa"
         >
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <ImageView
+            android:orientation="horizontal" android:paddingTop="25dp">
+        <ImageButton
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_galeria_50dp"/>
-        <ImageView
+        <ImageButton
                 android:layout_width="150dp"
                 android:layout_height="50dp"
+                android:background="@android:color/transparent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_camera_alt_50dp"/>
 

@@ -10,12 +10,14 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.adopets.R
 import com.example.adopets.fragment.BottomSheetFotoCadastro
 import com.example.adopets.helper.Permissao
 import com.example.adopets.model.Usuario
+import com.example.adopets.utils.MyMaskEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -70,6 +72,9 @@ class CadastroEtapasActivity : AppCompatActivity() {
 
 
         inicializaComponentes()
+
+        //coloca a mascara da data no editText
+        dataNasc.myCustomMask("##/##/####")
 
         verificaEtapa()
 
@@ -127,6 +132,9 @@ class CadastroEtapasActivity : AppCompatActivity() {
 
         var tel = telefone.text.toString()
         var dataN = dataNasc.text.toString()
+
+
+
 
         if(etapa == 1){
 
@@ -256,6 +264,11 @@ class CadastroEtapasActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.show()
     }
+
+    //metodo de acesso a classe da maskara
+    fun EditText.myCustomMask(mask: String) {
+        addTextChangedListener(MyMaskEditText(this, mask))}
+
 }
 
 
