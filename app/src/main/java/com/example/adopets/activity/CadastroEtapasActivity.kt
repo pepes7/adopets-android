@@ -8,11 +8,10 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
+import android.text.Editable
+import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.Toast
+import android.widget.*
 import com.example.adopets.R
 import com.example.adopets.fragment.BottomSheetFotoCadastro
 import com.example.adopets.helper.Permissao
@@ -29,8 +28,7 @@ import kotlinx.android.synthetic.main.activity_cadastro_etapas.*
 import java.text.SimpleDateFormat
 
 
-class CadastroEtapasActivity : AppCompatActivity() {
-
+class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomSheetListener {
     private lateinit var stateProgressBar: StateProgressBar
     private lateinit var btn_continuar: Button
     private lateinit var btn_voltar: Button
@@ -43,10 +41,25 @@ class CadastroEtapasActivity : AppCompatActivity() {
     private lateinit var database : DatabaseReference
     private lateinit var auth: FirebaseAuth
     private lateinit var buttonAdicionarFoto: Button
-    private val permisssoes = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA) //array com as permições que o app precisará (Galeria e camera)
+    private val permisssaoCamera= arrayOf(Manifest.permission.CAMERA) //array com as permições que o app precisará (camera)
+    private val permisssaoGaleria = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE) //array com as permições que o app precisará (Galeria)
     private val SELECAO_CAMERA = 100
     private val SELECAO_GALERIA = 200
 
+    //metodo da classe BottomSheetFotoCadastro para verificar qual botão foi pressionado
+    override fun onButtonClicked(id: Int) {
+        when(id){
+            R.id.btn_galeria_foto ->{
+                //abre as permissoes para galeria
+                Permissao.validarPermissao(permisssaoGaleria,this,1)
+            }
+
+            R.id.btn_camera_foto ->{
+                //abre as permissoes para camera
+                Permissao.validarPermissao(permisssaoCamera,this,1)
+
+            }}
+    }
     fun inicializaComponentes(){
         database = FirebaseDatabase.getInstance().reference
         auth = FirebaseAuth.getInstance()
@@ -81,8 +94,6 @@ class CadastroEtapasActivity : AppCompatActivity() {
         btn_inserir_foto.setOnClickListener{
             val opcao = BottomSheetFotoCadastro()
             opcao.show(supportFragmentManager,"bottonSheet")
-            //Permissao.validarPermissao(permisssoes,this,1)
-
         }
     }
     //configura as etapas do cadastro
@@ -127,7 +138,7 @@ class CadastroEtapasActivity : AppCompatActivity() {
 
     }
 
-//verifica campos conforme a etapa
+    //verifica campos conforme a etapa
     fun confirma(etapa: Int): Boolean{
 
         var tel = telefone.text.toString()
@@ -190,51 +201,51 @@ class CadastroEtapasActivity : AppCompatActivity() {
                 val ref = usuarios.push()
 
                 auth.createUserWithEmailAndPassword(u.email, senha)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        ref.child("email").setValue(u.email)
-                        ref.child("nome").setValue(u.nome)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            ref.child("email").setValue(u.email)
+                            ref.child("nome").setValue(u.nome)
 //                        ref.child("dataNasc").setValue(u.dataNasc)
-                        //foto
-                        ref.child("telefone").setValue(u.telefone)
-                        ref.child("bairro").setValue(u.bairro)
-                        ref.child("rua").setValue(u.rua)
-                        ref.child("numero").setValue(u.numero)
-                        ref.child("complemento").setValue(u.complemento)
-                        ref.child("cep").setValue(u.cep)
-                        Toast.makeText(this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT)
-                            .show()
-                        startActivity(Intent(applicationContext, MainActivity::class.java))
-                    } else {
-                        try {
-                            throw task.exception!!
-                        } catch (e: FirebaseAuthWeakPasswordException) {
-                            Toast.makeText(
-                                this@CadastroEtapasActivity,
-                                "Senha fraca!",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } catch (e: FirebaseAuthInvalidCredentialsException) {
-                            Toast.makeText(
-                                this@CadastroEtapasActivity,
-                                "Email inválido!",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } catch (e: FirebaseAuthUserCollisionException) {
-                            Toast.makeText(
-                                this@CadastroEtapasActivity,
-                                "Usuário já cadastrado!",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } catch (e: Exception) {
-                            Toast.makeText(
-                                this@CadastroEtapasActivity,
-                                "" + e.message,
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            //foto
+                            ref.child("telefone").setValue(u.telefone)
+                            ref.child("bairro").setValue(u.bairro)
+                            ref.child("rua").setValue(u.rua)
+                            ref.child("numero").setValue(u.numero)
+                            ref.child("complemento").setValue(u.complemento)
+                            ref.child("cep").setValue(u.cep)
+                            Toast.makeText(this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT)
+                                .show()
+                            startActivity(Intent(applicationContext, MainActivity::class.java))
+                        } else {
+                            try {
+                                throw task.exception!!
+                            } catch (e: FirebaseAuthWeakPasswordException) {
+                                Toast.makeText(
+                                    this@CadastroEtapasActivity,
+                                    "Senha fraca!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } catch (e: FirebaseAuthInvalidCredentialsException) {
+                                Toast.makeText(
+                                    this@CadastroEtapasActivity,
+                                    "Email inválido!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } catch (e: FirebaseAuthUserCollisionException) {
+                                Toast.makeText(
+                                    this@CadastroEtapasActivity,
+                                    "Usuário já cadastrado!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } catch (e: Exception) {
+                                Toast.makeText(
+                                    this@CadastroEtapasActivity,
+                                    "" + e.message,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
-                   }
-            }
+                    }
 
             }
         }

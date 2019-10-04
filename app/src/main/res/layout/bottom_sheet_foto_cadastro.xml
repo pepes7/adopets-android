@@ -8,17 +8,19 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal" android:paddingTop="25dp">
         <ImageButton
+                android:id="@+id/btn_galeria_foto"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_galeria_50dp"/>
+                android:src="@drawable/ic_btn_galeria"/>
         <ImageButton
+                android:id="@+id/btn_camera_foto"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:background="@android:color/transparent"
                 android:layout_weight="1"
-                android:src="@drawable/ic_camera_alt_50dp"/>
+                android:src="@drawable/ic_btn_camera"/>
 
     </LinearLayout>
     <LinearLayout
