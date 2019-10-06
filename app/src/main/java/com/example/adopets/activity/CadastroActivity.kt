@@ -16,7 +16,7 @@ import java.util.*
 
 class CadastroActivity : AppCompatActivity() {
 
-    private lateinit var database : DatabaseReference
+    private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +62,7 @@ class CadastroActivity : AppCompatActivity() {
             intent.putExtra("nome", nome)
             intent.putExtra("senha", senha)
             startActivity(intent)
-                }
         }
-
     }
+
+}

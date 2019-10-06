@@ -29,5 +29,7 @@
     <string name="descricao_privacidade">Mudar a senha e visibilidade dos dados</string>
     <string name="notificacoes">Notificações</string>
     <string name="descricao_notificacoes">Ativas e inativas</string>
+    <string name="sair">Sair</string>
+    <string name="descricao_sair">Encerrar sessão</string>
 
 </resources>
