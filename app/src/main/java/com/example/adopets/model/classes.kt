@@ -67,16 +67,17 @@ class ContratanteServico(
 )
 
 class Animal(
+    var nome: String = "",
+    var sexo: String = "",
+    var bairro: String = "",
     var id: String = "",
     var foto: ByteArray = "".toByteArray(),
     var situacao: String = "",
     var raca: String = "",
     var descricao: String = "",
     var tamanho: String = "",
-    var sexo: String = "",
     var necessidade: String = "",
     var tipo: String = "",
-    var nome: String = "",
     var dataNasc: String = ""
 )
 

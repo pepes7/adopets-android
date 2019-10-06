@@ -83,33 +83,40 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
-                android:layout_width="154dp"
-                android:layout_height="181dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                android:orientation="vertical">
-            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/common_google_signin_btn_icon_light_normal_background"-->
+<!--                android:orientation="vertical">-->
 
-                    android:id="@+id/imageView8"
+
+<!--            <ImageView-->
+
+<!--                    android:id="@+id/imageView8"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content" android:src="@drawable/mel_perfil"/>-->
+<!--            <TextView-->
+<!--                    android:id="@+id/textView23"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="50dp"-->
+<!--                    android:layout_marginEnd="50dp" android:text="MEL"/>-->
+<!--            <TextView-->
+<!--                    android:id="@+id/textView24"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="43dp" android:text="Fêmea"/>-->
+<!--            <TextView-->
+<!--                    android:id="@+id/textView25"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="43dp" android:text="Japiim"/>-->
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerViewAnimais"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:src="@drawable/mel_perfil"/>
-            <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginEnd="50dp" android:text="MEL"/>
-            <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="43dp" android:text="Fêmea"/>
-            <TextView
-                    android:id="@+id/textView25"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="43dp" android:text="Japiim"/>
+                    android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
 
