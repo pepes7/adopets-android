@@ -1,6 +1,7 @@
 package com.example.adopets.fragment
 
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -9,15 +10,19 @@ import android.view.ViewGroup
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import android.graphics.Bitmap
 import android.support.v4.content.ContextCompat
-import com.google.android.gms.maps.model.BitmapDescriptor
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Canvas
+import android.content.Intent
+import android.graphics.Color
+import android.widget.EditText
+import android.widget.Toast
+import com.google.android.gms.maps.model.*
+import android.support.v4.app.FragmentActivity
+import android.support.v4.app.FragmentManager
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +34,8 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class MapaFragment : Fragment() {
+
+    private var currentMarker: Marker? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,9 +62,48 @@ class MapaFragment : Fragment() {
 
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 1, null)
 
-            mMap.setOnMapClickListener {
+            mMap!!.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
+                override fun onMarkerClick(marker: Marker): Boolean {
+                    currentMarker = marker
 
-            }
+                    val builder = AlertDialog.Builder(activity)
+                    with(builder) {
+                        setTitle("O que você deseja fazer com este animal?")
+                        setPositiveButton("Adotar", null)
+                        setNegativeButton("Ajudar", null)
+                        setNeutralButton("Cancelar", null)
+                    }
+
+                    val alertDialog = builder.create()
+                    alertDialog.show()
+
+                    val button = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE)
+                    with(button) {
+                        setPadding(0, 0, 20, 0)
+                        setTextColor(Color.RED)
+                    }
+
+                    val button2 = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE)
+                    with(button2) {
+                        setPadding(0, 0, 40, 0)
+                        setTextColor(Color.BLUE)
+                    }
+
+                    val button3 = alertDialog.getButton(DialogInterface.BUTTON_NEUTRAL)
+                    with(button3) {
+                        setPadding(0, 0, 20, 0)
+                        setTextColor(Color.DKGRAY)
+                    }
+
+                    return false
+                }
+            })
+
+            mMap!!.setOnMapClickListener(object : GoogleMap.OnMapClickListener {
+                override fun onMapClick(latLng: LatLng) {
+                    currentMarker = null
+                }
+            })
 
             mMap.addMarker(
                 MarkerOptions()
