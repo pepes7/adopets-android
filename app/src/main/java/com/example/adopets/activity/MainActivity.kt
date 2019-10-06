@@ -1,5 +1,6 @@
 package com.example.adopets.activity
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -106,6 +107,9 @@ class MainActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, senha)
                 .addOnCompleteListener{ task ->
                     if (task.isSuccessful) {
+                        val pd = ProgressDialog(this@MainActivity)
+                        pd.setMessage("Entrando...")
+                        pd.show()
                         startActivity(Intent(applicationContext, HomeActivity::class.java))
                     } else {
                         try {

@@ -1,5 +1,6 @@
 package com.example.adopets.activity
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -9,6 +10,7 @@ import com.example.adopets.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_editar_perfil.*
+import android.app.ProgressDialog
 
 class EditarPerfilActivity : AppCompatActivity() {
 
@@ -79,6 +81,10 @@ class EditarPerfilActivity : AppCompatActivity() {
 
     fun editar() {
 
+        val pd = ProgressDialog(this@EditarPerfilActivity)
+        pd.setMessage("Salvando...")
+        pd.show()
+
         database = FirebaseDatabase.getInstance().reference
 
         val user = FirebaseAuth.getInstance().currentUser
@@ -109,9 +115,8 @@ class EditarPerfilActivity : AppCompatActivity() {
                         usuario?.cep = txt_cep.text.toString()
                         usuario?.complemento = txt_complemento.text.toString()
 
-                        val usuarios = database.child("usuarios")
-                        val ref = usuarios.child(user.uid).
-                        ref.child("nome").setValue(usuario?.nome)
+                        database.child("usuarios").child(user.uid).child("nome").setValue(usuario?.nome)
+                        startActivity(Intent(applicationContext, HomeActivity::class.java))
                     }
                 }
 
