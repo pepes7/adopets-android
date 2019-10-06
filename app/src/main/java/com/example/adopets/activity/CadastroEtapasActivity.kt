@@ -5,9 +5,11 @@ import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v7.app.AlertDialog
 import android.text.Editable
 import android.util.Log
@@ -24,8 +26,12 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.kofigyan.stateprogressbar.StateProgressBar
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_cadastro_etapas.*
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 
 
@@ -40,30 +46,53 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
     private lateinit var senha: String
     private lateinit var dados: Bundle
     private lateinit var database : DatabaseReference
+    private lateinit var storageReference : StorageReference
     private lateinit var auth: FirebaseAuth
     private lateinit var buttonAdicionarFoto: Button
     private val permisssaoCamera= arrayOf(Manifest.permission.CAMERA) //array com as permições que o app precisará (camera)
     private val permisssaoGaleria = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE) //array com as permições que o app precisará (Galeria)
     private val SELECAO_CAMERA = 100
     private val SELECAO_GALERIA = 200
+    private var imagem: Bitmap? = null
+    private lateinit var imagemPerfil : CircleImageView
 
     //metodo da classe BottomSheetFotoCadastro para verificar qual botão foi pressionado
     override fun onButtonClicked(id: Int) {
-        when(id){
-            R.id.btn_galeria_foto ->{
-                //abre as permissoes para galeria
-                Permissao.validarPermissao(permisssaoGaleria,this,1)
+        when (id) {
+            R.id.btn_galeria_foto -> {
+                //abre as permissoes para galeria/ se o usuario tiver permissao irá abrir a galeria
+                if (Permissao.validarPermissao(permisssaoGaleria, this, SELECAO_GALERIA)) {
+                    val intent =
+                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                    if (intent.resolveActivity(packageManager) != null) {
+                        startActivityForResult(intent, SELECAO_GALERIA)
+                    }
+                }
             }
 
-            R.id.btn_camera_foto ->{
-                //abre as permissoes para camera
-                Permissao.validarPermissao(permisssaoCamera,this,1)
+            R.id.btn_camera_foto -> {
+                //abre as permissoes para camera/ se o usuario tiver permissao irá abrir a camera
+                if (Permissao.validarPermissao(permisssaoCamera, this, SELECAO_CAMERA)) {
+                    if (baseContext.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+                        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                        if (intent.resolveActivity(packageManager) != null) {
+                            startActivityForResult(intent, SELECAO_CAMERA)
+                        }
+                    } else {
+                        //notFound
+                    }
 
-            }}
+                }
+
+
+            }
+        }
     }
     fun inicializaComponentes(){
         database = FirebaseDatabase.getInstance().reference
         auth = FirebaseAuth.getInstance()
+        storageReference = FirebaseStorage.getInstance().reference
+
 
         stateProgressBar = findViewById(R.id.progresso)
         btn_continuar = findViewById(R.id.btn_continuar)
@@ -71,6 +100,8 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
         linear1 = findViewById(R.id.step1)
         linear2 = findViewById(R.id.step2)
         buttonAdicionarFoto = btn_inserir_foto
+        imagemPerfil = imageProfile
+
 
 
     }
@@ -207,16 +238,20 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
                             ref.child("email").setValue(u.email)
                             ref.child("nome").setValue(u.nome)
                             ref.child("dataNasc").setValue(u.dataNasc)
-                            //foto
                             ref.child("telefone").setValue(u.telefone)
                             ref.child("bairro").setValue(u.bairro)
                             ref.child("rua").setValue(u.rua)
                             ref.child("numero").setValue(u.numero)
                             ref.child("complemento").setValue(u.complemento)
                             ref.child("cep").setValue(u.cep)
-                            Toast.makeText(this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT)
-                                .show()
-                            startActivity(Intent(applicationContext, MainActivity::class.java))
+
+                            if (imagem!=null){
+                                salvarFoto(ref,u)
+                            }else{
+                                Toast.makeText(this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT)
+                                    .show()
+                                startActivity(Intent(applicationContext, MainActivity::class.java))
+                            }
                         } else {
                             try {
                                 throw task.exception!!
@@ -260,7 +295,24 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
             if (permissaoResultado == PackageManager.PERMISSION_DENIED) {
                 alertaPermissao()
 
+            }else if (requestCode == SELECAO_GALERIA) { //se foi aceita a permissao ira abrir a opcao da camera ou galeria
+                val intent =
+                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                if (intent.resolveActivity(packageManager) != null) {
+                    startActivityForResult(intent, SELECAO_GALERIA)
+                }
+
+            } else if (requestCode == SELECAO_CAMERA) {
+                if (baseContext.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    if (intent.resolveActivity(packageManager) != null) {
+                        startActivityForResult(intent, SELECAO_CAMERA)
+                    }
+                } else {
+                    //notFound
+                }
             }
+
         }
     }
 
@@ -280,6 +332,67 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
     //metodo de acesso a classe da maskara
     fun EditText.myCustomMask(mask: String) {
         addTextChangedListener(MyMaskEditText(this, mask))}
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+
+        if (resultCode == RESULT_OK) {
+            try {
+                when (requestCode) {
+                    SELECAO_CAMERA -> {
+                        imagem = data?.extras?.get("data") as Bitmap
+                    }
+                    SELECAO_GALERIA -> {
+                        val localImagemSelecionada = data?.data
+                        imagem = MediaStore.Images.Media.getBitmap(
+                            contentResolver,
+                            localImagemSelecionada
+                        )
+
+                    }
+                }
+                if(imagem != null){
+                    imagemPerfil.setImageBitmap(imagem)
+                }
+            } catch (e:java.lang.Exception) {
+                e.printStackTrace()
+            }
+        }
+
+    }
+    fun salvarFoto(ref:DatabaseReference,u:Usuario){
+            //recuperar dados da imagem para o firebase
+            val baos =  ByteArrayOutputStream()
+
+            imagem?.compress(Bitmap.CompressFormat.JPEG, 70, baos)
+
+            val dadosImagem = baos.toByteArray()
+
+            //Salvar no Firebase
+            val imagemRef = storageReference
+                .child("imagens")
+                .child("perfil")
+                .child(auth!!.currentUser?.uid.toString())
+                .child("perfil.jpeg")
+
+            val uploadTask = imagemRef.putBytes(dadosImagem)
+            uploadTask.addOnFailureListener{
+                //Se houve erro no upload da imageFile
+                Toast.makeText(this, "Erro ao salvar  a foto", Toast.LENGTH_SHORT).show()
+            }.addOnSuccessListener {
+                imagemRef.downloadUrl.addOnSuccessListener {
+                    u.foto = it.toString()
+                    ref.child("foto").setValue(u.foto)
+
+                }
+                //Se o upload da imageFile foi realizado com sucesso
+                Toast.makeText(this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT)
+                    .show()
+                startActivity(Intent(applicationContext, MainActivity::class.java))
+            }
+    }
+
 
 }
 
