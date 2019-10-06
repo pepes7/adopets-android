@@ -187,8 +187,7 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
                 u.email = email
                 u.nome = nome
                 u.senha = senha
-                val formatter = SimpleDateFormat("dd/MM/yyyy")
-                u.dataNasc = formatter.parse(dataN)
+                u.dataNasc = dataN
                 //foto
                 u.telefone = tel
                 u.bairro = bairroR
@@ -205,7 +204,7 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
                         if (task.isSuccessful) {
                             ref.child("email").setValue(u.email)
                             ref.child("nome").setValue(u.nome)
-//                        ref.child("dataNasc").setValue(u.dataNasc)
+                            ref.child("dataNasc").setValue(u.dataNasc)
                             //foto
                             ref.child("telefone").setValue(u.telefone)
                             ref.child("bairro").setValue(u.bairro)
