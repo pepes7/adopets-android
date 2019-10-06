@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import com.example.adopets.R
+import com.example.adopets.activity.CadastroActivity
 import com.example.adopets.activity.EditarPerfilActivity
 import com.example.adopets.activity.MainActivity
 import com.example.adopets.model.Usuario
@@ -35,6 +36,7 @@ private const val ARG_PARAM2 = "param2"
 class PerfilFragment : Fragment() {
 
     private lateinit var btn_editar: Button
+    private lateinit var btn_apagar: Button
 
     private lateinit var database: DatabaseReference
     private lateinit var txt_nome: TextView
@@ -49,22 +51,49 @@ class PerfilFragment : Fragment() {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_perfil, container, false)
 
+        database = FirebaseDatabase.getInstance().reference
+        val user = FirebaseAuth.getInstance().currentUser
+
         btn_editar = view.findViewById(R.id.button)
+        btn_apagar = view.findViewById(R.id.button2)
 
         btn_editar.setOnClickListener {
             val intent = Intent(activity, EditarPerfilActivity::class.java)
             startActivity(intent)
         }
 
-        database = FirebaseDatabase.getInstance().reference
+        btn_apagar.setOnClickListener {
 
-        val user = FirebaseAuth.getInstance().currentUser
+            user?.let {
+                val email = user.email
+                txt_email = view.findViewById(R.id.textView8)
+                txt_email.text = email
+                var query: Query = database.child("usuarios").orderByChild("email").equalTo(email)
+                query.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        //Passar os dados para a interface grafica
+                        for (snapshot in dataSnapshot.getChildren()) {
+                            snapshot.ref.removeValue()
+                            user.delete()
+                            startActivity(Intent(activity, MainActivity::class.java))
+                        }
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        //Se ocorrer um erro
+                    }
+                })
+
+            }
+
+        }
+
         user?.let {
             val email = user.email
             txt_email = view.findViewById(R.id.textView8)
             txt_email.text = email
             var query: Query = database.child("usuarios").orderByChild("email").equalTo(email)
-            query.addListenerForSingleValueEvent(object : ValueEventListener{
+            query.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     //Passar os dados para a interface grafica
                     for (snapshot in dataSnapshot.getChildren()) {
@@ -75,7 +104,8 @@ class PerfilFragment : Fragment() {
                         txt_dataNasc = view.findViewById(R.id.textView11)
 
                         txt_nome.text = usuario?.nome
-                        txt_endereco.text = usuario?.rua + ", "+ usuario?.numero + ", " + usuario?.bairro
+                        txt_endereco.text =
+                            usuario?.rua + ", " + usuario?.numero + ", " + usuario?.bairro
                         txt_telefone.text = usuario?.telefone
                         txt_dataNasc.text = usuario?.dataNasc
                     }

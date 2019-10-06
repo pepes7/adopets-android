@@ -1,6 +1,7 @@
 package com.example.adopets.activity
 
 import android.Manifest
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -144,9 +145,6 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
         var tel = telefone.text.toString()
         var dataN = dataNasc.text.toString()
 
-
-
-
         if(etapa == 1){
 
             if (tel.isEmpty()) {
@@ -196,12 +194,16 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
                 u.complemento = comp
                 u.cep = cepR
 
-                val usuarios = database.child("usuarios")
-                val ref = usuarios.push()
+                val pd = ProgressDialog(this@CadastroEtapasActivity)
+                pd.setMessage("Cadastrando...")
+                pd.show()
 
                 auth.createUserWithEmailAndPassword(u.email, senha)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+                            val usuarios = database.child("usuarios")
+                            val ref = usuarios.child(auth!!.currentUser!!.uid)
+                            ref.child("id").setValue(auth!!.currentUser?.uid)
                             ref.child("email").setValue(u.email)
                             ref.child("nome").setValue(u.nome)
                             ref.child("dataNasc").setValue(u.dataNasc)

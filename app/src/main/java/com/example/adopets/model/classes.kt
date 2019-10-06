@@ -1,7 +1,5 @@
 package com.example.adopets.model
 
-import java.util.*
-
 open class Usuario(
     open var email: String = "",
     open var nome: String = "",
