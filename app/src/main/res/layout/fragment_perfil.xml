@@ -46,11 +46,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
-                    <ImageView
-                            android:id="@+id/imageView5"
+                    <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/foto_perfil"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:layout_marginTop="12dp"
-                            android:src="@drawable/photo_perfil"/>
+                            android:layout_height="160dp" android:layout_marginTop="12dp"
+                            android:src="@drawable/ic_default_profile"
+                            app:civ_circle_background_color="@color/colorBackground2"/>
 
                     <TextView
                             android:id="@+id/textView7"
