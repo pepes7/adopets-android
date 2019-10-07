@@ -47,10 +47,7 @@ class PetsFragment : Fragment() {
         return listOf(
             Animal("Tots", "Macho", "Japiim"),
             Animal("Mel", "Fêmea", "São Jorge"),
-            Animal("Ferrerasdo", "Macho", "Alvorada"),
-            Animal("Fer", "Macho", "Alvorada"),
-            Animal("Fer", "Macho", "Alvor"),
-            Animal("Ferrer", "Macho", "Alvada")
+            Animal("Ferrer", "Macho", "Alvorada")
         )
     }
 
