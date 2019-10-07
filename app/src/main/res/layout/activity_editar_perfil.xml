@@ -72,35 +72,27 @@
                                 android:id="@+id/btn_inserir_foto"
                                 android:layout_width="56dp"
                                 android:layout_height="56dp"
-                                android:layout_marginTop="120dp"
                                 android:background="@drawable/btn_step2"
                                 android:drawableLeft="@drawable/ic_media"
                                 android:padding="15dp"
-                                app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
-                                app:layout_constraintStart_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="@+id/imageProfile"
-                                app:layout_constraintTop_toTopOf="@+id/imageProfile"
-                                app:layout_constraintVertical_bias="0.98" />
+                                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                                app:layout_constraintStart_toStartOf="@+id/imageView5" />
 
                         <Button
-                            android:id="@+id/exclue_foto"
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
-                            android:layout_marginTop="120dp"
-                            android:background="@drawable/btn_step1"
-                            android:drawableLeft="@drawable/ic_x"
-                            android:padding="10dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.85"
-                            app:layout_constraintStart_toStartOf="@+id/imageProfile"
-                            app:layout_constraintTop_toTopOf="@+id/imageProfile"
-                            app:layout_constraintVertical_bias="0.98"/>
+                                android:id="@+id/btn_excluir_foto"
+                                android:layout_width="56dp"
+                                android:layout_height="56dp"
+                                android:background="@drawable/btn_step1"
+                                android:drawableLeft="@drawable/ic_x"
+                                android:padding="10dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                                app:layout_constraintEnd_toEndOf="@+id/imageView5" />
 
                     </android.support.constraint.ConstraintLayout>
 
                     <EditText
                             android:id="@+id/editText1"
+                            android:hint="Nome"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -120,7 +112,7 @@
                     <EditText
                             android:id="@+id/editText3"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="wrap_content" android:hint="Rua"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
                             android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_point"
                             android:drawablePadding="6dp" android:fontFamily="@font/nunito_regular"
@@ -128,7 +120,7 @@
                             android:textSize="20sp"/>
                     <EditText
                             android:id="@+id/editText4"
-                            android:layout_width="match_parent"
+                            android:layout_width="match_parent" android:hint="Número"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
                             android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_point"
@@ -137,7 +129,7 @@
                             android:textSize="20sp"/>
                     <EditText
                             android:id="@+id/editText5"
-                            android:layout_width="match_parent"
+                            android:layout_width="match_parent" android:hint="Bairro"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
                             android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_point"
@@ -145,7 +137,7 @@
                             android:text="Japiim" android:textColor="@color/colorBackground"
                             android:textSize="20sp"/>
                     <EditText
-                            android:id="@+id/editText8"
+                            android:id="@+id/editText8" android:hint="CEP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
@@ -156,7 +148,7 @@
                     <EditText
                             android:id="@+id/editText9"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="wrap_content" android:hint="Complemento"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
                             android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_point"
                             android:drawablePadding="6dp" android:fontFamily="@font/nunito_regular"
