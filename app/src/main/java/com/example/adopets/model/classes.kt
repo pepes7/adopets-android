@@ -6,7 +6,7 @@ open class Usuario(
     open var email: String = "",
     open var nome: String = "",
     open var senha: String = "",
-    open var dataNasc: Date = Date(),
+    open var dataNasc: String = "",
     open var foto: ByteArray = "".toByteArray(),
     open var telefone: String = "",
     open var bairro: String = "",
@@ -17,25 +17,25 @@ open class Usuario(
 )
 
 class Doador(override var email: String = "", override var nome: String = "",
-             override var senha: String = "", override var dataNasc: Date = Date(),
+             override var senha: String = "", override var dataNasc:String = "",
              override var foto: ByteArray = "".toByteArray(), override var telefone: String = "", override var bairro: String = "",
              override var rua: String = "", override var numero: String = "", override var complemento: String = "",
              override var cep: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
 
 class Adotante(override var email: String = "", override var nome: String = "",
-               override var senha: String = "", override var dataNasc: Date = Date(),
+               override var senha: String = "", override var dataNasc: String = "",
                override var foto: ByteArray = "".toByteArray(), override var telefone: String = "", override var bairro: String = "",
                override var rua: String = "", override var numero: String = "", override var complemento: String = "",
                override var cep: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
 
 class Voluntario(override var email: String = "", override var nome: String = "",
-                 override var senha: String = "", override var dataNasc: Date = Date(),
+                 override var senha: String = "", override var dataNasc: String = "",
                  override var foto: ByteArray = "".toByteArray(), override var telefone: String = "", override var bairro: String = "",
                  override var rua: String = "", override var numero: String = "", override var complemento: String = "",
                  override var cep: String = "", var pontuacao: Float = 0F): Usuario(email, nome, senha,dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
 
 class Contratante(override var email: String = "", override var nome: String = "",
-                  override var senha: String = "", override var dataNasc: Date = Date(),
+                  override var senha: String = "", override var dataNasc: String = "",
                   override var foto: ByteArray = "".toByteArray(), override var telefone: String = "", override var bairro: String = "",
                   override var rua: String = "", override var numero: String = "", override var complemento: String = "",
                   override var cep: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
@@ -44,8 +44,8 @@ class Processo(
     var id: String = "",
     var motivo: String = "",
     var situacao: String = "",
-    var dataCriacao: Date = Date(),
-    var dataFim: Date = Date(),
+    var dataCriacao: String = "",
+    var dataFim: String = "",
     var doador: Doador = Doador()
 )
 
@@ -57,8 +57,8 @@ class AdotanteProcesso(
 class Servico(
     var id: String = "",
     var tipo: String = "",
-    var dataInicio: Date = Date(),
-    var dataFim: Date = Date(),
+    var dataInicio: String = "",
+    var dataFim: String = "",
     var descricao: String = "",
     var voluntario: Voluntario = Voluntario()
 )
@@ -79,7 +79,7 @@ class Animal(
     var necessidade: String = "",
     var tipo: String = "",
     var nome: String = "",
-    var dataNasc: Date = Date()
+    var dataNasc: String = ""
 )
 
 class AnimalProceso(

@@ -8,6 +8,12 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
+    <uses-feature
+            android:name="android.hardware.camera2"
+            android:required="true"/> <!-- pedir permissao para utilizar recursos da camera e galeria -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
             android:allowBackup="true"
             android:icon="@drawable/logo_icon"
@@ -15,12 +21,18 @@
             android:roundIcon="@drawable/logo_icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".BottomSheetActivity">
+        <activity android:name=".activity.EditarAnimalActivity">
         </activity>
+        <activity android:name=".activity.CadAnimalActivity">
+        </activity>
+
+        <uses-library
+                android:name="org.apache.http.legacy"
+                android:required="false"/>
+
         <activity
                 android:name=".activity.SliderActivity"
-                android:theme="@style/Theme.Intro">
-        </activity>
+                android:theme="@style/Theme.Intro"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -33,10 +45,6 @@
                 android:name="com.google.android.geo.API_KEY"
                 android:value="@string/google_maps_key"/>
 
-        <uses-library
-                android:name="org.apache.http.legacy"
-                android:required="false"/>
-
         <activity
                 android:name=".activity.HomeActivity"
                 android:screenOrientation="portrait"/>
@@ -45,8 +53,7 @@
                 android:screenOrientation="portrait"/>
         <activity
                 android:name=".activity.CadastroEtapasActivity"
-                android:screenOrientation="portrait">
-        </activity>
+                android:screenOrientation="portrait"/>
         <activity
                 android:name=".activity.SplashActivity"
                 android:noHistory="true"

@@ -56,7 +56,6 @@ dependencies {
 
     //Dependências do botton navigationEx
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
-
 }
 
 apply plugin: 'com.google.gms.google-services'
