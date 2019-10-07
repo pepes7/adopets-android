@@ -1,6 +1,9 @@
 package com.example.adopets.activity
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,6 +13,8 @@ import android.widget.Toast
 import com.example.adopets.R
 import com.example.adopets.fragment.PerfilAnimalFragment
 import com.example.adopets.model.Usuario
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.Marker
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
@@ -52,6 +57,7 @@ class CadAnimalActivity : AppCompatActivity() {
 
                     if(confirma(1)) {
                         btn_voltar.visibility = View.VISIBLE
+                        btn_continuar.visibility = View.VISIBLE
 
               //progresso = 2
                         linear1.visibility = View.GONE
@@ -59,9 +65,12 @@ class CadAnimalActivity : AppCompatActivity() {
                     }
 
                 } else if (linear2.visibility == View.VISIBLE) {
-                    if(confirma(2)){
+                    btn_continuar.visibility = View.GONE
+                    btn_finalizar.visibility = View.VISIBLE
 
-                        startActivity(Intent(this, PerfilAnimalActivity::class.java))
+                    if(confirma(2)){
+                        openDialog()
+                      //  startActivity(Intent(this, PerfilAnimalActivity::class.java))
                     }
                 }
             }
@@ -79,27 +88,38 @@ class CadAnimalActivity : AppCompatActivity() {
 
     fun openDialog(){
 //abrir fragment tipo atividade
-        /*
-   *                Dialog final AlertDialog.Builder builder = new
-                           AlertDialog.Builder(CadAnimalActivity.this); LayoutInflater
-                   inflater = getLayoutInflater(); View view =
-                   inflater.inflate(R.layout.list_layout,null); TextView
-                   tv = (TextView)view.findViewById(R.id.head);
-                   ImageView iv = (ImageView)view.findViewById(R.id.iv);
-                   builder.setView(view);
-                   builder.setNegativeButton("Cancel", new
-                           DialogInterface.OnClickListener() { @Override public
-                       void onClick(DialogInterface dialog, int which)
-                       { // Dismiss the dialog here dialog.dismiss(); } });
-                           builder.setPositiveButton("Ok", new
-                                   DialogInterface.OnClickListener() { @Override public
-                               void onClick(DialogInterface dialog, int which) { // Add
-                                   ok operation here } }); builder.show(); } }); } }
+        btn_finalizar.setOnClickListener {
 
+           val builder = AlertDialog.Builder(applicationContext)
+                with(builder) {
+                    setTitle("O que você deseja fazer com este animal?")
+                    setPositiveButton("Adotar", null)
+                    setNegativeButton("Ajudar", null)
+                    setNeutralButton("Cancelar", null)
+                }
 
-   * */
-    }
+                val alertDialog = builder.create()
+                alertDialog.show()
 
+                val button = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE)
+                with(button) {
+                    setPadding(0, 0, 20, 0)
+                    setTextColor(Color.RED)
+                }
+
+                val button2 = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE)
+                with(button2) {
+                    setPadding(0, 0, 40, 0)
+                    setTextColor(Color.BLUE)
+                }
+
+                val button3 = alertDialog.getButton(DialogInterface.BUTTON_NEUTRAL)
+                with(button3) {
+                    setPadding(0, 0, 20, 0)
+                    setTextColor(Color.DKGRAY)
+                }
+
+            }}
 
 
     //verifica campos conforme a etapa
