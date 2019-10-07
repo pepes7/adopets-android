@@ -25,32 +25,38 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
+
         <TextView
                 android:id="@+id/nome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_pet3"
+                android:drawableLeft="@drawable/ic_pet2"
                 android:drawablePadding="6dp"
-                android:text="Nome" android:textColor="@color/colorBtnPrimary"
-                android:textSize="15dp"/>
+                android:text="Nome"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15dp" />
+
         <TextView
                 android:id="@+id/raca"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_pet2"
+                android:drawableLeft="@drawable/ic_pet3"
                 android:drawablePadding="6dp"
                 android:fontFamily="@font/nunito_regular"
                 android:text="Raça"
-                android:textColor="@color/colorBtnPrimary" android:textSize="15dp"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15dp" />
+
         <TextView
                 android:id="@+id/bairro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_home"
+                android:drawableLeft="@drawable/ic_point"
                 android:drawablePadding="6dp"
                 android:fontFamily="@font/nunito_regular"
                 android:text="Bairro"
-                android:textColor="@color/colorBtnPrimary" android:textSize="15dp"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15dp" />
         <LinearLayout
                 android:layout_width="148dp"
                 android:layout_height="29dp"
