@@ -1,5 +1,6 @@
 package com.example.adopets.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
@@ -7,7 +8,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.example.adopets.R
+import com.example.adopets.activity.CadAnimalActivity
 import com.example.adopets.adapter.AnimalAdapter
 import com.example.adopets.model.Animal
 
@@ -24,6 +27,7 @@ class PetsFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerViewAnimais: RecyclerView
+    private lateinit var  btn_animal: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +35,12 @@ class PetsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_pets, container, false)
+
+        btn_animal = view.findViewById(R.id.add)
+
+        btn_animal.setOnClickListener {
+            startActivity(Intent(context, CadAnimalActivity::class.java))
+        }
 
         recyclerView = view.findViewById(R.id.recyclerViewAnimais) as RecyclerView
         recyclerViewAnimais = view.findViewById(R.id.recyclerViewAnimais) as RecyclerView

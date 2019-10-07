@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.adopets.R
+import com.example.adopets.fragment.PerfilAnimalFragment
 import com.example.adopets.model.Usuario
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -38,6 +39,8 @@ class CadAnimalActivity : AppCompatActivity() {
 
     }
 
+
+
     //configura as etapas do cadastro
     fun verificaEtapa(){
 
@@ -57,7 +60,8 @@ class CadAnimalActivity : AppCompatActivity() {
 
                 } else if (linear2.visibility == View.VISIBLE) {
                     if(confirma(2)){
-                        openDialog()
+
+                        startActivity(Intent(this, PerfilAnimalActivity::class.java))
                     }
                 }
             }

@@ -10,34 +10,44 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="274dp"
-                android:background="@drawable/group" android:orientation="vertical">
+                android:layout_height="282dp"
+                android:background="@drawable/group"
+                android:orientation="vertical">
+
             <ImageView
                     android:id="@+id/imageView7"
                     android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="300dp" android:src="@drawable/ic_adopets"/>
+                    android:layout_marginRight="300dp"
+                    android:src="@drawable/ic_adopets" />
+
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="50dp"
+                    android:layout_marginEnd="20dp"
                     android:gravity="center"
-                    android:layout_marginEnd="20dp" android:text="SEUS PETS"
+                    android:text="SEUS PETS"
                     android:textColor="@color/common_google_signin_btn_text_dark_default"
-                    android:textSize="@dimen/title_home"/>
+                    android:textSize="@dimen/title_home" />
+
             <TextView
                     android:id="@+id/textView22"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:layout_marginStart="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:gravity="center"
                     android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
                     android:text="Está procurando por algum pet?"
-                    android:textColor="@android:color/white" android:textSize="18sp"/>
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
             <SearchView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -46,31 +56,52 @@
 
                     android:layout_marginEnd="30dp"
                     android:background="@drawable/common_google_signin_btn_icon_light_normal_background">
+
             </SearchView>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                <Button
+                        android:id="@+id/add"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/btn_step2"
+                        android:text="+" />
+            </LinearLayout>
         </LinearLayout>
+
         <android.support.design.widget.TabLayout
                 android:id="@+id/meusanimais"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
                 app:tabGravity="fill"
-                android:layout_width="match_parent" android:layout_height="62dp"
                 app:tabIndicatorColor="@color/colorBackground"
                 app:tabSelectedTextColor="@color/colorBackground"
-                app:tabTextColor="@color/colorStep1"
-                >
+                app:tabTextColor="@color/colorStep1">
 
             <android.support.design.widget.TabItem
                     android:id="@+id/doados"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:text="Doados"/>
+                    android:layout_height="wrap_content"
+                    android:text="Doados" />
 
             <android.support.design.widget.TabItem
                     android:id="@+id/adotados"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:text="Adotados"/>
+                    android:layout_height="wrap_content"
+                    android:text="Adotados" />
 
             <android.support.design.widget.TabItem
                     android:id="@+id/voluntariados"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:text="Ajudados"/>
+                    android:layout_height="wrap_content"
+                    android:text="Ajudados" />
 
         </android.support.design.widget.TabLayout>
 
@@ -78,10 +109,7 @@
                 android:id="@+id/recyclerViewAnimais"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-        <android.support.v4.view.ViewPager
-                android:layout_width="match_parent"
-                android:id="@+id/viewpager"
-                android:layout_height="match_parent"/>
+
     </LinearLayout>
 
 </FrameLayout>
