@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.adopets">
+        package="com.example.adopets">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature
             android:name="android.hardware.camera2"
-            android:required="true"/> <!-- pedir permissao para utilizar recursos da camera e galeria -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+            android:required="true" /> <!-- pedir permissao para utilizar recursos da camera e galeria -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
             android:allowBackup="true"
@@ -21,18 +21,16 @@
             android:roundIcon="@drawable/logo_icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.EditarAnimalActivity">
-        </activity>
-        <activity android:name=".activity.CadAnimalActivity">
-        </activity>
+        <activity android:name=".activity.PerfilAnimalActivity"></activity>
+        <activity android:name=".activity.EditarPerfilActivity" />
 
         <uses-library
                 android:name="org.apache.http.legacy"
-                android:required="false"/>
+                android:required="false" />
 
         <activity
                 android:name=".activity.SliderActivity"
-                android:theme="@style/Theme.Intro"/>
+                android:theme="@style/Theme.Intro" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -43,31 +41,34 @@
         -->
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="@string/google_maps_key"/>
+                android:value="@string/google_maps_key" />
 
         <activity
                 android:name=".activity.HomeActivity"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".activity.CadAnimalActivity"
+                android:screenOrientation="portrait" />
         <activity
                 android:name=".activity.CadastroActivity"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait" />
         <activity
                 android:name=".activity.CadastroEtapasActivity"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait" />
         <activity
                 android:name=".activity.SplashActivity"
                 android:noHistory="true"
                 android:screenOrientation="portrait"
                 android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
                 android:name=".activity.MainActivity"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait" />
     </application>
 
 </manifest>

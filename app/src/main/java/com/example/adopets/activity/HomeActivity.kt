@@ -1,5 +1,6 @@
 package com.example.adopets.activity
 
+import android.app.ProgressDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -37,6 +38,7 @@ class HomeActivity : AppCompatActivity() {
                 R.id.navigation_mapa -> {
                     trocarFragment(MapaFragment())
                     return@setOnNavigationItemSelectedListener true
+
                 }
                 R.id.navigation_perfil -> {
                     trocarFragment(PerfilFragment())
