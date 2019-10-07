@@ -217,7 +217,6 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
                 u.nome = nome
                 u.senha = senha
                 u.dataNasc = dataN
-                //foto
                 u.telefone = tel
                 u.bairro = bairroR
                 u.rua = ruaR

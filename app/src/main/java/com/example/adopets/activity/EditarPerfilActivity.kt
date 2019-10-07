@@ -11,6 +11,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_editar_perfil.*
 import android.app.ProgressDialog
+import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 
 class EditarPerfilActivity : AppCompatActivity() {
 
@@ -27,6 +29,7 @@ class EditarPerfilActivity : AppCompatActivity() {
     private lateinit var txt_dataNasc: TextView
     private lateinit var txt_cep: TextView
     private lateinit var txt_complemento: TextView
+    private lateinit var imagemPerfil : CircleImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,8 @@ class EditarPerfilActivity : AppCompatActivity() {
 
         btn_editar.setOnClickListener { editar() }
         btn_voltar.setOnClickListener { onBackPressed() }
+
+        imagemPerfil = findViewById(R.id.imageView5)
 
         database = FirebaseDatabase.getInstance().reference
 
@@ -68,6 +73,10 @@ class EditarPerfilActivity : AppCompatActivity() {
                         txt_dataNasc.text = usuario?.dataNasc
                         txt_cep.text = usuario?.cep
                         txt_complemento.text = usuario?.complemento
+
+                        Picasso.get()
+                            .load(usuario?.foto)
+                            .into(imagemPerfil)
                     }
                 }
 
