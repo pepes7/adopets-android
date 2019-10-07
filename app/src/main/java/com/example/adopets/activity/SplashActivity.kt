@@ -21,14 +21,14 @@ class SplashActivity : AppCompatActivity() {
         )
 
         val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            Handler().postDelayed({
+//        if (user != null) {
+//            Handler().postDelayed({
                 startActivity(Intent(applicationContext, HomeActivity::class.java))
-            }, 5000)
-        } else {
-            Handler().postDelayed({
-                startActivity(Intent(baseContext, SliderActivity::class.java))
-            }, 5000)
-        }
+//            }, 5000)
+//        } else {
+//            Handler().postDelayed({
+//                startActivity(Intent(baseContext, SliderActivity::class.java))
+//            }, 5000)
+//        }
     }
 }

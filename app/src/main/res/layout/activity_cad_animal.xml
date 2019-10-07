@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.CadAnimalActivity"
+        android:orientation="vertical"
+        android:background="@color/colorBackgroundIn"
+>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            <ImageView
+                    android:src="@drawable/group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/imageView3" android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+            />
+            <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp" android:layout_marginLeft="8dp"
+                    android:layout_marginTop="30dp" android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp" android:text="Cadastro de Pet"
+                    android:textAlignment="center" android:textColor="@color/colorBackgroundIn"
+                    android:textSize="@dimen/title_home"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3"
+            />
+            <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
+                    app:cardBackgroundColor="@color/cardview_light_background"
+                    app:cardCornerRadius="@dimen/border_radius_cardView"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5">
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:orientation="vertical">
+                    <LinearLayout android:id="@+id/step1"
+                                  android:layout_width="match_parent" android:layout_height="wrap_content"
+                                  android:orientation="vertical" android:visibility="visible">
+                        <android.support.constraint.ConstraintLayout
+                                android:id="@+id/contemPerfil"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+                                android:visibility="visible">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/imageProfile"
+                                    android:layout_width="137dp"
+                                    android:layout_height="117dp"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:src="@drawable/slider3"
+                                    app:civ_circle_background_color="@color/colorBackground2"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"/>
+
+                            <Button
+                                    android:id="@+id/insere_foto"
+                                    android:layout_width="56dp"
+                                    android:layout_height="56dp"
+                                    android:layout_marginTop="120dp"
+                                    android:background="@drawable/btn_step2"
+                                    android:drawableLeft="@drawable/ic_media"
+                                    android:padding="15dp"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
+                                    app:layout_constraintStart_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="@+id/imageProfile"
+                                    app:layout_constraintTop_toTopOf="@+id/imageProfile"
+                                    app:layout_constraintVertical_bias="0.98"/>
+
+                            <Button
+                                    android:id="@+id/exclue_foto"
+                                    android:layout_width="56dp"
+                                    android:layout_height="56dp"
+                                    android:layout_marginTop="120dp"
+                                    android:background="@drawable/btn_step1"
+                                    android:drawableLeft="@drawable/ic_x"
+                                    android:padding="10dp"
+                                    app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.85"
+                                    app:layout_constraintStart_toStartOf="@+id/imageProfile"
+                                    app:layout_constraintTop_toTopOf="@+id/imageProfile"
+                                    app:layout_constraintVertical_bias="0.98"/>
+                            <TextView
+                                    android:id="@+id/textView8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginLeft="8dp" android:layout_marginTop="8dp"
+                                    android:fontFamily="@font/nunito_light" android:text="Enviar"
+                                    android:textColor="@color/colorField"
+                                    app:layout_constraintStart_toStartOf="@+id/imageProfile"
+                                    app:layout_constraintTop_toBottomOf="@+id/insere_foto"/>
+                            <TextView
+                                    android:id="@+id/textView9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
+                                    android:fontFamily="@font/nunito_light"
+                                    android:text="Excluir"
+                                    android:textColor="@color/colorField"
+                                    app:layout_constraintEnd_toEndOf="@+id/imageProfile"
+                                    app:layout_constraintTop_toBottomOf="@+id/exclue_foto"/>
+
+                        </android.support.constraint.ConstraintLayout>
+                        <android.support.design.widget.TextInputLayout
+                                android:id="@+id/layoutNome"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" android:hint="Nome">
+                            <EditText
+                                    android:id="@+id/nome"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginRight="20dp" android:drawableLeft="@drawable/ic_animal"
+                                    android:drawablePadding="6dp" android:ems="10"
+                                    android:inputType="textPersonName"
+                                    android:paddingLeft="5dp" android:paddingRight="5dp"
+                                    android:textSize="20sp" android:visibility="visible"/>
+                        </android.support.design.widget.TextInputLayout>
+                        <android.support.design.widget.TextInputLayout
+                                android:id="@+id/layoutRaca"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" android:hint="Raça">
+                            <EditText
+                                    android:id="@+id/raca"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="7dp"
+
+                                    android:layout_marginRight="20dp" android:drawableLeft="@drawable/ic_extra"
+                                    android:drawablePadding="6dp" android:ems="10"
+                                    android:inputType="textAutoComplete"
+                                    android:paddingLeft="5dp" android:paddingRight="5dp"
+                                    android:textSize="20sp" android:visibility="visible"/>
+                        </android.support.design.widget.TextInputLayout>
+                        <android.support.design.widget.TextInputLayout
+                                android:id="@+id/layoutTamanho"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" android:hint="Tamanho">
+                            <EditText
+                                    android:id="@+id/tamanho"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginTop="7dp"
+                                    android:layout_marginRight="20dp" android:drawableLeft="@drawable/ic_extra"
+                                    android:drawablePadding="6dp" android:ems="10"
+                                    android:inputType="textAutoComplete"
+                                    android:paddingLeft="5dp" android:paddingRight="5dp"
+                                    android:textSize="20sp" android:visibility="visible"/>
+                        </android.support.design.widget.TextInputLayout>
+                        <TextView
+                                android:id="@+id/textSexo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="7dp" android:layout_marginRight="15dp"
+                                android:drawablePadding="6dp"
+                                android:fontFamily="@font/nunito_regular" android:paddingLeft="5dp"
+                                android:paddingRight="5dp" android:text="O meu pet é um (a)..."
+                                android:textColor="@color/colorBackground" android:textSize="20sp"
+                                android:visibility="visible"/>
+                        <RadioGroup
+                                android:id="@+id/sexo"
+                                android:layout_width="match_parent" android:layout_height="match_parent"
+                                android:visibility="visible" tools:visibility="visible">
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/colorPattern" android:gravity="center_horizontal"
+                                    android:orientation="horizontal">
+                                <android.support.v7.widget.CardView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                >
+                                    <LinearLayout
+                                            android:id="@+id/cardSexoMacho"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+                                            android:gravity="center_horizontal" android:orientation="vertical">
+                                        <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:src="@drawable/bottom_doe"/>
+                                        <RadioButton
+                                                android:id="@+id/macho"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content" android:checked="true"
+                                                android:padding="8dp" android:text="Macho"/>
+                                    </LinearLayout>
+                                </android.support.v7.widget.CardView>
+                                <android.support.v7.widget.CardView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                >
+                                    <LinearLayout
+                                            android:id="@+id/cardSexoFemea"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                                            android:gravity="center_horizontal" android:orientation="vertical">
+                                        <ImageView
+                                                android:id="@+id/imageView8"
+                                                android:layout_width="99dp"
+                                                android:layout_height="63dp" android:src="@drawable/slider1"/>
+                                        <RadioButton
+                                                android:id="@+id/femea"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content" android:layout_weight="1"
+                                                android:padding="8dp" android:text="Fêmea"/>
+                                    </LinearLayout>
+                                </android.support.v7.widget.CardView>
+                            </LinearLayout>
+                        </RadioGroup>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:id="@+id/step2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:orientation="vertical"
+                            android:visibility="gone">
+                        <LinearLayout
+                                android:id="@+id/animalVisualizacao"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_horizontal" android:orientation="vertical"
+                                android:visibility="visible">
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/imageProfile2"
+                                    android:layout_width="55dp"
+                                    android:layout_height="51dp"
+                                    android:layout_margin="15dp"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:src="@drawable/slider3"
+                                    app:civ_circle_background_color="@color/colorBackground2"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"/>
+                            <TextView
+                                    android:id="@+id/nome2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nome" android:textColor="@color/colorBackground"
+                                    android:textSize="15dp"/>
+
+                        </LinearLayout>
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:layout_marginLeft="20dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginRight="15dp" android:drawablePadding="6dp"
+                                android:fontFamily="@font/nunito_regular" android:text="É um..."
+                                android:textColor="@color/colorBackground" android:textSize="20sp"
+                                android:visibility="visible"/>
+
+                        <RadioGroup
+                                android:id="@+id/tipo"
+                                android:layout_width="match_parent" android:layout_height="match_parent"
+                                android:visibility="visible">
+                            <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/colorPattern"
+                                    android:gravity="center_horizontal" android:orientation="horizontal">
+                                <android.support.v7.widget.CardView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_gravity="center_horizontal"
+                                >
+                                    <LinearLayout
+                                            android:id="@+id/serDoado"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+                                            android:gravity="center_horizontal" android:orientation="vertical">
+                                        <ImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:src="@drawable/bottom_doe"/>
+                                        <RadioButton
+                                                android:id="@+id/cachorro"
+                                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                                android:checked="true" android:padding="8dp" android:text="Cachorro"/>
+                                    </LinearLayout>
+                                </android.support.v7.widget.CardView>
+                                <android.support.v7.widget.CardView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                >
+                                    <LinearLayout
+                                            android:id="@+id/cardTipoGato"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                                            android:gravity="center_horizontal" android:orientation="vertical">
+                                        <ImageView
+                                                android:layout_width="99dp"
+                                                android:layout_height="63dp" android:src="@drawable/slider1"/>
+                                        <RadioButton
+                                                android:id="@+id/gato"
+                                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                                android:layout_weight="1" android:padding="8dp" android:text="Gato"/>
+                                    </LinearLayout>
+                                </android.support.v7.widget.CardView>
+                            </LinearLayout>
+                        </RadioGroup>
+
+                        <android.support.design.widget.TextInputLayout
+                                android:id="@+id/layoutNecessidade"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" android:hint="Possui necessidades? Quais?"
+                                android:visibility="visible">
+                            <EditText
+                                    android:id="@+id/necessidade"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
+                                    android:layout_marginRight="20dp" android:drawableLeft="@drawable/ic_pet2"
+                                    android:drawablePadding="6dp"
+
+                                    android:paddingLeft="5dp"
+                                    android:paddingRight="5dp"
+                                    android:textSize="20sp"/>
+                        </android.support.design.widget.TextInputLayout>
+                        <android.support.design.widget.TextInputLayout
+                                android:id="@+id/layoutDesc"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="Conte-nos mais sobre este pet" android:visibility="visible">
+
+                            <EditText
+                                    android:id="@+id/descricao"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp" android:layout_marginTop="5dp"
+                                    android:layout_marginRight="20dp" android:drawableLeft="@drawable/ic_pet2"
+                                    android:drawablePadding="6dp"
+                                    android:ems="10"
+                                    android:gravity="start|top"
+                                    android:inputType="textMultiLine"
+                                    android:paddingLeft="5dp"
+                                    android:paddingRight="5dp" android:textSize="20sp"/>
+
+                        </android.support.design.widget.TextInputLayout>
+                        <EditText
+                                android:id="@+id/dataNasc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="20dp"
+                                android:drawableStart="@drawable/ic_calendar"
+                                android:drawableLeft="@drawable/ic_calendar"
+                                android:drawablePadding="6dp"
+                                android:ems="10"
+                                android:hint="Data de Nascimento"
+                                android:importantForAutofill="no"
+                                android:inputType="date"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:textColor="@android:color/black"
+                                android:textSize="20dp"
+                                android:visibility="visible" tools:targetApi="o"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="14dp"
+                            android:layout_marginBottom="18dp"
+                            android:orientation="horizontal"
+                    >
+
+                        <Button
+                                android:id="@+id/btn_voltar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="37dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/btn_login"
+                                android:text="VOLTAR"
+                                android:textAllCaps="false"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp"
+                                android:visibility="gone"/>
+
+                        <Button
+                                android:id="@+id/btn_continuar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="37dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:background="@drawable/btn_adotar"
+                                android:text="CONTINUAR"
+                                android:textAllCaps="false"
+                                android:textColor="@android:color/white" android:textSize="20sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
