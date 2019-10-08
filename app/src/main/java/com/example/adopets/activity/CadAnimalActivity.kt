@@ -1,15 +1,20 @@
 package com.example.adopets.activity
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.adopets.R
-import com.example.adopets.fragment.PerfilAnimalFragment
 import com.example.adopets.model.Usuario
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.Marker
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
@@ -25,16 +30,17 @@ class CadAnimalActivity : AppCompatActivity() {
 
     private lateinit var linear1: LinearLayout
     private lateinit var linear2: LinearLayout
-
+	
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cad_animal)
         linear1 = findViewById(R.id.step1)
         linear2 = findViewById(R.id.step2)
 
-
-
         verificaEtapa()
+        btn_finalizar.setOnClickListener{
+            situacaoProcessoAnimal()
+        }
 
 
     }
@@ -49,19 +55,29 @@ class CadAnimalActivity : AppCompatActivity() {
                 //se a barra estiver na etapa 1, tornara a etapa 2 desativada
 
                 if (linear1.visibility == View.VISIBLE) {
-
+                    btn_continuar.visibility = View.VISIBLE
                     if(confirma(1)) {
+                        btn_continuar.visibility = View.VISIBLE
+                        btn_finalizar.visibility = View.GONE
                         btn_voltar.visibility = View.VISIBLE
+
 
               //progresso = 2
                         linear1.visibility = View.GONE
+                        btn_continuar.visibility = View.GONE
+                        btn_finalizar.visibility = View.VISIBLE
                         linear2.visibility = View.VISIBLE
                     }
 
                 } else if (linear2.visibility == View.VISIBLE) {
-                    if(confirma(2)){
 
-                        startActivity(Intent(this, PerfilAnimalActivity::class.java))
+
+                    if(confirma(2)){
+                       btn_finalizar.setOnClickListener{
+                           situacaoProcessoAnimal()
+
+                       }
+                      //  startActivity(Intent(this, PerfilAnimalActivity::class.java))
                     }
                 }
             }
@@ -76,31 +92,6 @@ class CadAnimalActivity : AppCompatActivity() {
             }
 
     }
-
-    fun openDialog(){
-//abrir fragment tipo atividade
-        /*
-   *                Dialog final AlertDialog.Builder builder = new
-                           AlertDialog.Builder(CadAnimalActivity.this); LayoutInflater
-                   inflater = getLayoutInflater(); View view =
-                   inflater.inflate(R.layout.list_layout,null); TextView
-                   tv = (TextView)view.findViewById(R.id.head);
-                   ImageView iv = (ImageView)view.findViewById(R.id.iv);
-                   builder.setView(view);
-                   builder.setNegativeButton("Cancel", new
-                           DialogInterface.OnClickListener() { @Override public
-                       void onClick(DialogInterface dialog, int which)
-                       { // Dismiss the dialog here dialog.dismiss(); } });
-                           builder.setPositiveButton("Ok", new
-                                   DialogInterface.OnClickListener() { @Override public
-                               void onClick(DialogInterface dialog, int which) { // Add
-                                   ok operation here } }); builder.show(); } }); } }
-
-
-   * */
-    }
-
-
 
     //verifica campos conforme a etapa
     fun confirma(etapa: Int): Boolean{
@@ -143,6 +134,61 @@ class CadAnimalActivity : AppCompatActivity() {
         }
 
         return true
+    }
+
+    //na tabela processo
+    fun situacaoProcessoAnimal(){
+        val builder = android.support.v7.app.AlertDialog.Builder(this,R.style.Theme_AppCompat_Light_Dialog)
+        builder.setTitle("Este animal precisa...")
+      //  builder.setMessage("Para a melhor utilização do app é necessário aceitar as permissões")
+        builder.setCancelable(false)
+      //  builder.setNegativeButton("Receber Ajuda")
+        builder.setPositiveButton("Ser Doado" ){ dialogInterface, i ->
+            dialogMotivoDoacao()
+        }
+
+
+
+        val dialog = builder.create()
+        dialog.show()
+        //motivo
+        //se quer doaç respos e explica
+    }
+
+    fun dialogMotivoDoacao(){
+
+        val builder = android.support.v7.app.AlertDialog.Builder(this,R.style.Theme_AppCompat_Light_Dialog)
+        builder.setTitle("Por que você quer doá-lo?")
+        //TextInput com id motivo para adicionar na tabela doacao
+
+
+       // builder.setMessage("Para a melhor utilização do app é necessário aceitar as permissões")
+        builder.setCancelable(false)
+        builder.setPositiveButton("Confirmar" ){ dialogInterface, i ->
+            escolhaAdocaoResponsavel()
+        }
+
+
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    fun escolhaAdocaoResponsavel(){
+        val builder = android.support.v7.app.AlertDialog.Builder(this,R.style.Theme_AppCompat_Light_Dialog)
+        builder.setTitle("Você quer realizar uma doação responsável?")
+
+
+        builder.setMessage("É uma forma de feedback para você receber formulários de respostas dos candidatos e escolher o adotante ideal para o seu pet!")
+        builder.setCancelable(false)
+        //salvar escolha do usuário
+        builder.setPositiveButton("Sim" ){ dialogInterface, i ->  }
+
+
+
+
+        val dialog = builder.create()
+        dialog.show()
     }
 }
 
