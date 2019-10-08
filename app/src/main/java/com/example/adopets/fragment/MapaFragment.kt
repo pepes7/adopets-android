@@ -22,6 +22,9 @@ import android.widget.Toast
 import com.google.android.gms.maps.model.*
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
+import android.widget.Button
+import com.example.adopets.R
+import com.example.adopets.activity.ListagemTodosAnimaisActivity
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -36,13 +39,20 @@ private const val ARG_PARAM2 = "param2"
 class MapaFragment : Fragment() {
 
     private var currentMarker: Marker? = null
+    private lateinit var  btn_animal: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val rootView = inflater.inflate(com.example.adopets.R.layout.fragment_mapa, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_mapa, container, false)
+
+        btn_animal = rootView.findViewById(R.id.add)
+
+        btn_animal.setOnClickListener {
+            startActivity(Intent(context, ListagemTodosAnimaisActivity::class.java))
+        }
 
         val mapFragment =
             childFragmentManager.findFragmentById(com.example.adopets.R.id.frg) as SupportMapFragment?  //use SuppoprtMapFragment for using in fragment instead of activity  MapFragment = activity   SupportMapFragment = fragment

@@ -82,6 +82,16 @@
                     />
         </LinearLayout>
 
+        <Button
+                android:id="@+id/adotar"
+                android:layout_width="151dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/btn_adotar"
+                android:text="ADOTAR" />
+
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

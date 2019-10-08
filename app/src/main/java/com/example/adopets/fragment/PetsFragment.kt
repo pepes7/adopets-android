@@ -28,7 +28,7 @@ class PetsFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerViewAnimais: RecyclerView
-    private lateinit var  btn_animal: Button
+    private lateinit var btn_animal: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
