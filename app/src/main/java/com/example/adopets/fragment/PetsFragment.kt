@@ -13,6 +13,7 @@ import com.example.adopets.R
 import com.example.adopets.activity.CadAnimalActivity
 import com.example.adopets.adapter.AnimalAdapter
 import com.example.adopets.model.Animal
+import com.google.firebase.database.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
