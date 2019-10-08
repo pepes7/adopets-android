@@ -71,7 +71,7 @@ class Animal(
     var sexo: String = "",
     var bairro: String = "",
     var id: String = "",
-    var foto: ByteArray = "".toByteArray(),
+    var foto: String = "",
     var situacao: String = "",
     var raca: String = "",
     var descricao: String = "",
