@@ -24,23 +24,23 @@ class AnimalAdapter(private val animais: List<Animal>,  private val context: Con
     override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         val animal = animais[p1]
         p0.nome.text = animal.nome
-//        p0.sexo.text = animal.sexo
-//        p0.bairro.text = animal.bairro
+        p0.sexo.text = animal.sexo
+        p0.bairro.text = animal.bairro
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nome = itemView.txt_nome_list
-//        val sexo = itemView.txt_sexo_list
-//        val bairro = itemView.txt_bairro_list
+        val sexo = itemView.txt_sexo_list
+        val bairro = itemView.txt_bairro_list
 
         fun bindView(animal: Animal) {
             val nome = itemView.txt_nome_list
-//            val sexo = itemView.txt_sexo_list
-//            val bairro = itemView.txt_bairro_list
+            val sexo = itemView.txt_sexo_list
+            val bairro = itemView.txt_bairro_list
 
             nome.text = animal.nome
-//            sexo.text = animal.sexo
-//            bairro.text = animal.bairro
+            sexo.text = animal.sexo
+            bairro.text = animal.bairro
         }
     }
 

@@ -13,9 +13,6 @@ import com.example.adopets.R
 import com.example.adopets.activity.CadAnimalActivity
 import com.example.adopets.adapter.AnimalAdapter
 import com.example.adopets.model.Animal
-import com.example.adopets.model.Usuario
-import com.google.firebase.database.*
-import com.squareup.picasso.Picasso
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +27,7 @@ class PetsFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerViewAnimais: RecyclerView
-    private lateinit var btn_animal: Button
+    private lateinit var  btn_animal: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,8 +74,6 @@ class PetsFragment : Fragment() {
             Animal("Tots", "Macho", "Japiim"),
             Animal("Mel", "Fêmea", "São Jorge"),
             Animal("Ferrer", "Macho", "Alvorada"))
-
-
     }
 
 }

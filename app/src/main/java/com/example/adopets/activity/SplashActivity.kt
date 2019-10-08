@@ -30,5 +30,6 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(Intent(baseContext, SliderActivity::class.java))
             }, 5000)
         }
+
     }
 }

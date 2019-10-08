@@ -86,6 +86,10 @@
                                 android:layout_height="match_parent" android:layout_weight="1"
                                 android:src="@drawable/photo_perfil"/>
                     </LinearLayout>
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/master
                     <TextView
                             android:id="@+id/raca"
                             android:layout_width="match_parent"
