@@ -32,4 +32,46 @@
     <string name="sair">Sair</string>
     <string name="descricao_sair">Encerrar sessão</string>
 
+    <string-array name="form_moradia">
+        <item> </item>
+        <item>Casa (dono)</item>
+        <item>Apartamento</item>
+        <item>Condomínio</item>
+        <item>Casa (alugada)</item>
+    </string-array>
+
+    <string-array name="form_pessoas">
+        <item> </item>
+        <item>Moro sozinho</item>
+        <item>Uma pessoa</item>
+        <item>Duas pessoas</item>
+        <item>Três pessoas</item>
+        <item>Mais de três pessoas</item>
+    </string-array>
+
+    <string-array name="form_animais">
+        <item> </item>
+        <item>Nenhum</item>
+        <item>Somente um</item>
+        <item>Entre dois e quatro</item>
+        <item>Mais de quatro</item>
+    </string-array>
+
+    <string-array name="form_foraDeCasa">
+        <item> </item>
+        <item>Em uma caixa na casa</item>
+        <item>Solto em casa</item>
+        <item>Confinado a um cômodo da casa</item>
+        <item>Na garagem</item>
+        <item>No quintal</item>
+        <item>Na rua</item>
+    </string-array>
+
+    <string-array name="form_tempoForaDeCasa">
+        <item></item>
+        <item>Nunca estará sozinho</item>
+        <item>Poucas horas</item>
+        <item>Algumas horas</item>
+        <item>A maior parte do tempo</item>
+    </string-array>
 </resources>

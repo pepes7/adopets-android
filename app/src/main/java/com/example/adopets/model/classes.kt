@@ -90,3 +90,12 @@ class AnimalServico(
     var animal: Animal = Animal(),
     var servico: Servico = Servico()
 )
+
+class Formulario(
+    var pgtResidencia: String = "",
+    var pgtPessoasMoram: String = "",
+    var pgtAnimaisCasa: String = "",
+    var pgtProtegerFamilia: String = "",
+    var pgtOndeTempo: String = "",
+    var pgtQuantoTempo: String = ""
+)
