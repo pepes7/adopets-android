@@ -26,6 +26,8 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.kofigyan.stateprogressbar.StateProgressBar
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_cad_animal.*
@@ -33,6 +35,8 @@ import kotlinx.android.synthetic.main.activity_cadastro_etapas.*
 import kotlinx.android.synthetic.main.activity_cadastro_etapas.btn_continuar
 import kotlinx.android.synthetic.main.activity_cadastro_etapas.btn_voltar
 import kotlinx.android.synthetic.main.activity_cadastro_etapas.dataNasc
+import java.io.ByteArrayOutputStream
+import java.util.*
 
 class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomSheetListener {
     private lateinit var linear1: LinearLayout
@@ -46,6 +50,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
     private lateinit var rdGroup :RadioGroup
     private lateinit var rdSexo :RadioGroup
     private lateinit var database : DatabaseReference
+    private lateinit var storageReference : StorageReference
 	
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +59,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
         linear2 = findViewById(R.id.step2)
 
         database = FirebaseDatabase.getInstance().reference
+        storageReference = FirebaseStorage.getInstance().reference
 
         imagemPerfil = img_cadastro_animal
         rdGroup = tipo
@@ -68,11 +74,13 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
         data_animal.myCustomMask("##/##/####")
 
         verificaEtapa()
+
         btn_finalizar.setOnClickListener{
+            confirma(2)
             situacaoProcessoAnimal()
+
+
         }
-
-
     }
 
     override fun onButtonClicked(id: Int) {
@@ -138,13 +146,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
                 } else if (linear2.visibility == View.VISIBLE) {
 
 
-                    if(confirma(2)){
-                       btn_finalizar.setOnClickListener{
-                           situacaoProcessoAnimal()
 
-                       }
-                      //  startActivity(Intent(this, PerfilAnimalActivity::class.java))
-                    }
                 }
             }
 
@@ -185,6 +187,9 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
 
             //pre visu de animal na etapa 2
             nome2.text = nom
+            if(imagem != null){
+                imageProfile2.setImageBitmap(imagem)
+            }
         } else if(etapa == 2){
             //restantes inputs
             var neces = necessidade.text.toString()
@@ -205,9 +210,19 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
             animal.tipo = tipo
             animal.dataNasc = dataN
 
-            val usuarios = database.child("animal")
-            val ref = usuarios.push()
+            val animais = database.child("animal")
+            var id = gerarId()
+            val ref = animais.child(id)
             ref.setValue(animal)
+            if (imagem!=null){
+                salvarFoto(ref,animal,id)
+            }else{
+                Toast.makeText(this, "Animal cadastrado com sucesso!", Toast.LENGTH_SHORT)
+                    .show()
+                startActivity(Intent(applicationContext, HomeActivity::class.java))
+            }
+
+//            ref.child("nome").setValue(animal.nome)
 
             /*
 
@@ -343,6 +358,51 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
         }
 
     }
+    fun salvarFoto(ref:DatabaseReference,u:Animal, id : String){
+        //recuperar dados da imagem para o firebase
+        val baos =  ByteArrayOutputStream()
+
+        imagem?.compress(Bitmap.CompressFormat.JPEG, 70, baos)
+
+        val dadosImagem = baos.toByteArray()
+
+        //Salvar no Firebase
+        val imagemRef = storageReference
+            .child("imagens")
+            .child("animal")
+            .child(id)
+            .child("perfil.jpeg")
+
+        val uploadTask = imagemRef.putBytes(dadosImagem)
+        uploadTask.addOnFailureListener{
+            //Se houve erro no upload da imageFile
+            Toast.makeText(this, "Erro ao salvar  a foto", Toast.LENGTH_SHORT).show()
+        }.addOnSuccessListener {
+            imagemRef.downloadUrl.addOnSuccessListener {
+                u.foto = it.toString()
+                ref.child("foto").setValue(u.foto)
+
+            }
+            //Se o upload da imageFile foi realizado com sucesso
+            Toast.makeText(this, "Animal cadastrado com sucesso!", Toast.LENGTH_SHORT)
+                .show()
+            startActivity(Intent(applicationContext, HomeActivity::class.java))
+        }
+    }
+    fun gerarId():String{
+        // Determia as letras que poderão estar presente nas chaves
+        val letras = "ABCDEFGHIJKLMNOPQRSTUVYWXZ"
+        var random = Random()
+        var armazenaChaves = ""
+        var index = -1
+        for (i in 0..9) {
+              index = random.nextInt(letras.length)
+             armazenaChaves += letras.substring(index,index +1)
+        }
+        return armazenaChaves
+    }
+
+
 }
 
 
