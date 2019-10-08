@@ -13,6 +13,9 @@ import com.example.adopets.R
 import com.example.adopets.activity.CadAnimalActivity
 import com.example.adopets.adapter.AnimalAdapter
 import com.example.adopets.model.Animal
+import com.example.adopets.model.Usuario
+import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +30,7 @@ class PetsFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recyclerViewAnimais: RecyclerView
-    private lateinit var  btn_animal: Button
+    private lateinit var btn_animal: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,11 +57,28 @@ class PetsFragment : Fragment() {
     }
 
     private fun animais(): List<Animal> {
+
+        var query: Query =  FirebaseDatabase.getInstance().reference.child("animais")
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                //Passar os dados para a interface grafica
+                for (snapshot in dataSnapshot.getChildren()) {
+                    val animal = snapshot.getValue(Animal::class.java!!)
+                    println(animal?.nome)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                //Se ocorrer um erro
+            }
+        })
+
         return listOf(
             Animal("Tots", "Macho", "Japiim"),
             Animal("Mel", "Fêmea", "São Jorge"),
-            Animal("Ferrer", "Macho", "Alvorada")
-        )
+            Animal("Ferrer", "Macho", "Alvorada"))
+
+
     }
 
 }
