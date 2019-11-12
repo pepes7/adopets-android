@@ -78,7 +78,8 @@ class Animal(
     var tamanho: String = "",
     var necessidade: String = "",
     var tipo: String = "",
-    var dataNasc: String = ""
+    var dataNasc: String = "",
+    var doador: String = ""
 )
 
 class AnimalProceso(
