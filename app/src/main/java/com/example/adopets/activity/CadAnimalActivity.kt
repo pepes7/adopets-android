@@ -21,6 +21,7 @@ import com.example.adopets.model.Usuario
 import com.example.adopets.utils.MyMaskEditText
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
@@ -51,6 +52,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
     private lateinit var rdSexo :RadioGroup
     private lateinit var database : DatabaseReference
     private lateinit var storageReference : StorageReference
+    private lateinit var auth: FirebaseAuth
 	
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +62,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
 
         database = FirebaseDatabase.getInstance().reference
         storageReference = FirebaseStorage.getInstance().reference
+        auth = FirebaseAuth.getInstance()
 
         imagemPerfil = img_cadastro_animal
         rdGroup = tipo
@@ -209,6 +212,8 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
             animal.necessidade = neces
             animal.tipo = tipo
             animal.dataNasc = dataN
+            animal.doador = auth!!.currentUser!!.uid
+
 
             val animais = database.child("animal")
             var id = gerarId()
