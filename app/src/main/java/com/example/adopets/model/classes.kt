@@ -71,14 +71,15 @@ class Animal(
     var sexo: String = "",
     var bairro: String = "",
     var id: String = "",
-    var foto: ByteArray = "".toByteArray(),
+    var foto: String = "",
     var situacao: String = "",
     var raca: String = "",
     var descricao: String = "",
     var tamanho: String = "",
     var necessidade: String = "",
     var tipo: String = "",
-    var dataNasc: String = ""
+    var dataNasc: String = "",
+    var doador: String = ""
 )
 
 class AnimalProceso(
@@ -89,4 +90,13 @@ class AnimalProceso(
 class AnimalServico(
     var animal: Animal = Animal(),
     var servico: Servico = Servico()
+)
+
+class Formulario(
+    var pgtResidencia: String = "",
+    var pgtPessoasMoram: String = "",
+    var pgtAnimaisCasa: String = "",
+    var pgtProtegerFamilia: String = "",
+    var pgtOndeTempo: String = "",
+    var pgtQuantoTempo: String = ""
 )

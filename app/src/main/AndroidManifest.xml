@@ -21,7 +21,9 @@
             android:roundIcon="@drawable/logo_icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ListagemTodosAnimaisActivity"></activity>
+        <activity android:name=".activity.Formulario2Activity"></activity>
+        <activity android:name=".activity.FormularioActivity" />
+        <activity android:name=".activity.ListagemTodosAnimaisActivity" />
         <activity android:name=".activity.PerfilAnimalDoacaoActivity" />
         <activity android:name=".activity.PerfilAnimalActivity" />
         <activity android:name=".activity.EditarPerfilActivity" />

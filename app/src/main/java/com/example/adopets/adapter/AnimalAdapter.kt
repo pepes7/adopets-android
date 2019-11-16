@@ -6,43 +6,56 @@ import android.support.v7.widget.RecyclerView.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.example.adopets.R
 import com.example.adopets.model.Animal
+import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.list_view_animais.view.*
+import java.util.ArrayList
 
-class AnimalAdapter(private val animais: List<Animal>,  private val context: Context) : Adapter<AnimalAdapter.ViewHolder>() {
+class AnimalAdapter(private val context: Context, private val listAnimais: ArrayList<Animal>) : RecyclerView.Adapter<AnimalAdapter.MyViewHolder>(){
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.list_view_animais, p0, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): MyViewHolder {
+        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_view_animais,viewGroup,false)
+        return MyViewHolder(view)
+
     }
 
     override fun getItemCount(): Int {
-        return animais.size
+        return listAnimais.size
     }
 
-    override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
-        val animal = animais[p1]
-        p0.nome.text = animal.nome
-        p0.sexo.text = animal.sexo
-        p0.bairro.text = animal.bairro
+    override fun onBindViewHolder(myViewHolder: MyViewHolder, i: Int) {
+        val animal = listAnimais.get(i)
+        myViewHolder.nome.text = animal.nome
+        myViewHolder.sexo.text = animal.sexo
+        myViewHolder.bairro.text = animal.bairro
+
+        //pega a primeira imagem da lista
+        Picasso.get()
+            .load(animal?.foto)
+            .into(myViewHolder.foto)
+
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nome = itemView.txt_nome_list
-        val sexo = itemView.txt_sexo_list
-        val bairro = itemView.txt_bairro_list
+    inner  class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var nome : TextView
+        var sexo : TextView
+        var bairro : TextView
+        var foto : CircleImageView
 
-        fun bindView(animal: Animal) {
-            val nome = itemView.txt_nome_list
-            val sexo = itemView.txt_sexo_list
-            val bairro = itemView.txt_bairro_list
+        init {
+            nome = itemView.findViewById(R.id.txt_nome_list)
+            sexo = itemView.findViewById(R.id.txt_sexo_list)
+            bairro = itemView.findViewById(R.id.txt_bairro_list)
+            foto = itemView.findViewById(R.id.imagem_animal_list)
 
-            nome.text = animal.nome
-            sexo.text = animal.sexo
-            bairro.text = animal.bairro
         }
     }
+
+
+
 
 }
 
