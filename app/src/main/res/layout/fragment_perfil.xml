@@ -6,13 +6,21 @@
         tools:context=".fragment.PerfilFragment"
         android:background="@color/colorBackgroundIn"
         >
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
 
             <ImageView
                     android:src="@drawable/group"
@@ -21,17 +29,36 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     />
+
+            <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="101dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="56dp"
+                    android:src="@drawable/ic_adopets"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                     android:id="@+id/textView5"
-                    android:layout_width="0dp" android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp" android:layout_marginLeft="8dp"
-                    android:layout_marginTop="112dp" android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp" android:text="@string/seu_pefil"
-                    android:textAlignment="center" android:textColor="@color/colorBackgroundIn" android:textSize="@dimen/title_home"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="@string/seu_pefil"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBackgroundIn"
+                    android:textSize="@dimen/title_home"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/imageView3"
-                    />
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
             <android.support.v7.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" android:layout_marginStart="16dp"
@@ -61,7 +88,7 @@
                             android:fontFamily="@font/nunito_bold"
                             android:textAlignment="center"
                             android:textColor="@color/colorStep1"
-                            android:textSize="16sp"
+                            android:textSize="18sp"
                             tools:text="Eduardo" />
 
                     <TextView
