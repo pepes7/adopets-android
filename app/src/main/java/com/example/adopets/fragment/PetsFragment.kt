@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import com.example.adopets.R
 import com.example.adopets.activity.CadAnimalActivity
 import com.example.adopets.adapter.AnimalAdapter
 import com.example.adopets.model.Animal
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.util.*
 
@@ -34,6 +34,7 @@ class PetsFragment : Fragment() {
     private lateinit var adapterAnimal: AnimalAdapter
     private lateinit var btn_animal: Button
     private lateinit var animaisRecuperados : DatabaseReference
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +47,7 @@ class PetsFragment : Fragment() {
         btn_animal.setOnClickListener {
             startActivity(Intent(context, CadAnimalActivity::class.java))
         }
+        auth = FirebaseAuth.getInstance()
 
         animaisRecuperados =  FirebaseDatabase.getInstance().reference.child("animal")
 
@@ -61,6 +63,7 @@ class PetsFragment : Fragment() {
         recuperarAnimal()
 
 
+
         return view
     }
 
@@ -73,7 +76,12 @@ class PetsFragment : Fragment() {
               animais.clear()
                 for (d in dataSnapshot.children){
                     val u = d.getValue(Animal::class.java)
-                    animais.add(u!!)
+
+                    //verifica se o usuário atual fez a doaçaõ
+                    if(u!!.doador.equals(auth!!.currentUser!!.uid)){
+                        animais.add(u!!)
+                    }
+
 
                 }
 
