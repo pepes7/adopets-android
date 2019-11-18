@@ -66,14 +66,15 @@
                             android:layout_height="8dp"
                             android:background="@color/colorPattern" />
 
-                    <ImageView
-                            android:id="@+id/imageProfileA"
+                    <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/foto_perfil_animal_adocao"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:layout_marginTop="12dp"
-                            android:src="@drawable/mel_perfil"/>
+                            android:layout_height="120dp" android:layout_marginTop="12dp"
+                            android:src="@drawable/mel_perfil"
+                            app:civ_circle_background_color="@color/colorBackground2"/>
 
                     <TextView
-                            android:id="@+id/textView7"
+                            android:id="@+id/nome_perfil_animal_adocao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -91,10 +92,11 @@
                             >
 
                         <TextView
+                                android:id="@+id/email_perfil_animal_adocao"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" android:layout_marginTop="5dp"
                                 android:fontFamily="@font/nunito_bold" android:gravity="center"
-                                android:text="Raimunda Feitosa"
+                                android:text="Nome do Doador"
                                 android:layout_marginRight="5dp"
                                 android:textAlignment="center" android:textColor="@color/colorStep1"
                                 android:textSize="13sp"/>
@@ -105,7 +107,7 @@
                                 android:src="@drawable/photo_perfil"/>
                     </LinearLayout>
                     <TextView
-                            android:id="@+id/raca"
+                            android:id="@+id/raca_perfil_animal_adocao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
@@ -114,7 +116,7 @@
                             android:text="Vira-lata" android:textColor="@color/colorBackground"
                             android:textSize="20sp"/>
                     <TextView
-                            android:id="@+id/endereco"
+                            android:id="@+id/endereco_perfil_animal_adocao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
@@ -124,7 +126,7 @@
                             android:textSize="20sp"/>
 
                     <TextView
-                            android:id="@+id/tamanho"
+                            android:id="@+id/tamanho_perfil_animal_adocao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
@@ -133,7 +135,7 @@
                             android:text="Pequena" android:textColor="@color/colorBackground"
                             android:textSize="20sp"/>
                     <TextView
-                            android:id="@+id/tipo"
+                            android:id="@+id/tipo_perfil_animal_adocao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
@@ -142,7 +144,7 @@
                             android:text="Cadela" android:textColor="@color/colorBackground"
                             android:textSize="20sp"/>
                     <TextView
-                            android:id="@+id/sexo"
+                            android:id="@+id/sexo_perfil_animal_adocao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
@@ -151,7 +153,7 @@
                             android:text="Fêmea" android:textColor="@color/colorBackground"
                             android:textSize="20sp"/>
                     <TextView
-                            android:id="@+id/necessidade"
+                            android:id="@+id/necessidade_perfil_animal_adocao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
@@ -160,7 +162,7 @@
                             android:text="Nenhuma necessidade" android:textColor="@color/colorBackground"
                             android:textSize="20sp"/>
                     <TextView
-                            android:id="@+id/dataNasc"
+                            android:id="@+id/dataNasc_perfil_animal_adocao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" android:layout_marginLeft="20dp"
                             android:layout_marginTop="7dp" android:layout_marginRight="15dp"
@@ -168,7 +170,7 @@
                             android:fontFamily="@font/nunito_regular" android:text="23/07/2018"
                             android:textColor="@color/colorBackground" android:textSize="20sp"/>
                     <TextView
-                            android:id="@+id/descricao"
+                            android:id="@+id/descricao_perfil_animal_adocao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
