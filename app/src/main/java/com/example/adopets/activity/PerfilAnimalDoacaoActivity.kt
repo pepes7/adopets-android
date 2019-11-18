@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.Button
 import com.example.adopets.R
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_perfil_animal_doacao.*
 
 class PerfilAnimalDoacaoActivity : AppCompatActivity() {
@@ -30,6 +31,8 @@ class PerfilAnimalDoacaoActivity : AppCompatActivity() {
         btn_respostaDoador.setOnClickListener{
             respostaDoador()
         }
+
+        inicializar()
     }
 
     //na tabela processo
@@ -65,6 +68,25 @@ class PerfilAnimalDoacaoActivity : AppCompatActivity() {
 
         val dialog = builder.create()
         dialog.show()
+
+    }
+
+    fun inicializar(){
+        var data = intent.extras
+
+        nome_perfil_animal_adocao.text = data.getString("nome")
+        raca_perfil_animal_adocao.text = data.getString("raca")
+        endereco_perfil_animal_adocao.text = data.getString("bairro")
+        tamanho_perfil_animal_adocao.text = data.getString("tamanho")
+        tipo_perfil_animal_adocao.text  = data.getString("tipo")
+        sexo_perfil_animal_adocao.text = data.getString("sexo")
+        necessidade_perfil_animal_adocao.text = data.getString("necessidade")
+        dataNasc_perfil_animal_adocao.text = data.getString("dataNasc")
+        descricao_perfil_animal_adocao.text = data.getString("descricao")
+
+        Picasso.get()
+            .load(data.getString("foto"))
+            .into(foto_perfil_animal_adocao)
 
     }
 
