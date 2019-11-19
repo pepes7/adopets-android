@@ -98,5 +98,8 @@ class Formulario(
     var pgtAnimaisCasa: String = "",
     var pgtProtegerFamilia: String = "",
     var pgtOndeTempo: String = "",
-    var pgtQuantoTempo: String = ""
+    var pgtQuantoTempo: String = "",
+    var idAdotante : String = "",
+    var idAnimal : String = ""
+
 )

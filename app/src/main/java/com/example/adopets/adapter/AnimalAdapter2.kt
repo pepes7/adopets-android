@@ -53,6 +53,7 @@ class AnimalAdapter2(private val context: Context, private val listAnimais: Arra
             intent.putExtra("tipo",animal.tipo)
             intent.putExtra("dataNasc",animal.dataNasc)
             intent.putExtra("doador",animal.doador)
+            intent.putExtra("id",animal.id)
 
 
             context.startActivity(intent)

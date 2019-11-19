@@ -10,6 +10,7 @@ import com.example.adopets.R
 import android.view.View
 import android.widget.*
 import com.example.adopets.model.Formulario
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_formulario2.*
@@ -22,11 +23,14 @@ class Formulario2Activity : AppCompatActivity(){
     private val formulario:Formulario = Formulario()
     private lateinit var database : DatabaseReference
     private lateinit var radioGroup: RadioGroup
+    private lateinit var auth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_formulario2)
         dados = intent.extras
+        auth = FirebaseAuth.getInstance()
         formulario.pgtResidencia = dados.getString("pgtResidencia")
         formulario.pgtPessoasMoram = dados.getString("pgtPessoasMoram")
         formulario.pgtAnimaisCasa = dados.getString("pgtAnimaisCasa")
@@ -39,11 +43,17 @@ class Formulario2Activity : AppCompatActivity(){
         btn_enviar.setOnClickListener{
             val selectedButton = findViewById<RadioButton>(radioGroup.getCheckedRadioButtonId())
             formulario.pgtProtegerFamilia = selectedButton.text.toString()
-            val usuarios = database.child("formulario")
-            val ref = usuarios.push().setValue(formulario)
+
+            //pega o id do animal
+            formulario.idAnimal =  dados.getString("id")
+
+            formulario.idAdotante = auth!!.currentUser!!.uid
 
             if(pgtOndeTempo.isNotEmpty()){
                 if(pgtQuantoTempo.isNotEmpty()){
+                    val form = database.child("formulario")
+                    form.push().setValue(formulario)
+
                     Toast.makeText(this, "Sua resposta foi enviada!", Toast.LENGTH_SHORT).show()
                 }else{
                     Toast.makeText(this, "Campo vazio 1!", Toast.LENGTH_SHORT).show()
@@ -90,6 +100,7 @@ class Formulario2Activity : AppCompatActivity(){
                 //(parent.getChildAt(0) as TextView).setTextColor(Color.parseColor("#bdbdbd"))
                 (parent.getChildAt(0) as TextView).setTypeface(Typeface.DEFAULT)
                 pgtOndeTempo = spinner1.getItemAtPosition(position).toString()
+                formulario.pgtOndeTempo = pgtOndeTempo
 
             }
 
@@ -108,6 +119,7 @@ class Formulario2Activity : AppCompatActivity(){
                 //(parent.getChildAt(0) as TextView).setTextColor(Color.parseColor("#bdbdbd"))
                 (parent.getChildAt(0) as TextView).setTypeface(Typeface.DEFAULT)
                 pgtQuantoTempo = spinner2.getItemAtPosition(position).toString()
+                formulario.pgtQuantoTempo = pgtQuantoTempo
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
