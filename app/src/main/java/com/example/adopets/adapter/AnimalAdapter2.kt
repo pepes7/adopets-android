@@ -31,10 +31,9 @@ class AnimalAdapter2(private val context: Context, private val listAnimais: Arra
 
     override fun onBindViewHolder(myViewHolder: MyViewHolder, i: Int) {
         val animal = listAnimais.get(i)
-       /* myViewHolder.nome.text = animal.nome
+        myViewHolder.nome.text = animal.nome
         myViewHolder.sexo.text = animal.sexo
         myViewHolder.bairro.text = animal.bairro
-*/
 
         //metodo de click
         myViewHolder.itemView.setOnClickListener {
@@ -59,14 +58,14 @@ class AnimalAdapter2(private val context: Context, private val listAnimais: Arra
         }
 
         //pega a primeira imagem da lista
-       /* Picasso.get()
+       Picasso.get()
             .load(animal?.foto)
-            .into(myViewHolder.foto)*/
+            .into(myViewHolder.foto)
 
     }
 
     inner  class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-       /* var nome : TextView
+        var nome : TextView
         var sexo : TextView
         var bairro : TextView
         var foto : CircleImageView
@@ -78,7 +77,7 @@ class AnimalAdapter2(private val context: Context, private val listAnimais: Arra
             bairro = itemView.findViewById(R.id.txt_bairro_list_todos_animais)
             foto = itemView.findViewById(R.id.imagem_todos_animais)
 
-        }*/
+        }
     }
 
 
