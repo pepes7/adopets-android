@@ -74,4 +74,11 @@
         <item>Algumas horas</item>
         <item>A maior parte do tempo</item>
     </string-array>
+    <string-array name="porte">
+        <item> </item>
+        <item>Casa (dono)</item>
+        <item>Apartamento</item>
+        <item>Condomínio</item>
+        <item>Casa (alugada)</item>
+    </string-array>
 </resources>
