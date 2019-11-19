@@ -16,7 +16,7 @@
             android:gravity="center">
 
         <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageProfile"
+                android:id="@+id/imagem_todos_animais"
                 android:layout_width="78dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="8dp"
@@ -29,7 +29,7 @@
 
 
         <TextView
-                android:id="@+id/txt_nome_list"
+                android:id="@+id/txt_nome_list_todos_animais"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_pet2"
@@ -39,10 +39,9 @@
                 tools:text="Nome" />
 
         <TextView
-                android:id="@+id/txt_sexo_list"
+                android:id="@+id/txt_sexo_list_todos_animais"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:drawableLeft="@drawable/ic_pet3"
                 android:drawablePadding="6dp"
                 android:fontFamily="@font/nunito_regular"
@@ -52,10 +51,10 @@
                 tools:text="Sexo" />
 
         <TextView
+                android:id="@+id/txt_bairro_list_todos_animais"
                 android:id="@+id/txt_bairro_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:drawableLeft="@drawable/ic_point"
                 android:drawablePadding="6dp"
                 android:fontFamily="@font/nunito_regular"

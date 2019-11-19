@@ -59,6 +59,7 @@ class AnimalAdapter2(private val context: Context, private val listAnimais: Arra
         }
 
         //pega a primeira imagem da lista
+
         Picasso.get()
             .load(animal?.foto)
             .into(myViewHolder.foto)
