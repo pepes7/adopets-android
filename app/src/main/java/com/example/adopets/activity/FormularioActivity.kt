@@ -118,6 +118,7 @@ class FormularioActivity : AppCompatActivity() {
             }
         })
 
+
         spinner3.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,

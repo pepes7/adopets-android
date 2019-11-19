@@ -2,6 +2,7 @@ package com.example.adopets.activity
 
 import android.Manifest
 import android.app.AlertDialog
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -53,7 +54,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
     private lateinit var database : DatabaseReference
     private lateinit var storageReference : StorageReference
     private lateinit var auth: FirebaseAuth
-	
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cad_animal)
@@ -80,9 +81,6 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
 
         btn_finalizar.setOnClickListener{
             confirma(2)
-            situacaoProcessoAnimal()
-
-
         }
     }
 
@@ -127,40 +125,40 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
     //configura as etapas do cadastro
     fun verificaEtapa(){
 
-            btn_continuar.setOnClickListener() {
+        btn_continuar.setOnClickListener() {
 
-                //se a barra estiver na etapa 1, tornara a etapa 2 desativada
+            //se a barra estiver na etapa 1, tornara a etapa 2 desativada
 
-                if (linear1.visibility == View.VISIBLE) {
+            if (linear1.visibility == View.VISIBLE) {
+                btn_continuar.visibility = View.VISIBLE
+                if(confirma(1)) {
                     btn_continuar.visibility = View.VISIBLE
-                    if(confirma(1)) {
-                        btn_continuar.visibility = View.VISIBLE
-                        btn_finalizar.visibility = View.GONE
-                        btn_voltar.visibility = View.VISIBLE
+                    btn_finalizar.visibility = View.GONE
+                    btn_voltar.visibility = View.VISIBLE
 
 
-              //progresso = 2
-                        linear1.visibility = View.GONE
-                        btn_continuar.visibility = View.GONE
-                        btn_finalizar.visibility = View.VISIBLE
-                        linear2.visibility = View.VISIBLE
-                    }
-
-                } else if (linear2.visibility == View.VISIBLE) {
-
-
-
+                    //progresso = 2
+                    linear1.visibility = View.GONE
+                    btn_continuar.visibility = View.GONE
+                    btn_finalizar.visibility = View.VISIBLE
+                    linear2.visibility = View.VISIBLE
                 }
+
+            } else if (linear2.visibility == View.VISIBLE) {
+
+
+
             }
+        }
 
-            btn_voltar.setOnClickListener() {
+        btn_voltar.setOnClickListener() {
 
-//progresso = 1
-                linear1.visibility = View.VISIBLE
-                linear2.visibility = View.GONE
+            //progresso = 1
+            linear1.visibility = View.VISIBLE
+            linear2.visibility = View.GONE
 
-                btn_voltar.visibility = View.GONE
-            }
+            btn_voltar.visibility = View.GONE
+        }
 
     }
 
@@ -169,7 +167,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
 
         var nom = nome.text.toString()
         var rac = raca.text.toString()
-        var tam = tamanho.text.toString()
+       // var tam = tamanho.getItemAtPosition(position).toString()
         val id = rdGroup.checkedRadioButtonId
         val selectedButton = findViewById<RadioButton>(id)
         //Seta o tipo ao Objeto
@@ -183,17 +181,23 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
                 return false
             }
 
-            if (tam.isEmpty()) {
+           /* if (tam.isEmpty()) {
                 tamanho.error = "Campo obrigatório!"
                 return false
-            }
+            }*/
 
             //pre visu de animal na etapa 2
             nome2.text = nom
             if(imagem != null){
                 imageProfile2.setImageBitmap(imagem)
+            }else{ //caso a imagem seja nula retorna false
+                alertaImagem()
+                return false
             }
         } else if(etapa == 2){
+            val pd = ProgressDialog(this)
+            pd.setMessage("Cadastrando animal...")
+            pd.show()
             //restantes inputs
             var neces = necessidade.text.toString()
             var desc = descricao.text.toString()
@@ -208,7 +212,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
             animal.sexo = sexo
             animal.raca = rac
             animal.descricao = desc
-            animal.tamanho = tam
+         //   animal.tamanho = tam
             animal.necessidade = neces
             animal.tipo = tipo
             animal.dataNasc = dataN
@@ -240,60 +244,10 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
         return true
     }
 
-    //na tabela processo
-    fun situacaoProcessoAnimal(){
-        val builder = android.support.v7.app.AlertDialog.Builder(this,R.style.Theme_AppCompat_Light_Dialog)
-        builder.setTitle("Este animal precisa...")
-      //  builder.setMessage("Para a melhor utilização do app é necessário aceitar as permissões")
-        builder.setCancelable(false)
-      //  builder.setNegativeButton("Receber Ajuda")
-        builder.setPositiveButton("Ser Doado" ){ dialogInterface, i ->
-            dialogMotivoDoacao()
-        }
-
-
-
-        val dialog = builder.create()
-        dialog.show()
-        //motivo
-        //se quer doaç respos e explica
-    }
-
-    fun dialogMotivoDoacao(){
-
-        val builder = android.support.v7.app.AlertDialog.Builder(this,R.style.Theme_AppCompat_Light_Dialog)
-        builder.setTitle("Por que você quer doá-lo?")
-        //TextInput com id motivo para adicionar na tabela doacao
-
-
-       // builder.setMessage("Para a melhor utilização do app é necessário aceitar as permissões")
-        builder.setCancelable(false)
-        builder.setPositiveButton("Confirmar" ){ dialogInterface, i ->
-            escolhaAdocaoResponsavel()
-        }
-
-
-
-        val dialog = builder.create()
-        dialog.show()
-    }
-
-    fun escolhaAdocaoResponsavel(){
-        val builder = android.support.v7.app.AlertDialog.Builder(this,R.style.Theme_AppCompat_Light_Dialog)
-        builder.setTitle("Você quer realizar uma doação responsável?")
-
-
-        builder.setMessage("É uma forma de feedback para você receber formulários de respostas dos candidatos e escolher o adotante ideal para o seu pet!")
-        builder.setCancelable(false)
-        //salvar escolha do usuário
-        builder.setPositiveButton("Sim" ){ dialogInterface, i ->  }
 
 
 
 
-        val dialog = builder.create()
-        dialog.show()
-    }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -326,6 +280,19 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
         val builder = AlertDialog.Builder(this,R.style.Theme_AppCompat_Light_Dialog)
         builder.setTitle("Permissões Negadas")
         builder.setMessage("Para a melhor utilização do app é necessário aceitar as permissões")
+        builder.setCancelable(false)
+        builder.setPositiveButton("Confirmar" ){ dialogInterface, i ->  }
+
+
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    fun alertaImagem(){
+        val builder = AlertDialog.Builder(this,R.style.Theme_AppCompat_Light_Dialog)
+        builder.setTitle("Foto nula")
+        builder.setMessage("Adicione uma foto do animal")
         builder.setCancelable(false)
         builder.setPositiveButton("Confirmar" ){ dialogInterface, i ->  }
 
@@ -386,12 +353,12 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
             imagemRef.downloadUrl.addOnSuccessListener {
                 u.foto = it.toString()
                 ref.child("foto").setValue(u.foto)
-
+                //Se o upload da imageFile foi realizado com sucesso
+                Toast.makeText(this, "Animal cadastrado com sucesso!", Toast.LENGTH_SHORT)
+                    .show()
+                startActivity(Intent(applicationContext, HomeActivity::class.java))
             }
-            //Se o upload da imageFile foi realizado com sucesso
-            Toast.makeText(this, "Animal cadastrado com sucesso!", Toast.LENGTH_SHORT)
-                .show()
-            startActivity(Intent(applicationContext, HomeActivity::class.java))
+
         }
     }
     fun gerarId():String{
@@ -401,8 +368,8 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
         var armazenaChaves = ""
         var index = -1
         for (i in 0..9) {
-              index = random.nextInt(letras.length)
-             armazenaChaves += letras.substring(index,index +1)
+            index = random.nextInt(letras.length)
+            armazenaChaves += letras.substring(index,index +1)
         }
         return armazenaChaves
     }
