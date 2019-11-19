@@ -13,15 +13,20 @@ import kotlinx.android.synthetic.main.activity_perfil_animal_doacao.*
 class PerfilAnimalDoacaoActivity : AppCompatActivity() {
 
     private lateinit var btn_adotar: Button
+    private lateinit var data : Bundle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil_animal_doacao)
 
         btn_adotar = findViewById(R.id.adotar)
+        data = intent.extras
 
         btn_adotar.setOnClickListener {
-            startActivity(Intent(this, FormularioActivity::class.java))
+            val intent = Intent(this, FormularioActivity::class.java)
+            intent.putExtra("id", data.getString("id"))
+
+            startActivity(intent)
         }
 
         outra_resposta.setOnClickListener{
@@ -72,8 +77,6 @@ class PerfilAnimalDoacaoActivity : AppCompatActivity() {
     }
 
     fun inicializar(){
-        var data = intent.extras
-
         nome_perfil_animal_adocao.text = data.getString("nome")
         raca_perfil_animal_adocao.text = data.getString("raca")
         endereco_perfil_animal_adocao.text = data.getString("bairro")
