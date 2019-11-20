@@ -10,6 +10,14 @@
         android:background="@color/colorBackgroundIn"
 >
 
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -62,7 +70,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:visibility="visible">
+                            android:visibility="gone">
 
                         <android.support.constraint.ConstraintLayout
                                 android:id="@+id/contemPerfil"
@@ -155,29 +163,30 @@
                                     android:visibility="visible" />
                         </android.support.design.widget.TextInputLayout>
 
-                        <android.support.design.widget.TextInputLayout
-                                android:id="@+id/layoutRaca"
+                        <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:hint="Raça">
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginRight="15dp"
+                                android:drawablePadding="6dp"
+                                android:fontFamily="@font/nunito_regular"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:text="Raça"
+                                android:textColor="@color/colorBackground"
+                                android:textSize="20sp"
+                                android:visibility="visible" />
 
-                            <EditText
-                                    android:id="@+id/raca"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_marginTop="7dp"
-
-                                    android:layout_marginRight="20dp"
-                                    android:drawableLeft="@drawable/ic_extra"
-                                    android:drawablePadding="6dp"
-                                    android:ems="10"
-                                    android:inputType="textAutoComplete"
-                                    android:paddingLeft="5dp"
-                                    android:paddingRight="5dp"
-                                    android:textSize="20sp"
-                                    android:visibility="visible" />
-                        </android.support.design.widget.TextInputLayout>
+                        <Spinner
+                                android:id="@+id/raca"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginRight="20dp"
+                                android:textSize="20sp"
+                                android:visibility="visible" />
 
 
                         <TextView
@@ -293,20 +302,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:visibility="gone">
+                            android:visibility="visible">
 
-                        <LinearLayout
+                        <android.support.constraint.ConstraintLayout
                                 android:id="@+id/animalVisualizacao"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:gravity="center_horizontal"
-                                android:orientation="vertical"
                                 android:visibility="visible">
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                     android:id="@+id/imageProfile2"
-                                    android:layout_width="55dp"
-                                    android:layout_height="51dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="44dp"
                                     android:layout_margin="15dp"
                                     android:layout_marginStart="8dp"
                                     android:layout_marginEnd="8dp"
@@ -314,6 +321,7 @@
                                     app:civ_circle_background_color="@color/colorBackground2"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.38"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -321,11 +329,17 @@
                                     android:id="@+id/nome2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
                                     android:text="Nome"
                                     android:textColor="@color/colorBackground"
-                                    android:textSize="15dp" />
+                                    android:textSize="15dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.055"
+                                    app:layout_constraintStart_toEndOf="@+id/imageProfile2"
+                                    app:layout_constraintTop_toTopOf="parent" />
 
-                        </LinearLayout>
+                        </android.support.constraint.ConstraintLayout>
 
                         <TextView
                                 android:layout_width="match_parent"

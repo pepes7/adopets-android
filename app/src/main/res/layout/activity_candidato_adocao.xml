@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        tools:context=".activity.CandidatoAdocaoActivity">
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar4"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="@android:color/transparent"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintBottom_toTopOf="@+id/imageView7"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp" />
+
+    <ImageView
+            android:src="@drawable/ic_adopets"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="101dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="35dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar4">
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+            <android.support.constraint.ConstraintLayout
+                    android:id="@+id/candidatoVisualizacao"
+                    android:layout_width="361dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBtnEdge1"
+                    android:visibility="visible">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageAdotante"
+                        android:layout_width="101dp"
+                        android:layout_height="124dp"
+                        android:layout_margin="15dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_default_profile"
+                        app:civ_circle_background_color="@color/colorBackground2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.107"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                        android:id="@+id/nome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gabriel Pepes"
+                        android:textColor="@color/colorBackgroundIn"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.061"
+                        app:layout_constraintStart_toEndOf="@+id/imageAdotante"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.288" />
+
+                <TextView
+                        android:id="@+id/telefone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="(92) 994845169"
+                        android:textColor="@color/colorBackgroundIn"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.069"
+                        app:layout_constraintStart_toEndOf="@+id/imageAdotante"
+                        app:layout_constraintTop_toBottomOf="@+id/nome"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="gabriel.pepes@gmail.com"
+                        android:textColor="@color/colorBackgroundIn"
+                        app:autoSizeMaxTextSize="50dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.125"
+                        app:layout_constraintStart_toEndOf="@+id/imageAdotante"
+                        app:layout_constraintTop_toBottomOf="@+id/telefone"
+                        app:layout_constraintVertical_bias="0.0" />
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="Moradia"
+                    android:textColor="@color/colorBtnEdge1"
+                    android:textSize="16dp" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    >
+
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp">
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Mora em"
+                            android:textColor="@color/colorBtnEdge1" />
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Mora com"
+                            android:textColor="@color/colorBtnEdge1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp">
+
+                    <TextView
+                            android:id="@+id/tipo_residencia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="apartamento"
+                            android:textColor="@color/colorPrimaryDark" />
+                   <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                       android:orientation="horizontal">
+                       <TextView
+                               android:id="@+id/qtdePessoas"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_weight="1"
+                               android:text="2 pessoas"
+                               android:textColor="@color/colorPrimaryDark" />
+
+                       <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_marginLeft="3dp"
+                               android:layout_marginRight="3dp"
+                               android:text="e"
+                               android:textColor="@color/colorBtnEdge1" />
+                       <TextView
+                               android:id="@+id/qtdeAnimais"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_weight="1"
+                               android:text="2 animais"
+                               android:textColor="@color/colorPrimaryDark" />
+                   </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="Sobre o pet"
+                    android:textColor="@color/colorBtnEdge1"
+                    android:textSize="16dp" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Pet para proteger a família"
+                            android:textColor="@color/colorBtnEdge1" />
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Quando sozinho, pet ficará"
+                            android:textColor="@color/colorBtnEdge1" />
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Ficará sozinho"
+                            android:textColor="@color/colorBtnEdge1" />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:id="@+id/pet_de_guarda"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="sim"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                            android:id="@+id/local_sozinho"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="no quintal"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                            android:id="@+id/tempo_sozinho"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="poucas horas"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/aceitar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:background="@drawable/btn_adotar"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="8dp" android:layout_marginRight="8dp"
+                    android:text="ACEITAR ADOTANTE"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>
