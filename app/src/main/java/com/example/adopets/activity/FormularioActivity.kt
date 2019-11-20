@@ -18,10 +18,12 @@ class FormularioActivity : AppCompatActivity() {
     var pgtPessoasMoram: String = ""
     var pgtAnimaisCasa: String = ""
     var preenchido = false
+    private lateinit var data : Bundle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_formulario)
+        data = intent.extras
         init()
 
         pgtResidencia = ""
@@ -37,6 +39,7 @@ class FormularioActivity : AppCompatActivity() {
                         intent.putExtra("pgtResidencia", pgtResidencia)
                         intent.putExtra("pgtPessoasMoram",pgtPessoasMoram)
                         intent.putExtra("pgtAnimaisCasa", pgtAnimaisCasa)
+                        intent.putExtra("id",data.getString("id"))
                         startActivity(intent)
                     }else{
                         Toast.makeText(this, "Campo vazio!", Toast.LENGTH_SHORT).show()

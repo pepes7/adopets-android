@@ -26,8 +26,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.kofigyan.stateprogressbar.StateProgressBar
@@ -54,6 +53,9 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
     private lateinit var database : DatabaseReference
     private lateinit var storageReference : StorageReference
     private lateinit var auth: FirebaseAuth
+    private lateinit var bairroUserReference: DatabaseReference
+    private lateinit var bairroUser : String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,9 +63,14 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
         linear1 = findViewById(R.id.step1)
         linear2 = findViewById(R.id.step2)
 
+
         database = FirebaseDatabase.getInstance().reference
         storageReference = FirebaseStorage.getInstance().reference
         auth = FirebaseAuth.getInstance()
+
+        //recupera o bairro do usuario
+        bairroUserReference =  FirebaseDatabase.getInstance().reference.child("usuarios").child(auth!!.currentUser!!.uid).child("bairro")
+        recuperarBairro()
 
         imagemPerfil = img_cadastro_animal
         rdGroup = tipo
@@ -82,6 +89,19 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
         btn_finalizar.setOnClickListener{
             confirma(2)
         }
+    }
+
+    fun recuperarBairro(){
+        bairroUserReference.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                //recupera o bairro do usuario
+                bairroUser = dataSnapshot.getValue().toString()
+
+            }
+
+        })
     }
 
     override fun onButtonClicked(id: Int) {
@@ -218,10 +238,13 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
             animal.dataNasc = dataN
             animal.doador = auth!!.currentUser!!.uid
 
+            animal.bairro = bairroUser
+
 
             val animais = database.child("animal")
             var id = gerarId()
             val ref = animais.child(id)
+            animal.id = id
             ref.setValue(animal)
             if (imagem!=null){
                 salvarFoto(ref,animal,id)

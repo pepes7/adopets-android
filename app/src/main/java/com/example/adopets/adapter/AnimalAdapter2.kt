@@ -35,6 +35,7 @@ class AnimalAdapter2(private val context: Context, private val listAnimais: Arra
         myViewHolder.sexo.text = animal.sexo
         myViewHolder.bairro.text = animal.bairro
 
+
         //metodo de click
         myViewHolder.itemView.setOnClickListener {
             val intent = Intent(context, PerfilAnimalDoacaoActivity::class.java)
@@ -52,13 +53,15 @@ class AnimalAdapter2(private val context: Context, private val listAnimais: Arra
             intent.putExtra("tipo",animal.tipo)
             intent.putExtra("dataNasc",animal.dataNasc)
             intent.putExtra("doador",animal.doador)
+            intent.putExtra("id",animal.id)
 
 
             context.startActivity(intent)
         }
 
         //pega a primeira imagem da lista
-       Picasso.get()
+
+        Picasso.get()
             .load(animal?.foto)
             .into(myViewHolder.foto)
 
@@ -71,7 +74,6 @@ class AnimalAdapter2(private val context: Context, private val listAnimais: Arra
         var foto : CircleImageView
 
         init {
-
             nome = itemView.findViewById(R.id.txt_nome_list_todos_animais)
             sexo = itemView.findViewById(R.id.txt_sexo_list_todos_animais)
             bairro = itemView.findViewById(R.id.txt_bairro_list_todos_animais)
