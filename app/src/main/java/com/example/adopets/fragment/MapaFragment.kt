@@ -1,6 +1,8 @@
 package com.example.adopets.fragment
 
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -16,16 +18,17 @@ import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Canvas
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
-import android.widget.EditText
-import android.widget.Toast
+import android.location.*
 import com.google.android.gms.maps.model.*
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
+import android.util.Log
 import android.widget.Button
 import com.example.adopets.R
 import com.example.adopets.activity.ListagemTodosAnimaisActivity
-
+import com.example.adopets.helper.Permissao
+import java.io.IOException
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,8 +42,12 @@ private const val ARG_PARAM2 = "param2"
 class MapaFragment : Fragment() {
 
     private var currentMarker: Marker? = null
-    private lateinit var  btn_animal: Button
+    private lateinit var btn_animal: Button
+    private lateinit var locationManager: LocationManager
+    private lateinit var locationListener: LocationListener
+    private val permissaoLocal = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
 
+    @SuppressLint("MissingPermission")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,7 +69,7 @@ class MapaFragment : Fragment() {
             mMap.clear() //clear old markers
 
             val lugar = CameraPosition.builder()
-                .target(LatLng(-3.0589489,-59.9930218))
+                .target(LatLng(-3.0589489, -59.9930218))
                 .zoom(11.5F)
                 .bearing(0f)
                 .tilt(45f)
@@ -109,31 +116,85 @@ class MapaFragment : Fragment() {
                 }
             })
 
-            mMap!!.setOnMapClickListener(object : GoogleMap.OnMapClickListener {
+            mMap.setOnMapClickListener(object : GoogleMap.OnMapClickListener {
                 override fun onMapClick(latLng: LatLng) {
                     currentMarker = null
                 }
             })
 
+            Permissao.validarPermissao(permissaoLocal, activity, 1)
+
+            locationManager =
+                activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+            var lat: Double = 0.0
+            var long: Double = 0.0
+
+            class myLocationListener : LocationListener {
+                override fun onProviderEnabled(p0: String?) {
+                }
+
+                override fun onStatusChanged(p0: String?, p1: Int, p2: Bundle?) {
+                }
+
+                override fun onProviderDisabled(p0: String?) {
+                }
+
+                override fun onLocationChanged(p0: Location?) {
+                    Log.d("Localização", "onLocationChanged: " + p0.toString())
+
+                    lat = p0!!.latitude
+                    long = p0.longitude
+
+                    mMap.addMarker(
+                        MarkerOptions()
+                            .position(LatLng(lat, long))
+                            .title("Meu local")
+                    )
+
+                    //reverse geocoding
+//                    try {
+//                        var geocoder = Geocoder(context!!, Locale.getDefault())
+//                        var listaEndereco: List<Address> = geocoder!!.getFromLocation(lat, long, 1)
+//                        if (listaEndereco.isNotEmpty()) run {
+//                            var endereco: Address = listaEndereco[0]
+//                            Log.d("local", "onLocationChanged: $endereco")
+//                        }
+//                    } catch (e: IOException) {
+//                        e.printStackTrace()
+//                    }
+                }
+
+            }
+
+            locationListener = myLocationListener()
+            locationManager.requestLocationUpdates(
+                LocationManager.GPS_PROVIDER,
+                0,
+                0F,
+                locationListener
+            )
+
+            mMap.clear()
+
             mMap.addMarker(
                 MarkerOptions()
                     .position(LatLng(-3.074601, -60.039474))
                     .title("Mel")
-                    .icon(this.context?.let{bitmapDescriptorFromVector(it, com.example.adopets.R.drawable.mel_perfil)})
+                    .icon(this.context?.let {
+                        bitmapDescriptorFromVector(
+                            it,
+                            com.example.adopets.R.drawable.mel_perfil
+                        )
+                    })
             )
 
             mMap.addMarker(
                 MarkerOptions()
-                    .position(LatLng(-3.115378, -59.977482))
-                    .title("Cão 2")
-                    .snippet("Talentoso")
-            )
-
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(-3.134159, -60.013139))
+                    .position(LatLng(-3.0901486, -59.9816574))
                     .title("Gato")
             )
+
         }
 
         return rootView
@@ -155,6 +216,43 @@ class MapaFragment : Fragment() {
         val canvas = Canvas(bitmap)
         vectorDrawable.draw(canvas)
         return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+
+    @SuppressLint("MissingPermission")
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        for (permissaoResultado in grantResults) {
+            if (permissaoResultado == PackageManager.PERMISSION_DENIED) {
+                alertaPermissao()
+            } else {
+                //recuperar local usuario
+                locationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER,
+                    10000,
+                    10000F,
+                    locationListener
+                )
+            }
+        }
+
+    }
+
+    fun alertaPermissao() {
+        val builder = android.support.v7.app.AlertDialog.Builder(
+            activity!!,
+            R.style.Theme_AppCompat_Light_Dialog
+        )
+        builder.setTitle("Permissões Negadas")
+        builder.setMessage("Para a melhor utilização do app é necessário aceitar a permissão")
+        builder.setCancelable(false)
+        builder.setPositiveButton("Confirmar") { dialogInterface, i -> }
+        val dialog = builder.create()
+        dialog.show()
     }
 
 }
