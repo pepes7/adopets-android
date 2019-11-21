@@ -21,7 +21,12 @@
             android:roundIcon="@drawable/logo_icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.Formulario2Activity"></activity>
+        <activity android:name=".activity.GaleriaFotosActivity"></activity>
+        <activity android:name=".activity.ListagemServicosActivity" />
+        <activity android:name=".activity.ListagemCandidatosAdocaoActivity" />
+        <activity android:name=".activity.DadosPetActivity" />
+        <activity android:name=".activity.CandidatoAdocaoActivity" />
+        <activity android:name=".activity.Formulario2Activity" />
         <activity android:name=".activity.FormularioActivity" />
         <activity android:name=".activity.ListagemTodosAnimaisActivity" />
         <activity android:name=".activity.PerfilAnimalDoacaoActivity" />

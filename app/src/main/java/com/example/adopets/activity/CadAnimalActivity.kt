@@ -186,7 +186,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
     fun confirma(etapa: Int): Boolean{
 
         var nom = nome.text.toString()
-        var rac = raca.text.toString()
+       // var rac = raca.text.toString()
        // var tam = tamanho.getItemAtPosition(position).toString()
         val id = rdGroup.checkedRadioButtonId
         val selectedButton = findViewById<RadioButton>(id)
@@ -230,7 +230,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
             val animal = Animal()
             animal.nome = nom
             animal.sexo = sexo
-            animal.raca = rac
+            //animal.raca = rac
             animal.descricao = desc
          //   animal.tamanho = tam
             animal.necessidade = neces
