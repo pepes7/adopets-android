@@ -21,12 +21,18 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.*
+import android.net.Uri
 import com.google.android.gms.maps.model.*
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import com.example.adopets.R
 import com.example.adopets.activity.ListagemTodosAnimaisActivity
 import com.example.adopets.helper.Permissao
+import com.example.adopets.model.Animal
+import com.example.adopets.model.Usuario
+import com.example.adopets.utils.animalUtilAll
+import com.google.firebase.database.*
 import java.io.IOException
 import java.util.*
 
@@ -46,6 +52,9 @@ class MapaFragment : Fragment() {
     private lateinit var locationManager: LocationManager
     private lateinit var locationListener: LocationListener
     private val permissaoLocal = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
+    private var listener: OnFragmentInteractionListener? = null
+    val firebaseDatabase = FirebaseDatabase.getInstance()
+    private lateinit var database: DatabaseReference
 
     @SuppressLint("MissingPermission")
     override fun onCreateView(
@@ -153,8 +162,8 @@ class MapaFragment : Fragment() {
                     )
 
                     //reverse geocoding
+//                    var geocoder = Geocoder(context)
 //                    try {
-//                        var geocoder = Geocoder(context!!, Locale.getDefault())
 //                        var listaEndereco: List<Address> = geocoder!!.getFromLocation(lat, long, 1)
 //                        if (listaEndereco.isNotEmpty()) run {
 //                            var endereco: Address = listaEndereco[0]
@@ -177,23 +186,78 @@ class MapaFragment : Fragment() {
 
             mMap.clear()
 
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(-3.074601, -60.039474))
-                    .title("Mel")
-                    .icon(this.context?.let {
-                        bitmapDescriptorFromVector(
-                            it,
-                            com.example.adopets.R.drawable.mel_perfil
-                        )
-                    })
-            )
+//            mMap.addMarker(
+//                MarkerOptions()
+//                    .position(LatLng(-3.074601, -60.039474))
+//                    .title("Mel")
+//                    .icon(this.context?.let {
+//                        bitmapDescriptorFromVector(
+//                            it,
+//                            com.example.adopets.R.drawable.mel_perfil
+//                        )
+//                    })
+//            )
+//
+//            mMap.addMarker(
+//                MarkerOptions()
+//                    .position(LatLng(-3.0901486, -59.9816574))
+//                    .title("Gato")
+//            )
 
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(-3.0901486, -59.9816574))
-                    .title("Gato")
-            )
+            val ref = firebaseDatabase.getReference("animal")
+            database = FirebaseDatabase.getInstance().reference
+            val postListener = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    animalUtilAll.clear()
+                    for (postSnapshot in dataSnapshot.children) {
+                        val animal = postSnapshot.getValue(Animal::class.java)
+                        var query = database.child("usuarios").orderByChild("id").equalTo(animal!!.doador)
+                        query.addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                for (snapshot in dataSnapshot.getChildren()) {
+                                    val usuario = snapshot.getValue(Usuario::class.java!!)
+                                    var rua = usuario!!.rua
+                                    var complemento = usuario!!.complemento
+                                    var bairro = usuario!!.bairro
+                                    var cep = usuario!!.cep
+
+                                    val location =
+                                        "${rua}, ${complemento}, ${bairro}, Amazonas, AM, ${cep}"
+                                    val addressList: List<Address>
+                                    if (location != "") {
+                                        val geocoder = Geocoder(context)
+                                        addressList = geocoder.getFromLocationName(location, 1)
+                                        val address = addressList[0]
+                                        val latLng = LatLng(address.latitude, address.longitude)
+
+                                        mMap.addMarker(
+                                            MarkerOptions().position(latLng)
+                                                .title("${animal.nome}")
+                                                .icon(
+                                                    BitmapDescriptorFactory.defaultMarker(
+                                                        BitmapDescriptorFactory.HUE_RED
+                                                    )
+                                                )
+                                        )
+                                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.9f))
+
+                                    }
+
+                                }
+                            }
+
+                            override fun onCancelled(databaseError: DatabaseError) {
+                                //Se ocorrer um erro
+                            }
+                        })
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Toast.makeText(context, "Erro ao carregar as casas", Toast.LENGTH_SHORT).show()
+                }
+            }
+            ref.addValueEventListener(postListener)
 
         }
 
@@ -253,6 +317,48 @@ class MapaFragment : Fragment() {
         builder.setPositiveButton("Confirmar") { dialogInterface, i -> }
         val dialog = builder.create()
         dialog.show()
+    }
+
+    fun onButtonPressed(uri: Uri) {
+        listener?.onFragmentInteraction(uri)
+    }
+
+    @Throws(RuntimeException::class)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnFragmentInteractionListener) {
+            listener = context
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
+
+    interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        fun onFragmentInteraction(uri: Uri)
+    }
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment AdotadosFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            AdotadosFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
     }
 
 }

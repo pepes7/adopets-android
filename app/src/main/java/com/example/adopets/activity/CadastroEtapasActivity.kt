@@ -31,6 +31,8 @@ import com.google.firebase.storage.StorageReference
 import com.kofigyan.stateprogressbar.StateProgressBar
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_cadastro_etapas.*
+import thiagocury.eti.br.exconsumindoviacepkotlinretrofit2.CEP
+import thiagocury.eti.br.exconsumindoviacepkotlinretrofit2.RetrofitInitializer
 import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 
@@ -120,6 +122,8 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
 
         //coloca a mascara da data no editText
         dataNasc.myCustomMask("##/##/####")
+        cep.myCustomMask("#####-###")
+        //69020-120
 
         verificaEtapa()
 
@@ -127,7 +131,17 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
             val opcao = BottomSheetFotoCadastro()
             opcao.show(supportFragmentManager,"bottonSheet")
         }
+
+        //cep
+        pesquisar.setOnClickListener {
+            if (cep.text.toString().length == 9) {
+                searchCEP()
+            } else {
+                Toast.makeText(this, "CEP inválido!", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
+
     //configura as etapas do cadastro
     fun verificaEtapa(){
         stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.ONE)
@@ -392,6 +406,39 @@ class CadastroEtapasActivity : AppCompatActivity(), BottomSheetFotoCadastro.Bott
             }
     }
 
+    fun searchCEP() {
+        val cep = findViewById(R.id.cep) as EditText
+        val progressDialog = ProgressDialog(this@CadastroEtapasActivity)
+        progressDialog.setTitle("Buscando CEP ...")
+        progressDialog.setCancelable(false)
+        progressDialog.show()
+        val call =
+            RetrofitInitializer().apiRetrofitService().getEnderecoByCEP(cep.text.toString())
+
+        call.enqueue(object : retrofit2.Callback<CEP> {
+
+            override fun onResponse(call: retrofit2.Call<CEP>, response: retrofit2.Response<CEP>) {
+                response.let {
+
+                    val CEPs: CEP? = it.body()
+
+                    val address = findViewById<TextView>(R.id.rua)
+                    address.text = CEPs!!.logradouro.toString()
+                    val burgh = findViewById<TextView>(R.id.bairro)
+                    burgh.text = CEPs.bairro.toString()
+
+                    progressDialog.dismiss()
+
+                    Log.i("CEP", CEPs.toString())
+                }
+            }
+
+            override fun onFailure(call: retrofit2.Call<CEP>, t: Throwable) {
+                progressDialog.dismiss()
+                println("Erro $ t.message")
+            }
+        })
+    }
 
 }
 
@@ -484,8 +531,8 @@ public class PerfilActivity extends AppCompatActivity {
 
     public void carregar(){
         //acessar a referencia do nó usuarios e seu filho(usuario logados)
-        DatabaseReference usuario = referencia.child("usuarios").child(auth.getUid());
 
+DatabaseReference usuario = referencia.child("usuarios").child(auth.getUid());
         usuario.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

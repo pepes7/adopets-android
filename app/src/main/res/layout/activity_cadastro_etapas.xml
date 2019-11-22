@@ -200,6 +200,17 @@
                     android:textColor="@android:color/black"
                     tools:targetApi="o"/>
 
+            <ImageView
+                    android:id="@+id/pesquisar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/cep"
+                    app:layout_constraintEnd_toEndOf="@+id/cep"
+                    app:layout_constraintTop_toTopOf="@+id/cep"
+                    app:layout_constraintVertical_bias="0.333"
+                    app:srcCompat="@drawable/ic_menu_search" />
+
             <EditText
                     android:id="@+id/numero"
                     android:layout_width="match_parent"
