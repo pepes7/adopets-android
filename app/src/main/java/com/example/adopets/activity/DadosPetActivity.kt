@@ -13,7 +13,7 @@ class DadosPetActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_perfil_animal)
+        setContentView(R.layout.activity_dados_pet)
         inicializar()
     }
 

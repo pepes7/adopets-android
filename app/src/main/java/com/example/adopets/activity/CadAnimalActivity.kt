@@ -300,7 +300,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
 
 
         }
-        
+
         return true
     }
 

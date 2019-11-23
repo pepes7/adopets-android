@@ -11,32 +11,38 @@ open class Usuario(
     open var rua: String = "",
     open var numero: String = "",
     open var complemento: String = "",
-    open var cep: String = ""
+    open var cep: String = "",
+    open var id: String = ""
+
 )
 
 class Doador(override var email: String = "", override var nome: String = "",
              override var senha: String = "", override var dataNasc:String = "",
              override var foto: String = "", override var telefone: String = "", override var bairro: String = "",
              override var rua: String = "", override var numero: String = "", override var complemento: String = "",
-             override var cep: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
+             override var cep: String = "",
+             override var id: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep,id)
 
 class Adotante(override var email: String = "", override var nome: String = "",
                override var senha: String = "", override var dataNasc: String = "",
                override var foto: String = "", override var telefone: String = "", override var bairro: String = "",
                override var rua: String = "", override var numero: String = "", override var complemento: String = "",
-               override var cep: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
+               override var cep: String = "",
+               override var id: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep,id)
 
 class Voluntario(override var email: String = "", override var nome: String = "",
                  override var senha: String = "", override var dataNasc: String = "",
                  override var foto: String = "", override var telefone: String = "", override var bairro: String = "",
                  override var rua: String = "", override var numero: String = "", override var complemento: String = "",
-                 override var cep: String = "", var pontuacao: Float = 0F): Usuario(email, nome, senha,dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
+                 override var cep: String = "", var pontuacao: Float = 0F,
+                 override var id: String = ""): Usuario(email, nome, senha,dataNasc, foto, telefone, bairro, rua, numero, complemento, cep,id)
 
 class Contratante(override var email: String = "", override var nome: String = "",
                   override var senha: String = "", override var dataNasc: String = "",
                   override var foto: String = "", override var telefone: String = "", override var bairro: String = "",
                   override var rua: String = "", override var numero: String = "", override var complemento: String = "",
-                  override var cep: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep)
+                  override var cep: String = "",
+                  override var id: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep,id)
 
 class Processo(
     var id: String = "",
