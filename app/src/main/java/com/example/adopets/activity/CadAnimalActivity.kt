@@ -1,3 +1,4 @@
+
 package com.example.adopets.activity
 
 import android.Manifest
@@ -30,8 +31,11 @@ import kotlinx.android.synthetic.main.activity_cad_animal.nome
 import kotlinx.android.synthetic.main.activity_cad_animal.nome2
 import kotlinx.android.synthetic.main.activity_cad_animal.sexo
 import kotlinx.android.synthetic.main.activity_cad_animal.tipo
+import kotlinx.android.synthetic.main.activity_cadastro_etapas.*
 import kotlinx.android.synthetic.main.activity_cadastro_etapas.btn_continuar
 import kotlinx.android.synthetic.main.activity_cadastro_etapas.btn_voltar
+import kotlinx.android.synthetic.main.activity_cadastro_etapas.dataNasc
+import kotlinx.android.synthetic.main.activity_editar_animal.*
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -97,7 +101,6 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
 
         btn_doacao.setOnClickListener{
             confirma(2, "Aguardando adoção")
-
         }
     }
 
@@ -161,6 +164,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
 
             if (linear1.visibility == View.VISIBLE) {
                 btn_continuar.visibility = View.VISIBLE
+
                 if (confirma(1, "")) {
                     btn_continuar.visibility = View.VISIBLE
 
@@ -195,6 +199,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
 
     //verifica campos conforme a etapa
     fun confirma(etapa: Int, situacao: String): Boolean {
+
         var camposVazios: String
 
         var nom = nome.text.toString()
@@ -241,7 +246,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
                 return true
             } else { alertaCamposVazios(camposVazios)
                 return false}
-
+          
         } else if (etapa == 2) {
             val pd = ProgressDialog(this)
             pd.setMessage("Cadastrando animal...")
@@ -277,10 +282,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
             animal.doador = auth!!.currentUser!!.uid
             animal.tamanho = pgtTamanho
             animal.situacao = situacao
-
-
             animal.bairro = bairroUser
-
 
 
             val animais = database.child("animal")
@@ -291,17 +293,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
             if (imagem != null) {
                 salvarFoto(ref, animal, id, situacao)
             } else {
-                Toast.makeText(this, "Animal não foi cadastrado :(", Toast.LENGTH_SHORT)
-                    .show()
-
-                /*   if (situacao.equals("Aguardando adoção")) {
-                       startActivity(Intent(applicationContext, CadDoacaoActivity::class.java))
-                   } else if (situacao.equals("Aguardando ajuda voluntária")) {
-                       startActivity(Intent(applicationContext, CadServicoActivity::class.java))
-                   }*/
-
-            }
-
+                Toast.makeText(this, "Animal não foi cadastrado :(", Toast.LENGTH_SHORT).show()
         }
 
         return true
@@ -351,6 +343,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
         dialog.show()
     }
 
+
     /*   fun alertaImagem(text : String) {
            val builder = AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog)
            builder.setTitle("Foto nula")
@@ -358,6 +351,13 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
            builder.setCancelable(false)
            builder.setPositiveButton("Confirmar") { dialogInterface, i -> }
 
+
+    fun alertaCamposVazios(campos: String) {
+        val builder = AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog)
+        builder.setTitle("Ops...")
+        builder.setMessage("Preencha os campos obrigatórios: /n" + campos)
+        builder.setCancelable(false)
+        builder.setPositiveButton("Confirmar") { dialogInterface, i -> }
 
            val dialog = builder.create()
            dialog.show()
@@ -578,10 +578,10 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
                 (parent.getChildAt(0) as TextView).setTypeface(Typeface.DEFAULT)
                 pgtTamanho = spinnerTamanho.getItemAtPosition(position).toString()
             }
-
             override fun onNothingSelected(parent: AdapterView<*>) {
             }
         })
+
 
 
     }
