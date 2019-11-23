@@ -44,20 +44,6 @@ class Contratante(override var email: String = "", override var nome: String = "
                   override var cep: String = "",
                   override var id: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep,id)
 
-class Processo(
-    var id: String = "",
-    var motivo: String = "",
-    var situacao: String = "",
-    var dataCriacao: String = "",
-    var dataFim: String = "",
-    var doador: String = ""
-)
-
-class AdotanteProcesso(
-    var adotante: Adotante = Adotante(),
-    var processo: Processo = Processo()
-)
-
 class Servico(
     var id: String = "",
     var tipo: String = "",
