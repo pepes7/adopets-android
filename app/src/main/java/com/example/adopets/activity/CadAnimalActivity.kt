@@ -35,7 +35,6 @@ import kotlinx.android.synthetic.main.activity_cadastro_etapas.*
 import kotlinx.android.synthetic.main.activity_cadastro_etapas.btn_continuar
 import kotlinx.android.synthetic.main.activity_cadastro_etapas.btn_voltar
 import kotlinx.android.synthetic.main.activity_cadastro_etapas.dataNasc
-import kotlinx.android.synthetic.main.activity_editar_animal.*
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -69,11 +68,12 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
         linear1 = findViewById(R.id.step1)
         linear2 = findViewById(R.id.step2)
 
-        init()
+        inicializar()
 
         database = FirebaseDatabase.getInstance().reference
         storageReference = FirebaseStorage.getInstance().reference
         auth = FirebaseAuth.getInstance()
+
 
         //recupera o bairro do usuario
         bairroUserReference = FirebaseDatabase.getInstance().reference.child("usuarios")
@@ -232,21 +232,23 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
                 camposVazios += "Imagem; "
                 // return false
             }
-            if(pgtRaca.isEmpty()){
+            if (pgtRaca.isEmpty()) {
                 camposVazios += "Raça; "
                 //   alertaImagem("Preencha a raca")
 
             }
 
-            if(pgtTamanho.isEmpty()){
+            if (pgtTamanho.isEmpty()) {
                 camposVazios += "Porte."
             }
 
-            if (camposVazios.equals("")){
+            if (camposVazios.equals("")) {
                 return true
-            } else { alertaCamposVazios(camposVazios)
-                return false}
-          
+            } else {
+                alertaCamposVazios(camposVazios)
+                return false
+            }
+
         } else if (etapa == 2) {
             val pd = ProgressDialog(this)
             pd.setMessage("Cadastrando animal...")
@@ -294,8 +296,11 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
                 salvarFoto(ref, animal, id, situacao)
             } else {
                 Toast.makeText(this, "Animal não foi cadastrado :(", Toast.LENGTH_SHORT).show()
-        }
+            }
 
+
+        }
+        
         return true
     }
 
@@ -457,7 +462,7 @@ class CadAnimalActivity : AppCompatActivity(), BottomSheetFotoCadastro.BottomShe
         return armazenaChaves
     }
 
-    fun init() {
+    fun inicializar() {
 
         val spinnerTamanho: Spinner = findViewById(R.id.spinnerTamanho)
 
