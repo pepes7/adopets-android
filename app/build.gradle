@@ -59,6 +59,9 @@ dependencies {
 
     //Dependências do botton navigationEx
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
+
+    //cep
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

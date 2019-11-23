@@ -44,20 +44,6 @@ class Contratante(override var email: String = "", override var nome: String = "
                   override var cep: String = "",
                   override var id: String = ""): Usuario(email, nome, senha, dataNasc, foto, telefone, bairro, rua, numero, complemento, cep,id)
 
-class Processo(
-    var id: String = "",
-    var motivo: String = "",
-    var situacao: String = "",
-    var dataCriacao: String = "",
-    var dataFim: String = "",
-    var doador: String = ""
-)
-
-class AdotanteProcesso(
-    var adotante: Adotante = Adotante(),
-    var processo: Processo = Processo()
-)
-
 class Servico(
     var id: String = "",
     var tipo: String = "",
@@ -70,6 +56,22 @@ class Servico(
 class ContratanteServico(
     var contratante: Contratante = Contratante(),
     var servico: Servico = Servico()
+)
+
+class AnimalServico(
+    var animal: Animal = Animal(),
+    var servico: Servico = Servico()
+)
+
+class Formulario(
+    var pgtResidencia: String = "",
+    var pgtPessoasMoram: String = "",
+    var pgtAnimaisCasa: String = "",
+    var pgtProtegerFamilia: String = "",
+    var pgtOndeTempo: String = "",
+    var pgtQuantoTempo: String = "",
+    var idAdotante : String = "",
+    var idAnimal : String = ""
 )
 
 class Animal(
@@ -88,24 +90,21 @@ class Animal(
     var doador: String = ""
 )
 
-class AnimalProceso(
+class AnimalProcesso(
     var animal: Animal = Animal(),
     var processo: Processo = Processo()
 )
 
-class AnimalServico(
-    var animal: Animal = Animal(),
-    var servico: Servico = Servico()
+class Processo(
+    var id: String = "",
+    var motivo: String = "",
+    var situacao: String = "",
+    var dataCriacao: String = "",
+    var dataFim: String = "",
+    var doador: Doador = Doador()
 )
 
-class Formulario(
-    var pgtResidencia: String = "",
-    var pgtPessoasMoram: String = "",
-    var pgtAnimaisCasa: String = "",
-    var pgtProtegerFamilia: String = "",
-    var pgtOndeTempo: String = "",
-    var pgtQuantoTempo: String = "",
-    var idAdotante : String = "",
-    var idAnimal : String = ""
-
+class AdotanteProcesso(
+    var adotante: Adotante = Adotante(),
+    var processo: Processo = Processo()
 )
