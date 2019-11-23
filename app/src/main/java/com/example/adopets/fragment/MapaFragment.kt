@@ -64,6 +64,8 @@ class MapaFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_mapa, container, false)
 
+        Permissao.validarPermissao(permissaoLocal, activity, 1)
+
         btn_animal = rootView.findViewById(R.id.add)
 
         btn_animal.setOnClickListener {
@@ -130,8 +132,6 @@ class MapaFragment : Fragment() {
                     currentMarker = null
                 }
             })
-
-            Permissao.validarPermissao(permissaoLocal, activity, 1)
 
             locationManager =
                 activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -211,7 +211,8 @@ class MapaFragment : Fragment() {
                     animalUtilAll.clear()
                     for (postSnapshot in dataSnapshot.children) {
                         val animal = postSnapshot.getValue(Animal::class.java)
-                        var query = database.child("usuarios").orderByChild("id").equalTo(animal!!.doador)
+                        var query =
+                            database.child("usuarios").orderByChild("id").equalTo(animal!!.doador)
                         query.addListenerForSingleValueEvent(object : ValueEventListener {
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
                                 for (snapshot in dataSnapshot.getChildren()) {
@@ -239,8 +240,13 @@ class MapaFragment : Fragment() {
                                                     )
                                                 )
                                         )
-                                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.9f))
 
+//                                        mMap.moveCamera(
+//                                            CameraUpdateFactory.newLatLngZoom(
+//                                                latLng,
+//                                                14.9f
+//                                            )
+//                                        )
                                     }
 
                                 }
@@ -254,7 +260,7 @@ class MapaFragment : Fragment() {
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
-                    Toast.makeText(context, "Erro ao carregar as casas", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Erro ao carregar os animais", Toast.LENGTH_SHORT).show()
                 }
             }
             ref.addValueEventListener(postListener)
