@@ -71,6 +71,7 @@
 
         <android.support.design.widget.TabLayout
                 android:id="@+id/meusanimais"
+                app:tabTextAppearance="@style/TabLayoutText"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
                 app:tabGravity="fill"
@@ -79,6 +80,7 @@
                 app:tabTextColor="@color/colorStep1">
 
             <android.support.design.widget.TabItem
+
                     android:id="@+id/doados"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

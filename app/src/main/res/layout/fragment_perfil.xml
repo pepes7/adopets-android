@@ -7,14 +7,6 @@
         android:background="@color/colorBackgroundIn"
         >
 
-    <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
-
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -30,13 +22,14 @@
                     app:layout_constraintTop_toTopOf="parent"
                     />
 
+
             <ImageView
                     android:id="@+id/imageView7"
                     android:layout_width="101dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="56dp"
+                    android:layout_marginTop="35dp"
                     android:src="@drawable/ic_adopets"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -66,7 +59,7 @@
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
                     app:cardBackgroundColor="@color/cardview_light_background"
-                    app:cardCornerRadius="@dimen/border_radius_cardView"
+                    app:cardCornerRadius="20dp"
                     app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5">
                 <LinearLayout

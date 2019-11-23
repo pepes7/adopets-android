@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.CadDoacaoActivity">
+
+    <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginLeft="44dp"
+            android:text="Doacao responsavel e quando deseja-se..."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layatividade"
+            app:layout_constraintVertical_bias="0.051" />
+
+    <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="12dp"
+            android:text="Por que você quer doá-lo?"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+    <EditText
+            android:id="@+id/motivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_pet2"
+
+            android:drawablePadding="6dp"
+            android:hint="Motivo"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView24"
+            app:layout_constraintVertical_bias="0.022" />
+
+    <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cadastro Doacao"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+            android:id="@+id/layatividade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.584"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView23">
+
+        <LinearLayout
+                android:id="@+id/radios_atividade"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+            <ImageView
+                    android:layout_width="183dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                    android:src="@drawable/bottom_doe" />
+
+            <ImageView
+
+                    android:layout_width="119dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                    android:src="@drawable/slider1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+            <RadioGroup
+                    android:id="@+id/situacao"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    tools:visibility="visible">
+
+                <RadioButton
+                        android:id="@+id/rb_adotado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="33dp"
+                        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                        android:checked="true"
+                        android:padding="8dp"
+                        android:text="Doação responsável" />
+
+                <RadioButton
+                        android:id="@+id/rb_ajudado"
+                        android:layout_width="113dp"
+                        android:layout_height="match_parent"
+
+                        android:layout_weight="1"
+                        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                        android:padding="8dp"
+                        android:text="Doação" />
+            </RadioGroup>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/motivo" />
+
+    <Button
+            android:id="@+id/btn_finalizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finalizar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+</android.support.constraint.ConstraintLayout>
