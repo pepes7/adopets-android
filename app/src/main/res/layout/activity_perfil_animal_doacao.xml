@@ -7,7 +7,7 @@
         android:background="@color/colorBackgroundIn"
         >
 
-   <ScrollView
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <android.support.constraint.ConstraintLayout
@@ -111,15 +111,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
-                            android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_extra"
+                            android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_raca"
                             android:drawablePadding="6dp" android:fontFamily="@font/nunito_regular"
                             android:text="Vira-lata" android:textColor="@color/colorBackground"
-                            android:textSize="20sp"/>
+                            android:textSize="20sp" />
+
                     <TextView
                             android:id="@+id/endereco_perfil_animal_adocao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
+                            android:layout_marginLeft="23dp" android:layout_marginTop="7dp"
                             android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_point"
                             android:drawablePadding="6dp" android:fontFamily="@font/nunito_regular"
                             android:text="Rua Barama, 116, Japiim" android:textColor="@color/colorBackground"
@@ -130,7 +131,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
-                            android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_extra"
+                            android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_tampet"
                             android:drawablePadding="6dp" android:fontFamily="@font/nunito_regular"
                             android:text="Pequena" android:textColor="@color/colorBackground"
                             android:textSize="20sp"/>
@@ -139,25 +140,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
-                            android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_extra"
+                            android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_tipo"
                             android:drawablePadding="6dp" android:fontFamily="@font/nunito_regular"
                             android:text="Cadela" android:textColor="@color/colorBackground"
                             android:textSize="20sp"/>
-                    <TextView
-                            android:id="@+id/sexo_perfil_animal_adocao"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
-                            android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_extra"
-                            android:drawablePadding="6dp" android:fontFamily="@font/nunito_regular"
-                            android:text="Fêmea" android:textColor="@color/colorBackground"
-                            android:textSize="20sp"/>
+
+
                     <TextView
                             android:id="@+id/necessidade_perfil_animal_adocao"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp" android:layout_marginTop="7dp"
-                            android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_extra"
+                            android:layout_marginRight="15dp" android:drawableLeft="@drawable/ic_patinha"
                             android:drawablePadding="6dp" android:fontFamily="@font/nunito_regular"
                             android:text="Nenhuma necessidade" android:textColor="@color/colorBackground"
                             android:textSize="20sp"/>
@@ -177,6 +171,17 @@
                             android:layout_marginRight="15dp" android:fontFamily="@font/nunito_regular"
                             android:text="Muito companheira e carinhosa" android:textColor="@color/colorBackground"
                             android:textSize="20sp"/>
+                    <TextView
+                            android:id="@+id/sexo_perfil_animal_adocao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginRight="15dp"
+                            android:fontFamily="@font/nunito_regular"
+                            android:text="Motivoo"
+                            android:textColor="@color/colorBackground"
+                            android:textSize="20sp" />
                     <Button
                             android:id="@+id/adotar"
                             android:layout_width="match_parent"

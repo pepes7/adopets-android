@@ -257,7 +257,7 @@
                                 android:visibility="visible" />
 
                         <Spinner
-                                android:id="@+id/spinnerRaca"
+                                android:id="@+id/spinnerServico"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
@@ -420,44 +420,34 @@
                         </LinearLayout>
 
 
-                        <android.support.design.widget.TextInputLayout
-                                android:id="@+id/layoutNecessidade"
+                        <TextView
+                                android:id="@+id/necessidade"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Possui necessidades? Quais?"
-                                android:visibility="visible">
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginRight="15dp"
+                                android:drawablePadding="6dp"
+                                android:fontFamily="@font/nunito_regular"
+                                android:text="Possui necessidade? Qual?"
+                                android:textColor="@color/colorBackground"
+                                android:textSize="20sp"
+                                android:visibility="visible" />
 
-                            <EditText
-                                    android:id="@+id/necessidade"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_marginTop="7dp"
-                                    android:layout_marginRight="20dp"
-                                    android:drawableLeft="@drawable/ic_pet2"
-                                    android:drawablePadding="6dp"
+                        <Spinner
+                                android:id="@+id/spinnerNecessidade"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="13dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginBottom="5dp"
+                                android:drawablePadding="6dp"
+                                android:fontFamily="@font/nunito_extralight" />
 
-                                    android:paddingLeft="5dp"
-                                    android:paddingRight="5dp"
-                                    android:textSize="20sp" />
-
-                            <Spinner
-                                    android:id="@+id/spinnerNecessidade"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_marginTop="7dp"
-                                    android:layout_marginRight="20dp"
-                                    android:drawablePadding="6dp"
-                                    android:fontFamily="@font/nunito_semibold"
-                                    android:paddingLeft="5dp"
-                                    android:paddingRight="5dp"
-                                    android:visibility="gone" />
-
-                        </android.support.design.widget.TextInputLayout>
 
                         <android.support.design.widget.TextInputLayout
-                                android:id="@+id/layoutDesc"
+                                android:id="@+id/layoutDataIn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="Conte-nos mais sobre este pet"
@@ -520,65 +510,23 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center_horizontal"
-                                android:orientation="vertical">
+                                android:orientation="horizontal">
 
-                            <LinearLayout
-                                    android:id="@+id/radios_atividade"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center_horizontal"
-                                    android:orientation="horizontal">
-
-                                <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                                        android:src="@drawable/bottom_doe" />
-
-                                <ImageView
-
-                                        android:layout_width="119dp"
-                                        android:layout_height="match_parent"
-                                        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                                        android:src="@drawable/slider1" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                    android:layout_width="wrap_content"
+                            <Button
+                                    android:id="@+id/btn_doacao"
+                                    android:layout_width="107dp"
                                     android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal"
-                                    android:orientation="horizontal">
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/btn_step1"
+                                    android:text="Adotado" />
 
-                                <RadioGroup
-                                        android:id="@+id/atividade"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:orientation="horizontal"
-                                        android:visibility="visible"
-                                        tools:visibility="visible">
-
-                                    <RadioButton
-                                            android:id="@+id/rb_adotado"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="33dp"
-                                            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                                            android:checked="true"
-                                            android:padding="8dp"
-                                            android:text="Adotado" />
-
-                                    <RadioButton
-                                            android:id="@+id/rb_ajudado"
-                                            android:layout_width="113dp"
-                                            android:layout_height="match_parent"
-
-                                            android:layout_weight="1"
-                                            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                                            android:padding="8dp"
-                                            android:text="Ajudado" />
-                                </RadioGroup>
-                            </LinearLayout>
-
+                            <Button
+                                    android:id="@+id/btn_servico"
+                                    android:layout_width="107dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/btn_step2"
+                                    android:text="Ajudado" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -618,18 +566,6 @@
                                 android:textColor="@android:color/white"
                                 android:textSize="20sp" />
 
-                        <Button
-                                android:id="@+id/btn_finalizar"
-                                android:layout_width="wrap_content"
-                                android:layout_height="37dp"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_weight="1"
-                                android:background="@drawable/btn_adotar"
-                                android:text="FINALIZAR"
-                                android:textAllCaps="false"
-                                android:textColor="@android:color/white"
-                                android:textSize="20sp"
-                                android:visibility="gone" />
                     </LinearLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>

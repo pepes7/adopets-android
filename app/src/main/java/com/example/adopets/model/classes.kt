@@ -44,7 +44,7 @@ class Processo(
     var situacao: String = "",
     var dataCriacao: String = "",
     var dataFim: String = "",
-    var doador: Doador = Doador()
+    var doador: String = ""
 )
 
 class AdotanteProcesso(

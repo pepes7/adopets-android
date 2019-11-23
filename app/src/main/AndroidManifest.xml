@@ -21,7 +21,9 @@
             android:roundIcon="@drawable/logo_icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.GaleriaFotosActivity"></activity>
+        <activity android:name=".activity.CadServicoActivity"></activity>
+        <activity android:name=".activity.CadDoacaoActivity" />
+        <activity android:name=".activity.GaleriaFotosActivity" />
         <activity android:name=".activity.ListagemServicosActivity" />
         <activity android:name=".activity.ListagemCandidatosAdocaoActivity" />
         <activity android:name=".activity.DadosPetActivity" />

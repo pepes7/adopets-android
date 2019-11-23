@@ -115,4 +115,22 @@
         <item>Shih Tzu</item>
         <item>Yorkshire</item>
     </string-array>
+
+    <string-array name="necessidade">
+        <item> </item>
+        <item>Não possui necessidade</item>
+        <item>Deficiência física</item>
+        <item>Cegueira</item>
+        <item>Surdez</item>
+        <item>Velhice</item>
+        <item>Outro</item>
+    </string-array>
+
+    <string-array name="servico">
+        <item> </item>
+        <item>Lar Temporário</item>
+        <item>Tratamento médico</item>
+        <item>Ajuda financeira com medicamentos</item>
+    </string-array>
+
 </resources>
