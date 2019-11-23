@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.CadAnimalActivity"
-        android:orientation="vertical"
         android:background="@color/colorBackgroundIn"
->
+        android:orientation="vertical"
+        tools:context=".activity.CadAnimalActivity">
 
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
 
             <ImageView
-                    android:src="@drawable/group"
+                    android:id="@+id/imageView3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/imageView3" android:scaleType="centerCrop"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/group"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-            />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                     android:id="@+id/textView5"
@@ -43,19 +43,25 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
             <android.support.v7.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content" android:layout_marginStart="16dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
                     app:cardBackgroundColor="@color/cardview_light_background"
                     app:cardCornerRadius="@dimen/border_radius_cardView"
-                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5">
+
                 <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:orientation="vertical">
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
                     <LinearLayout
                             android:id="@+id/step1"
@@ -131,7 +137,6 @@
 
                         </android.support.constraint.ConstraintLayout>
 
-
                         <android.support.design.widget.TextInputLayout
                                 android:id="@+id/layoutNome"
                                 android:layout_width="match_parent"
@@ -156,58 +161,6 @@
                         </android.support.design.widget.TextInputLayout>
 
                         <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="7dp"
-                                android:layout_marginRight="15dp"
-                                android:drawablePadding="6dp"
-                                android:fontFamily="@font/nunito_regular"
-                                android:paddingLeft="5dp"
-                                android:paddingRight="5dp"
-                                android:text="Raça"
-                                android:textColor="@color/colorBackground"
-                                android:textSize="20sp"
-                                android:visibility="visible" />
-
-                        <Spinner
-                                android:id="@+id/raca"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="7dp"
-                                android:layout_marginRight="20dp"
-                                android:textSize="20sp"
-                                android:visibility="visible" />
-
-
-                        <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="7dp"
-                                android:layout_marginRight="15dp"
-                                android:drawablePadding="6dp"
-                                android:fontFamily="@font/nunito_regular"
-                                android:paddingLeft="5dp"
-                                android:paddingRight="5dp"
-                                android:text="Porte"
-                                android:textColor="@color/colorBackground"
-                                android:textSize="20sp"
-                                android:visibility="visible" />
-
-                        <Spinner
-                                android:id="@+id/tamanho"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="7dp"
-                                android:layout_marginRight="20dp"
-                                android:textSize="20sp"
-                                android:visibility="visible" />
-
-
-                        <TextView
                                 android:id="@+id/textSexo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -218,7 +171,7 @@
                                 android:fontFamily="@font/nunito_regular"
                                 android:paddingLeft="5dp"
                                 android:paddingRight="5dp"
-                                android:text="O meu pet é um (a)..."
+                                android:text="O meu pet é um..."
                                 android:textColor="@color/colorBackground"
                                 android:textSize="20sp"
                                 android:visibility="visible" />
@@ -286,6 +239,59 @@
                             </LinearLayout>
 
                         </LinearLayout>
+
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginRight="15dp"
+                                android:drawablePadding="6dp"
+                                android:fontFamily="@font/nunito_regular"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:text="Raça"
+                                android:textColor="@color/colorBackground"
+                                android:textSize="20sp"
+                                android:visibility="visible" />
+
+                        <Spinner
+                                android:id="@+id/spinnerServico"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginRight="20dp"
+                                android:textSize="20sp"
+                                android:visibility="visible" />
+
+
+                        <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginRight="15dp"
+                                android:drawablePadding="6dp"
+                                android:fontFamily="@font/nunito_regular"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:text="Porte"
+                                android:textColor="@color/colorBackground"
+                                android:textSize="20sp"
+                                android:visibility="visible" />
+
+                        <Spinner
+                                android:id="@+id/spinnerTamanho"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginRight="20dp"
+                                android:textSize="20sp"
+                                android:visibility="visible" />
+
 
                     </LinearLayout>
 
@@ -414,30 +420,33 @@
                         </LinearLayout>
 
 
-                        <android.support.design.widget.TextInputLayout
-                                android:id="@+id/layoutNecessidade"
+                        <TextView
+                                android:id="@+id/necessidade"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:hint="Possui necessidades? Quais?"
-                                android:visibility="visible">
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginRight="15dp"
+                                android:drawablePadding="6dp"
+                                android:fontFamily="@font/nunito_regular"
+                                android:text="Possui necessidade? Qual?"
+                                android:textColor="@color/colorBackground"
+                                android:textSize="20sp"
+                                android:visibility="visible" />
 
-                            <EditText
-                                    android:id="@+id/necessidade"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="20dp"
-                                    android:layout_marginTop="7dp"
-                                    android:layout_marginRight="20dp"
-                                    android:drawableLeft="@drawable/ic_pet2"
-                                    android:drawablePadding="6dp"
-
-                                    android:paddingLeft="5dp"
-                                    android:paddingRight="5dp"
-                                    android:textSize="20sp" />
-                        </android.support.design.widget.TextInputLayout>
+                        <Spinner
+                                android:id="@+id/spinnerNecessidade"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="13dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginBottom="5dp"
+                                android:drawablePadding="6dp"
+                                android:fontFamily="@font/nunito_extralight" />
 
                         <android.support.design.widget.TextInputLayout
-                                android:id="@+id/layoutDesc"
+                                android:id="@+id/layoutDataIn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:hint="Conte-nos mais sobre este pet"
@@ -500,65 +509,23 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center_horizontal"
-                                android:orientation="vertical">
+                                android:orientation="horizontal">
 
-                            <LinearLayout
-                                    android:id="@+id/radios_atividade"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center_horizontal"
-                                    android:orientation="horizontal">
-
-                                <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                                        android:src="@drawable/bottom_doe" />
-
-                                <ImageView
-
-                                        android:layout_width="119dp"
-                                        android:layout_height="match_parent"
-                                        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                                        android:src="@drawable/slider1" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                    android:layout_width="wrap_content"
+                            <Button
+                                    android:id="@+id/btn_doacao"
+                                    android:layout_width="107dp"
                                     android:layout_height="wrap_content"
-                                    android:gravity="center_horizontal"
-                                    android:orientation="horizontal">
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/btn_step1"
+                                    android:text="Adotado" />
 
-                                <RadioGroup
-                                        android:id="@+id/atividade"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:orientation="horizontal"
-                                        android:visibility="visible"
-                                        tools:visibility="visible">
-
-                                    <RadioButton
-                                            android:id="@+id/rb_adotado"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="33dp"
-                                            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                                            android:checked="true"
-                                            android:padding="8dp"
-                                            android:text="Adotado" />
-
-                                    <RadioButton
-                                            android:id="@+id/rb_ajudado"
-                                            android:layout_width="113dp"
-                                            android:layout_height="match_parent"
-
-                                            android:layout_weight="1"
-                                            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                                            android:padding="8dp"
-                                            android:text="Ajudado" />
-                                </RadioGroup>
-                            </LinearLayout>
-
+                            <Button
+                                    android:id="@+id/btn_servico"
+                                    android:layout_width="107dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="5dp"
+                                    android:background="@drawable/btn_step2"
+                                    android:text="Ajudado" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -570,8 +537,7 @@
                             android:layout_marginTop="15dp"
                             android:layout_marginEnd="14dp"
                             android:layout_marginBottom="18dp"
-                            android:orientation="horizontal"
-                    >
+                            android:orientation="horizontal">
 
                         <Button
                                 android:id="@+id/btn_voltar"
@@ -585,7 +551,7 @@
                                 android:textAllCaps="false"
                                 android:textColor="@android:color/white"
                                 android:textSize="20sp"
-                                android:visibility="gone"/>
+                                android:visibility="gone" />
 
                         <Button
                                 android:id="@+id/btn_continuar"
@@ -596,20 +562,9 @@
                                 android:background="@drawable/btn_adotar"
                                 android:text="CONTINUAR"
                                 android:textAllCaps="false"
-                                android:textColor="@android:color/white" android:textSize="20sp"/>
-
-                        <Button
-                                android:id="@+id/btn_finalizar"
-                                android:layout_width="wrap_content"
-                                android:layout_height="37dp"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_weight="1"
-                                android:background="@drawable/btn_adotar"
-                                android:text="FINALIZAR"
-                                android:textAllCaps="false"
                                 android:textColor="@android:color/white"
-                                android:textSize="20sp"
-                                android:visibility="gone" />
+                                android:textSize="20sp" />
+
                     </LinearLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>

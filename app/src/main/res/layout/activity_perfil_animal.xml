@@ -83,6 +83,15 @@
                             android:textColor="@color/colorStep1"
                             android:textSize="20dp"
                             tools:text="MEL" />
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Dados"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/nunito_bold"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBackground"
+                            android:textSize="18dp"/>
 
                     <android.support.v7.widget.CardView
                             android:layout_width="match_parent"
@@ -99,15 +108,6 @@
                                 android:gravity="center"
                                 android:orientation="vertical">
 
-                            <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:fontFamily="@font/nunito_bold"
-                                    android:textColor="@color/colorBackground"
-                                    android:textSize="18dp"
-                                    tools:text="Dados" />
-
 
                             <LinearLayout
                                     android:layout_width="match_parent"
@@ -115,43 +115,29 @@
                                     android:gravity="center_horizontal"
                                     android:orientation="horizontal">
 
-                                <LinearLayout
+                                <TextView
+                                        android:id="@+id/raca_perfil_animal"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginRight="50dp"
-                                        android:orientation="vertical">
+                                        android:layout_marginRight="15dp"
+                                        android:drawableLeft="@drawable/ic_raca"
+                                        android:drawablePadding="6dp"
+                                        android:fontFamily="@font/nunito_regular"
+                                        android:text="Vira-lata"
+                                        android:textColor="@color/colorBackground"
+                                        android:textSize="20sp" />
 
-                                    <TextView
-                                            android:id="@+id/raca_perfil_animal"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:drawableLeft="@drawable/ic_raca"
-                                            android:drawablePadding="6dp"
-                                            android:fontFamily="@font/nunito_regular"
-                                            android:text="Vira-lata"
-                                            android:textColor="@color/colorBackground"
-                                            android:textSize="20sp" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
+                                <TextView
+                                        android:id="@+id/tipo_perfil_animal"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:orientation="vertical">
+                                        android:layout_height="wrap_content"
+                                        android:drawableLeft="@drawable/ic_tipo"
+                                        android:drawablePadding="6dp"
+                                        android:fontFamily="@font/nunito_regular"
+                                        android:text="Cadela"
+                                        android:textColor="@color/colorBackground"
+                                        android:textSize="20sp" />
 
-                                    <TextView
-                                            android:id="@+id/tipo_perfil_animal"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:drawableLeft="@drawable/ic_tipo"
-                                            android:drawablePadding="6dp"
-                                            android:fontFamily="@font/nunito_regular"
-                                            android:text="Cadela"
-                                            android:textColor="@color/colorBackground"
-                                            android:textSize="20sp" />
-
-
-                                </LinearLayout>
                             </LinearLayout>
 
                             <View
@@ -186,12 +172,20 @@
                             </LinearLayout>
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Candidatos a adotante"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/nunito_bold"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBackground"
+                            android:textSize="18dp"/>
 
                     <android.support.v7.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="15dp"
-                            android:layout_marginTop="20dp"
                             android:layout_marginRight="15dp"
                             app:cardMaxElevation="4dp">
 
@@ -199,31 +193,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="10dp"
+                                android:gravity="center"
                                 android:orientation="vertical">
-
-
-                            <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center_horizontal"
-                                    android:orientation="horizontal">
-
-
-                                <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-
-                                    <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="5dp"
-                                            android:fontFamily="@font/nunito_bold"
-                                            android:textColor="@color/colorBackground"
-                                            android:textSize="18dp"
-                                            tools:text="Candidatos" />
-                                </LinearLayout>
-                            </LinearLayout>
 
                             <View
 
@@ -260,43 +231,31 @@
                     </android.support.v7.widget.CardView>
 
 
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Serviços"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/nunito_bold"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBackground"
+                            android:textSize="18dp"/>
+
                     <android.support.v7.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="15dp"
-                            android:layout_marginTop="20dp"
                             android:layout_marginRight="15dp"
                             app:cardMaxElevation="4dp">
 
                         <LinearLayout
+
+                                android:gravity="center"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="10dp"
                                 android:orientation="vertical">
 
-
-                            <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center_horizontal"
-                                    android:orientation="horizontal">
-
-
-                                <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-
-                                    <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="5dp"
-                                            android:fontFamily="@font/nunito_bold"
-                                            android:textColor="@color/colorBackground"
-                                            android:textSize="18dp"
-                                            tools:text="Serviços" />
-                                </LinearLayout>
-                            </LinearLayout>
 
                             <View
 
@@ -331,11 +290,21 @@
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Fotos"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/nunito_bold"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorBackground"
+                            android:textSize="18dp"/>
+
                     <android.support.v7.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="15dp"
-                            android:layout_marginTop="20dp"
                             android:layout_marginRight="15dp"
                             android:layout_marginBottom="15dp"
                             app:cardMaxElevation="4dp">
@@ -344,31 +313,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="10dp"
+
+                                android:gravity="center"
                                 android:orientation="vertical">
 
-
-                            <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center_horizontal"
-                                    android:orientation="horizontal">
-
-
-                                <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-
-                                    <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="5dp"
-                                            android:fontFamily="@font/nunito_bold"
-                                            android:textColor="@color/colorBackground"
-                                            android:textSize="18dp"
-                                            tools:text="Fotos" />
-                                </LinearLayout>
-                            </LinearLayout>
 
                             <View
 
@@ -402,6 +350,7 @@
 
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
+
 
                     <!--  <Button
                             android:id="@+id/button"

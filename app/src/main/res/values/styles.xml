@@ -9,7 +9,6 @@
 
         <item name="android:fontFamily">@font/nunito_light</item>
 
-        <item name="android:textViewStyle">@style/NunitoText</item>
         <item name="android:buttonStyle">@style/NunitoButton</item>
     </style>
 
@@ -17,10 +16,16 @@
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
 
-    <style name="NunitoText" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/nunito_extrabold</item>
-        <item name="android:textColor">@color/colorTitle</item>
+    <style name="TabLayoutText" parent="TextAppearance.Design.Tab">
+
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:fontFamily">@font/nunito_bold</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:singleLine">true</item>
+
     </style>
+
+
 
     <style name="NunitoButton" parent="android:Widget.Holo.Button">
         <item name="android:fontFamily">@font/nunito</item>
