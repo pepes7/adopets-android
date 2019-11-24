@@ -9,12 +9,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.adopets.R
 import com.example.adopets.activity.CandidatoAdocaoActivity
+import com.example.adopets.model.Formulario
 import com.example.adopets.model.Usuario
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import java.util.ArrayList
 
-class CandidatosAdapter(private val context: Context, private val listCandidatos: ArrayList<Usuario>) : RecyclerView.Adapter<CandidatosAdapter.MyViewHolder>(){
+class CandidatosAdapter(private val context: Context, private val listCandidatos: ArrayList<Usuario>, private val listaFormulario : ArrayList<Formulario>) : RecyclerView.Adapter<CandidatosAdapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): MyViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.interessados_adotar,viewGroup,false)
@@ -31,25 +32,30 @@ class CandidatosAdapter(private val context: Context, private val listCandidatos
         myViewHolder.nome.text = usuario.nome
         myViewHolder.bairro.text = usuario.bairro
 
+        val formulario = listaFormulario.get(i)
+
+
+
 
         //metodo de click
 
         myViewHolder.itemView.setOnClickListener {
             val intent = Intent(context, CandidatoAdocaoActivity::class.java)
-//
-//            intent.putExtra("nome",usuario.nome)
-//            intent.putExtra("sexo",usuario.sexo)
-//            intent.putExtra("bairro",usuario.bairro)
-//            intent.putExtra("id", usuario.id)
-//            intent.putExtra("foto",usuario.foto)
-//            intent.putExtra("situacao", usuario.situacao)
-//            intent.putExtra("raca",usuario.raca)
-//            intent.putExtra("descricao",usuario.descricao)
-//            intent.putExtra("tamanho",usuario.tamanho)
-//            intent.putExtra("necessidade",usuario.necessidade)
-//            intent.putExtra("tipo",usuario.tipo)
-//            intent.putExtra("dataNasc",usuario.dataNasc)
-//            intent.putExtra("doador",usuario.doador)
+
+            //dados do adotante
+            intent.putExtra("nome",usuario.nome)
+            intent.putExtra("foto",usuario.foto)
+            intent.putExtra("telefone",usuario.telefone)
+            intent.putExtra("email",usuario.email)
+
+            //dados do seu formulario
+            intent.putExtra("pgtResidencia", formulario.pgtResidencia)
+            intent.putExtra("pgtPessoasMoram",formulario.pgtPessoasMoram)
+            intent.putExtra("pgtAnimaisCasa", formulario.pgtAnimaisCasa)
+            intent.putExtra("pgtOndeTempo",formulario.pgtOndeTempo)
+            intent.putExtra("pgtQuantoTempo",formulario.pgtQuantoTempo)
+            intent.putExtra("pgtProtegerFamilia",formulario.pgtProtegerFamilia)
+
 
 
             context.startActivity(intent)

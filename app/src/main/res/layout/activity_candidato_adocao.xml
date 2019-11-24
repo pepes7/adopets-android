@@ -59,7 +59,7 @@
                     android:visibility="visible">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/imageAdotante"
+                        android:id="@+id/imagePerfilAdotante"
                         android:layout_width="101dp"
                         android:layout_height="124dp"
                         android:layout_margin="15dp"
@@ -82,7 +82,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.061"
-                        app:layout_constraintStart_toEndOf="@+id/imageAdotante"
+                        app:layout_constraintStart_toEndOf="@+id/imagePerfilAdotante"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.288" />
 
@@ -96,7 +96,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.069"
-                        app:layout_constraintStart_toEndOf="@+id/imageAdotante"
+                        app:layout_constraintStart_toEndOf="@+id/imagePerfilAdotante"
                         app:layout_constraintTop_toBottomOf="@+id/nome"
                         app:layout_constraintVertical_bias="0.0" />
 
@@ -111,7 +111,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.125"
-                        app:layout_constraintStart_toEndOf="@+id/imageAdotante"
+                        app:layout_constraintStart_toEndOf="@+id/imagePerfilAdotante"
                         app:layout_constraintTop_toBottomOf="@+id/telefone"
                         app:layout_constraintVertical_bias="0.0" />
             </android.support.constraint.ConstraintLayout>
