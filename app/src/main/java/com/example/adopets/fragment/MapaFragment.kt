@@ -20,7 +20,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.*
-import android.net.Uri
 import com.google.android.gms.maps.model.*
 import android.util.Log
 import android.widget.Button
@@ -31,41 +30,40 @@ import com.example.adopets.helper.Permissao
 import com.example.adopets.model.Animal
 import com.example.adopets.model.Usuario
 import com.example.adopets.utils.animalUtilAll
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.firebase.database.*
 
-class MapaFragment : Fragment() {
+class MapaFragment : Fragment(), OnMapReadyCallback {
 
     private var currentMarker: Marker? = null
     private lateinit var btn_animal: Button
     private lateinit var locationManager: LocationManager
     private lateinit var locationListener: LocationListener
     private val permissaoLocal = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
-    //    private var listener: OnFragmentInteractionListener? = null
     val firebaseDatabase = FirebaseDatabase.getInstance()
     private lateinit var database: DatabaseReference
 
-    @SuppressLint("MissingPermission")
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val rootView = inflater.inflate(R.layout.fragment_mapa, container, false)
+        val root = inflater.inflate(R.layout.fragment_mapa, container, false)
+        btn_animal = root.findViewById(R.id.add)
+        val mapFragment = childFragmentManager.findFragmentById(R.id.frg) as? SupportMapFragment
+        mapFragment?.getMapAsync(this)
+        return root
+    }
 
+    @SuppressLint("MissingPermission")
+    override fun onMapReady(mMap: GoogleMap?) {
         Permissao.validarPermissao(permissaoLocal, activity, 1)
-
-        btn_animal = rootView.findViewById(R.id.add)
 
         btn_animal.setOnClickListener {
             startActivity(Intent(context, ListagemTodosAnimaisActivity::class.java))
         }
 
-        val mapFragment =
-            childFragmentManager.findFragmentById(com.example.adopets.R.id.frg) as SupportMapFragment?  //use SuppoprtMapFragment for using in fragment instead of activity  MapFragment = activity   SupportMapFragment = fragment
-        mapFragment!!.getMapAsync { mMap ->
-            mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
-
-            mMap.clear() //clear old markers
+        mMap!!.isMyLocationEnabled = true
 
             val lugar = CameraPosition.builder()
                 .target(LatLng(-3.0589489, -59.9930218))
@@ -76,7 +74,7 @@ class MapaFragment : Fragment() {
 
 //            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 5000, null)
 
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 1, null)
+            mMap!!.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 1, null)
 
             mMap!!.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
                 override fun onMarkerClick(marker: Marker): Boolean {
@@ -124,8 +122,8 @@ class MapaFragment : Fragment() {
             locationManager =
                 activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-            var lat: Double = 0.0
-            var long: Double = 0.0
+            var lat = 0.0
+            var long = 0.0
 
             class myLocationListener : LocationListener {
                 override fun onProviderEnabled(p0: String?) {
@@ -143,11 +141,11 @@ class MapaFragment : Fragment() {
                     lat = p0!!.latitude
                     long = p0.longitude
 
-                    mMap.addMarker(
-                        MarkerOptions()
-                            .position(LatLng(lat, long))
-                            .title("Meu local")
-                    )
+//                    mMap.addMarker(
+//                        MarkerOptions()
+//                            .position(LatLng(lat, long))
+//                            .title("Meu local")
+//                    )
 
                 }
 
@@ -161,7 +159,6 @@ class MapaFragment : Fragment() {
                 locationListener
             )
 
-            mMap.clear()
 
 //            mMap.addMarker(
 //                MarkerOptions()
@@ -203,7 +200,6 @@ class MapaFragment : Fragment() {
 
                                     val geocoder = Geocoder(context)
 
-//                                    try {
                                     addressList = geocoder.getFromLocationName(location, 1)
                                     if (addressList.isEmpty()) {
                                         Log.d("endereço nulo", "nenhum endereço na lista")
@@ -234,9 +230,6 @@ class MapaFragment : Fragment() {
                                                 )
                                         )
                                     }
-//                                    } catch (e: Exception) {
-//                                        e.printStackTrace()
-//                                    }
 
 //                                        mMap.moveCamera(
 //                                            CameraUpdateFactory.newLatLngZoom(
@@ -261,9 +254,6 @@ class MapaFragment : Fragment() {
                 }
             }
             ref.addValueEventListener(postListener)
-
-        }
-        return rootView
     }
 
     private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor {
@@ -320,47 +310,5 @@ class MapaFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
     }
-
-//    fun onButtonPressed(uri: Uri) {
-//        listener?.onFragmentInteraction(uri)
-//    }
-//
-//    @Throws(RuntimeException::class)
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        if (context is OnFragmentInteractionListener) {
-//            listener = context
-//        }
-//    }
-//
-//    override fun onDetach() {
-//        super.onDetach()
-//        listener = null
-//    }
-//
-//    interface OnFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        fun onFragmentInteraction(uri: Uri)
-//    }
-
-//    companion object {
-//        /**
-//         * Use this factory method to create a new instance of
-//         * this fragment using the provided parameters.
-//         *
-//         * @param param1 Parameter 1.
-//         * @param param2 Parameter 2.
-//         * @return A new instance of fragment AdotadosFragment.
-//         */
-//        // TODO: Rename and change types and number of parameters
-//        @JvmStatic
-//        fun newInstance(param1: String, param2: String) =
-//            AdotadosFragment().apply {
-//                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-//                }
-//            }
-//    }
 
 }
