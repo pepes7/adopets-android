@@ -20,11 +20,14 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.*
+
 import android.support.design.widget.BottomSheetBehavior
 import com.google.android.gms.maps.model.*
 import android.util.Log
 import android.widget.Button
 import android.widget.RelativeLayout
+
+
 import android.widget.Toast
 import com.example.adopets.R
 import com.example.adopets.activity.ListagemTodosAnimaisActivity
@@ -44,8 +47,11 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
     private val permissaoLocal = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
     val firebaseDatabase = FirebaseDatabase.getInstance()
     private lateinit var database: DatabaseReference
+
         
     private lateinit var bparent: RelativeLayout
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +60,7 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_mapa, container, false)
         btn_animal = root.findViewById(R.id.add)
+
 
 
         bparent= root.findViewById(R.id.bottom_sheet_parent)
@@ -65,6 +72,7 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
         mapFragment?.getMapAsync(this)
         return root
     }
+
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(mMap: GoogleMap?) {
@@ -135,6 +143,7 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
 
             var lat = 0.0
             var long = 0.0
+<
 
             class myLocationListener : LocationListener {
                 override fun onProviderEnabled(p0: String?) {
@@ -158,6 +167,9 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
 //                            .title("Meu local")
 //                    )
 
+
+
+            
                 }
 
             }
