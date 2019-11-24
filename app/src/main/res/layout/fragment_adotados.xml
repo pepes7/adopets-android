@@ -1,19 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context=".fragment.AdotadosFragment">
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="338dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            app:cardCornerRadius="5dp"
+            app:cardMaxElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="5dp"
+
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"></LinearLayout>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=" Voce adotou"
+                        android:textColor="#FFF77124"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="pets"
+                        android:textColor="#FFF77124"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+
+                    android:layout_width="1dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#FFF77124" />
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                <Button
+                        android:id="@+id/pendencias"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_step1"
+                        android:text="Ver pendencias" />
+
+
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/dismiss"
+                    android:layout_width="23dp"
+                    android:layout_height="22dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:drawable/presence_offline" />
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Adotados"
-            />
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewAnimais"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewAnimais"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+    </android.support.constraint.ConstraintLayout>
 </FrameLayout>

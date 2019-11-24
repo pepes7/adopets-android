@@ -1,6 +1,7 @@
 package com.example.adopets.fragment
 
-
+import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -16,53 +17,67 @@ import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Canvas
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
-import android.widget.EditText
-import android.widget.Toast
+import android.location.*
+import android.support.design.widget.BottomSheetBehavior
 import com.google.android.gms.maps.model.*
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
+import android.util.Log
 import android.widget.Button
+import android.widget.RelativeLayout
+import android.widget.Toast
 import com.example.adopets.R
 import com.example.adopets.activity.ListagemTodosAnimaisActivity
+import com.example.adopets.helper.Permissao
+import com.example.adopets.model.Animal
+import com.example.adopets.model.Usuario
+import com.example.adopets.utils.animalUtilAll
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.firebase.database.*
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- *
- */
-class MapaFragment : Fragment() {
+class MapaFragment : Fragment(), OnMapReadyCallback {
 
     private var currentMarker: Marker? = null
-    private lateinit var  btn_animal: Button
+    private lateinit var btn_animal: Button
+    private lateinit var locationManager: LocationManager
+    private lateinit var locationListener: LocationListener
+    private val permissaoLocal = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
+    val firebaseDatabase = FirebaseDatabase.getInstance()
+    private lateinit var database: DatabaseReference
+        
+    private lateinit var bparent: RelativeLayout
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val rootView = inflater.inflate(R.layout.fragment_mapa, container, false)
+        val root = inflater.inflate(R.layout.fragment_mapa, container, false)
+        btn_animal = root.findViewById(R.id.add)
 
-        btn_animal = rootView.findViewById(R.id.add)
+
+        bparent= root.findViewById(R.id.bottom_sheet_parent)
+        var bsBehavior: BottomSheetBehavior<View>
+        bsBehavior = BottomSheetBehavior.from(bparent)
+        bsBehavior.peekHeight = 100
+
+        val mapFragment = childFragmentManager.findFragmentById(R.id.frg) as? SupportMapFragment
+        mapFragment?.getMapAsync(this)
+        return root
+    }
+
+    @SuppressLint("MissingPermission")
+    override fun onMapReady(mMap: GoogleMap?) {
+        Permissao.validarPermissao(permissaoLocal, activity, 1)
 
         btn_animal.setOnClickListener {
             startActivity(Intent(context, ListagemTodosAnimaisActivity::class.java))
         }
 
-        val mapFragment =
-            childFragmentManager.findFragmentById(com.example.adopets.R.id.frg) as SupportMapFragment?  //use SuppoprtMapFragment for using in fragment instead of activity  MapFragment = activity   SupportMapFragment = fragment
-        mapFragment!!.getMapAsync { mMap ->
-            mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
-
-            mMap.clear() //clear old markers
+        mMap!!.isMyLocationEnabled = true
 
             val lugar = CameraPosition.builder()
-                .target(LatLng(-3.0589489,-59.9930218))
+                .target(LatLng(-3.0589489, -59.9930218))
                 .zoom(11.5F)
                 .bearing(0f)
                 .tilt(45f)
@@ -70,7 +85,7 @@ class MapaFragment : Fragment() {
 
 //            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 5000, null)
 
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 1, null)
+            mMap!!.animateCamera(CameraUpdateFactory.newCameraPosition(lugar), 1, null)
 
             mMap!!.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
                 override fun onMarkerClick(marker: Marker): Boolean {
@@ -109,34 +124,147 @@ class MapaFragment : Fragment() {
                 }
             })
 
-            mMap!!.setOnMapClickListener(object : GoogleMap.OnMapClickListener {
+            mMap.setOnMapClickListener(object : GoogleMap.OnMapClickListener {
                 override fun onMapClick(latLng: LatLng) {
                     currentMarker = null
                 }
             })
 
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(-3.074601, -60.039474))
-                    .title("Mel")
-                    .icon(this.context?.let{bitmapDescriptorFromVector(it, com.example.adopets.R.drawable.mel_perfil)})
+            locationManager =
+                activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+            var lat = 0.0
+            var long = 0.0
+
+            class myLocationListener : LocationListener {
+                override fun onProviderEnabled(p0: String?) {
+                }
+
+                override fun onStatusChanged(p0: String?, p1: Int, p2: Bundle?) {
+                }
+
+                override fun onProviderDisabled(p0: String?) {
+                }
+
+                override fun onLocationChanged(p0: Location?) {
+                    Log.d("Localização", "onLocationChanged: " + p0.toString())
+
+                    lat = p0!!.latitude
+                    long = p0.longitude
+
+//                    mMap.addMarker(
+//                        MarkerOptions()
+//                            .position(LatLng(lat, long))
+//                            .title("Meu local")
+//                    )
+
+                }
+
+            }
+
+            locationListener = myLocationListener()
+            locationManager.requestLocationUpdates(
+                LocationManager.GPS_PROVIDER,
+                0,
+                0F,
+                locationListener
             )
 
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(-3.115378, -59.977482))
-                    .title("Cão 2")
-                    .snippet("Talentoso")
-            )
 
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(-3.134159, -60.013139))
-                    .title("Gato")
-            )
-        }
+//            mMap.addMarker(
+//                MarkerOptions()
+//                    .position(LatLng(-3.074601, -60.039474))
+//                    .title("Mel")
+//                    .icon(this.context?.let {
+//                        bitmapDescriptorFromVector(
+//                            it,
+//                            com.example.adopets.R.drawable.mel_perfil
+//                        )
+//                    })
+//            )
+//
 
-        return rootView
+            val ref = firebaseDatabase.getReference("animal")
+            database = FirebaseDatabase.getInstance().reference
+            val postListener = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    animalUtilAll.clear()
+                    for (postSnapshot in dataSnapshot.children) {
+                        val animal = postSnapshot.getValue(Animal::class.java)
+                        var query =
+                            database.child("usuarios").orderByChild("id").equalTo(animal!!.doador)
+                        query.addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                for (snapshot in dataSnapshot.children) {
+                                    val usuario = snapshot.getValue(Usuario::class.java!!)
+                                    var rua = usuario!!.rua
+                                    var complemento = usuario!!.complemento
+                                    var bairro = usuario!!.bairro
+                                    var cep = usuario!!.cep
+
+                                    val location =
+                                        "${rua}, ${complemento}, ${bairro}, Amazonas, AM, ${cep}"
+
+                                    Log.d("location-> ", location)
+
+                                    val addressList: List<Address>
+
+                                    val geocoder = Geocoder(context)
+
+                                    addressList = geocoder.getFromLocationName(location, 1)
+                                    if (addressList.isEmpty()) {
+                                        Log.d("endereço nulo", "nenhum endereço na lista")
+                                    } else {
+                                        Log.d("endereço preenchida", "lista tem valor")
+
+                                        var address = addressList[0]
+                                        //for print
+//                                            Log.d(
+//                                                "adressList-> ",
+//                                                address.locality + " " + address.latitude + " " + address.longitude +
+//                                                        address.adminArea + " " + address.countryName + " " + address.extras +
+//                                                        " " + address.featureName + " " + address.locale + " " + address.phone +
+//                                                        " " + address.postalCode + " " + address.premises + " " + address.subAdminArea +
+//                                                        " " + address.subLocality + " " + address.thoroughfare + " " + address.subThoroughfare +
+//                                                        " " + address.url
+//                                             )
+
+                                        val latLng = LatLng(address.latitude, address.longitude)
+
+                                        mMap.addMarker(
+                                            MarkerOptions().position(latLng)
+                                                .title("${animal.nome}")
+                                                .icon(
+                                                    BitmapDescriptorFactory.defaultMarker(
+                                                        BitmapDescriptorFactory.HUE_RED
+                                                    )
+                                                )
+                                        )
+                                    }
+
+//                                        mMap.moveCamera(
+//                                            CameraUpdateFactory.newLatLngZoom(
+//                                                latLng,
+//                                                14.9f
+//                                            )
+//                                        )
+
+                                }
+                            }
+
+                            override fun onCancelled(databaseError: DatabaseError) {
+                                //Se ocorrer um erro
+                            }
+                        })
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {
+                    Toast.makeText(context, "Erro ao carregar os animais", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+            ref.addValueEventListener(postListener)
     }
 
     private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor {
@@ -155,6 +283,43 @@ class MapaFragment : Fragment() {
         val canvas = Canvas(bitmap)
         vectorDrawable.draw(canvas)
         return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+
+    @SuppressLint("MissingPermission")
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        for (permissaoResultado in grantResults) {
+            if (permissaoResultado == PackageManager.PERMISSION_DENIED) {
+                alertaPermissao()
+            } else {
+                //recuperar local usuario
+                locationManager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER,
+                    10000,
+                    10000F,
+                    locationListener
+                )
+            }
+        }
+
+    }
+
+    fun alertaPermissao() {
+        val builder = android.support.v7.app.AlertDialog.Builder(
+            activity!!,
+            R.style.Theme_AppCompat_Light_Dialog
+        )
+        builder.setTitle("Permissões Negadas")
+        builder.setMessage("Para a melhor utilização do app é necessário aceitar a permissão")
+        builder.setCancelable(false)
+        builder.setPositiveButton("Confirmar") { dialogInterface, i -> }
+        val dialog = builder.create()
+        dialog.show()
     }
 
 }

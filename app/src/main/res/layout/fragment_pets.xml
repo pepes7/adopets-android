@@ -16,27 +16,25 @@
 
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="178dp"
+                android:layout_height="101dp"
                 android:background="@drawable/group">
 
 
             <Button
                     android:id="@+id/add"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="19dp"
+                    android:layout_width="24dp"
+                    android:layout_height="27dp"
 
-                    android:layout_marginLeft="19dp"
                     android:layout_marginEnd="40dp"
                     android:layout_marginRight="40dp"
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/ic_addpet"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/textView22"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView7"
-                    app:layout_constraintVertical_bias="0.428" />
+                    app:layout_constraintHorizontal_bias="0.96"
+                    app:layout_constraintStart_toEndOf="@+id/imageView7"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.681" />
 
             <ImageView
                     android:id="@+id/imageView7"
@@ -49,34 +47,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="217dp"
-                    android:layout_height="62dp"
-                    android:fontFamily="@font/nunito_bold"
-                    android:gravity="center"
-                    android:text="SEUS PETS"
-                    android:textColor="@color/common_google_signin_btn_text_dark_default"
-                    android:textSize="@dimen/title_home"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView7"
-                    app:layout_constraintVertical_bias="0.309" />
-
 
         </android.support.constraint.ConstraintLayout>
 
-
-
         <android.support.design.widget.TabLayout
-                android:id="@+id/meusanimais"
-                app:tabTextAppearance="@style/TabLayoutText"
+                android:id="@+id/tabs_animais"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
                 app:tabGravity="fill"
                 app:tabIndicatorColor="@color/colorBackground"
                 app:tabSelectedTextColor="@color/colorBackground"
+                app:tabTextAppearance="@style/TabLayoutText"
                 app:tabTextColor="@color/colorStep1">
 
             <android.support.design.widget.TabItem
@@ -100,8 +81,8 @@
 
         </android.support.design.widget.TabLayout>
 
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerViewAnimais"
+        <android.support.v4.view.ViewPager
+                android:id="@+id/viewPagerTabs"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
