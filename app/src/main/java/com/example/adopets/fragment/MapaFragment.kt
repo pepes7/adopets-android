@@ -40,7 +40,7 @@ class MapaFragment : Fragment() {
     private lateinit var locationManager: LocationManager
     private lateinit var locationListener: LocationListener
     private val permissaoLocal = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
-//    private var listener: OnFragmentInteractionListener? = null
+    //    private var listener: OnFragmentInteractionListener? = null
     val firebaseDatabase = FirebaseDatabase.getInstance()
     private lateinit var database: DatabaseReference
 
@@ -197,17 +197,21 @@ class MapaFragment : Fragment() {
                                     val location =
                                         "${rua}, ${complemento}, ${bairro}, Amazonas, AM, ${cep}"
 
+                                    Log.d("location-> ", location)
+
                                     val addressList: List<Address>
 
                                     val geocoder = Geocoder(context)
 
 //                                    try {
-                                        addressList = geocoder.getFromLocationName(location, 5)
-                                        if(addressList == null) {
-                                            Log.d("endereço nulo", "nenhum endereço na lista")
-                                        } else {
-                                            var address = addressList[0]
-                                            //for print
+                                    addressList = geocoder.getFromLocationName(location, 1)
+                                    if (addressList.isEmpty()) {
+                                        Log.d("endereço nulo", "nenhum endereço na lista")
+                                    } else {
+                                        Log.d("endereço preenchida", "lista tem valor")
+
+                                        var address = addressList[0]
+                                        //for print
 //                                            Log.d(
 //                                                "adressList-> ",
 //                                                address.locality + " " + address.latitude + " " + address.longitude +
@@ -218,9 +222,9 @@ class MapaFragment : Fragment() {
 //                                                        " " + address.url
 //                                             )
 
-                                            val latLng = LatLng(address.latitude, address.longitude)
+                                        val latLng = LatLng(address.latitude, address.longitude)
 
-                                            mMap.addMarker(
+                                        mMap.addMarker(
                                             MarkerOptions().position(latLng)
                                                 .title("${animal.nome}")
                                                 .icon(
@@ -229,7 +233,7 @@ class MapaFragment : Fragment() {
                                                     )
                                                 )
                                         )
-                                        }
+                                    }
 //                                    } catch (e: Exception) {
 //                                        e.printStackTrace()
 //                                    }
@@ -259,7 +263,6 @@ class MapaFragment : Fragment() {
             ref.addValueEventListener(postListener)
 
         }
-
         return rootView
     }
 
