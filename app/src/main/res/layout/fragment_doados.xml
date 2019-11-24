@@ -8,7 +8,6 @@
 
         tools:context=".fragment.DoadosFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -46,7 +45,8 @@
                             android:layout_height="wrap_content"
                             android:text="0"
                             android:textColor="@color/colorPrimaryDark"
-                            android:textSize="17dp" />
+                            android:textSize="17dp"
+                            android:textStyle="bold" />
 
                     <TextView
                             android:id="@+id/textView26"
@@ -55,9 +55,9 @@
                             android:layout_weight="1"
                             android:text="Para doação"
                             android:textColor="#FFF77124"
-                            android:textSize="14dp" />
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
                 </LinearLayout>
-
 
                 <View
 
@@ -78,7 +78,8 @@
                             android:layout_height="wrap_content"
                             android:text="0"
                             android:textColor="@color/colorPrimaryDark"
-                            android:textSize="17dp" />
+                            android:textSize="17dp"
+                            android:textStyle="bold" />
 
                     <TextView
                             android:id="@+id/textView27"
@@ -86,10 +87,19 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Doados"
-                            android:textColor="#FFF77124" />
+                            android:textColor="#FFF77124"
+                            android:textStyle="bold" />
 
 
                 </LinearLayout>
+
+                <Button
+                        android:id="@+id/dismiss"
+                        android:layout_width="23dp"
+                        android:layout_height="22dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@android:drawable/presence_offline" />
+
 
             </LinearLayout>
 

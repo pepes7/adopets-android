@@ -1,8 +1,12 @@
 package com.example.adopets.fragment
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
@@ -10,12 +14,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TableLayout
 import com.example.adopets.R
 import com.example.adopets.activity.CadAnimalActivity
 import com.example.adopets.adapter.AnimalAdapter
+import com.example.adopets.adapter.TabsAdapter
 import com.example.adopets.model.Animal
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_pets.*
 import java.util.*
 
 
@@ -30,12 +37,9 @@ private const val ARG_PARAM2 = "param2"
  */
 class PetsFragment : Fragment() {
 
-    private lateinit var recyclerViewAnimais: RecyclerView
-    private var animais = arrayListOf<Animal>()
-    private lateinit var adapterAnimal: AnimalAdapter
     private lateinit var btn_animal: Button
-    private lateinit var animaisRecuperados : DatabaseReference
-    private lateinit var auth: FirebaseAuth
+    private lateinit var tabs_animais: TabLayout
+    private lateinit var viewPagerTabs: ViewPager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,77 +48,25 @@ class PetsFragment : Fragment() {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_pets, container, false)
 
+        viewPagerTabs = view.findViewById(R.id.viewPagerTabs)
+        tabs_animais = view.findViewById(R.id.tabs_animais)
+
+        val fragmentAdapter = TabsAdapter(childFragmentManager)
+        //supportFragmentManager
+
+        viewPagerTabs.adapter = fragmentAdapter
+        tabs_animais.setupWithViewPager(viewPagerTabs)
+
+        //tabs()
         btn_animal = view.findViewById(R.id.add)
         btn_animal.setOnClickListener {
             startActivity(Intent(context, CadAnimalActivity::class.java))
         }
-        auth = FirebaseAuth.getInstance()
-
-        animaisRecuperados =  FirebaseDatabase.getInstance().reference.child("animal")
-
-        recyclerViewAnimais = view.findViewById(R.id.recyclerViewAnimais)
-        recyclerViewAnimais.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        recyclerViewAnimais.hasFixedSize()
-
-        adapterAnimal = AnimalAdapter(context!!,animais)
-
-        recyclerViewAnimais.adapter = adapterAnimal
-
-        //recupera dados
-        recuperarAnimal()
 
 
 
         return view
     }
 
-    private fun recuperarAnimal(){
-        animaisRecuperados.addValueEventListener(object : ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-            }
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-              animais.clear()
-                for (d in dataSnapshot.children){
-                    val u = d.getValue(Animal::class.java)
-
-                    //verifica se o usuário atual fez a doaçaõ
-                    if(u!!.doador.equals(auth!!.currentUser!!.uid)){
-                        animais.add(u!!)
-                    }
-
-
-                }
-
-                Collections.reverse(animais)
-                adapterAnimal.notifyDataSetChanged()
-            }
-
-        })
-
-    }
-
-    private fun animais(): List<Animal> {
-
-        var query: Query =  FirebaseDatabase.getInstance().reference.child("animais")
-        query.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                //Passar os dados para a interface grafica
-                for (snapshot in dataSnapshot.getChildren()) {
-                    val animal = snapshot.getValue(Animal::class.java!!)
-                    println(animal?.nome)
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                //Se ocorrer um erro
-            }
-        })
-
-        return listOf(
-            Animal("Tots", "Macho", "Japiim"),
-            Animal("Mel", "Fêmea", "São Jorge"),
-            Animal("Ferrer", "Macho", "Alvorada"))
-    }
 
 }

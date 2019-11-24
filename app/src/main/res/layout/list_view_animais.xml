@@ -32,7 +32,7 @@
                 android:id="@+id/txt_nome_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_pet2"
+                android:drawableLeft="@drawable/ic_animal"
                 android:drawablePadding="6dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="15dp"
@@ -41,9 +41,9 @@
         <TextView
                 android:id="@+id/txt_sexo_list"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
 
-                android:drawableLeft="@drawable/ic_pet3"
+                android:drawableLeft="@drawable/ic_sexo"
                 android:drawablePadding="6dp"
                 android:fontFamily="@font/nunito_regular"
                 android:textColor="@color/colorPrimaryDark"
@@ -63,24 +63,6 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="15dp"
                 tools:text="Bairro" />
-        <LinearLayout
-                android:layout_width="148dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" android:gravity="center_horizontal" android:orientation="horizontal">
-            <Button
-                    android:id="@+id/favoritar"
-                    android:layout_width="30dp"
-                    android:layout_height="28dp" android:layout_marginRight="10dp"
-                    android:background="@android:drawable/btn_star_big_off"
-                    />
-            <Button
-                    android:id="@+id/ignorar"
-                    android:layout_width="27dp"
-                    android:layout_height="28dp"
-                    android:background="@android:drawable/ic_delete"
-                    />
-        </LinearLayout>
 
     </LinearLayout>
 
