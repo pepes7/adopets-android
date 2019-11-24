@@ -263,7 +263,6 @@ class MapaFragment : Fragment() {
             ref.addValueEventListener(postListener)
 
         }
-
         return rootView
     }
 
