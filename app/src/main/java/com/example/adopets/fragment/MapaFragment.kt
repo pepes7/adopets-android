@@ -142,7 +142,7 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
 
             var lat = 0.0
             var long = 0.0
-<
+
 
             class myLocationListener : LocationListener {
                 override fun onProviderEnabled(p0: String?) {
