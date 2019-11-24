@@ -14,6 +14,7 @@ import java.util.*
 class ListagemCandidatosAdocaoActivity : AppCompatActivity() {
 
     private var usuarios = arrayListOf<Usuario>()
+    private var formularios = arrayListOf<Formulario>()
     private lateinit var usuariosRecuperados : DatabaseReference
     private lateinit var formulariosRecuperados : DatabaseReference
     private lateinit var adapterCandidato: CandidatosAdapter
@@ -30,7 +31,7 @@ class ListagemCandidatosAdocaoActivity : AppCompatActivity() {
         recyclerViewTodosAdotantes.layoutManager = LinearLayoutManager(this)
         recyclerViewTodosAdotantes.hasFixedSize()
 
-        adapterCandidato = CandidatosAdapter(this, usuarios)
+        adapterCandidato = CandidatosAdapter(this, usuarios,formularios)
 
         recyclerViewTodosAdotantes.adapter = adapterCandidato
 
@@ -48,15 +49,19 @@ class ListagemCandidatosAdocaoActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                usuarios.clear()
+                formularios.clear()
                 for (d in dataSnapshot.children){
                     val u = d.getValue(Formulario::class.java)
 
                     //verifica o id do animal e pega o id do candidato
                     if(u!!.idAnimal.equals( data!!.getString("id"))){
+                        formularios.add(u!!)
                         exibirCandidato(u.idAdotante)
                     }
 
                 }
+                Collections.reverse(formularios)
             }
 
         })
@@ -70,7 +75,6 @@ class ListagemCandidatosAdocaoActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                usuarios.clear()
                 for (d in dataSnapshot.children){
                     val u = d.getValue(Usuario::class.java)
 
