@@ -19,21 +19,22 @@ import android.content.pm.PackageManager
 import android.location.*
 
 import android.support.design.widget.BottomSheetBehavior
+import android.support.v7.widget.StaggeredGridLayoutManager
 import com.google.android.gms.maps.model.*
 import android.util.Log
-import android.widget.Button
-import android.widget.RelativeLayout
+import android.widget.*
 
 
-import android.widget.Toast
 import com.example.adopets.R
 import com.example.adopets.activity.ListagemTodosAnimaisActivity
+import com.example.adopets.adapter.AnimalCheckAdapter
 import com.example.adopets.helper.Permissao
 import com.example.adopets.model.Animal
 import com.example.adopets.model.Usuario
 import com.example.adopets.utils.animalUtilAll
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_mapa.*
 
 class MapaFragment : Fragment(), OnMapReadyCallback {
 
@@ -45,9 +46,19 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
     val firebaseDatabase = FirebaseDatabase.getInstance()
     private lateinit var database: DatabaseReference
 
-        
+
     private lateinit var bparent: RelativeLayout
 
+    //checkpoint, ao clicar lista animais no mesmo local
+    private lateinit var btn_check: Button
+
+    //sair da listagem
+    private lateinit var btn_volta: ImageView
+
+    //layouts de exibicao para trocar conforme o clicar
+    private lateinit var linearDicas: LinearLayout
+    private lateinit var linearListaPets: LinearLayout
+    private lateinit var adapterAnimal: AnimalCheckAdapter
 
 
     override fun onCreateView(
@@ -59,8 +70,25 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
         btn_animal = root.findViewById(R.id.add)
 
 
+        btn_check = root.findViewById(R.id.btn_checkpoint)
+        btn_volta = root.findViewById(R.id.voltar)
 
-        bparent= root.findViewById(R.id.bottom_sheet_parent)
+        linearDicas = root.findViewById(R.id.linkTelasDicas)
+        linearListaPets = root.findViewById(R.id.animaisLocal)
+
+        btn_check.setOnClickListener {
+            linearDicas.visibility = View.GONE
+            linearListaPets.visibility = View.VISIBLE
+            //chame a listagem aqui, a lista ja esta visivel
+        }
+
+        btn_volta.setOnClickListener {
+            linearListaPets.visibility = View.GONE
+            linearDicas.visibility = View.VISIBLE
+        }
+
+
+        bparent = root.findViewById(R.id.bottom_sheet_parent)
         var bsBehavior: BottomSheetBehavior<View>
         bsBehavior = BottomSheetBehavior.from(bparent)
         bsBehavior.peekHeight = 100
@@ -96,7 +124,37 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
                 override fun onMarkerClick(marker: Marker): Boolean {
                     currentMarker = marker
 
+                    linearDicas.visibility = View.GONE
+                    linearListaPets.visibility = View.VISIBLE
 
+                    val animaisRecuperados =
+                        FirebaseDatabase.getInstance().reference.child("animal")
+
+                    var animais = arrayListOf<Animal>()
+
+                    recyclerViewAnimais.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                    recyclerViewAnimais.hasFixedSize()
+                    adapterAnimal = AnimalCheckAdapter(context!!,animais)
+                    recyclerViewAnimais.adapter = adapterAnimal
+
+                    animaisRecuperados.addValueEventListener(object : ValueEventListener {
+                        override fun onCancelled(p0: DatabaseError) {
+                        }
+
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            animais.clear()
+                            for (d in dataSnapshot.children) {
+                                val a = d.getValue(Animal::class.java)
+
+                                animais.add(a!!)
+
+                            }
+
+                            animais.reverse()
+                            adapterAnimal.notifyDataSetChanged()
+                        }
+
+                    })
 
 //                    val builder = AlertDialog.Builder(activity)
 //                    with(builder) {
@@ -142,7 +200,6 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
 
             var lat = 0.0
             var long = 0.0
-<
 
             class myLocationListener : LocationListener {
                 override fun onProviderEnabled(p0: String?) {
@@ -167,8 +224,6 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
 //                    )
 
 
-
-            
                 }
 
             }
