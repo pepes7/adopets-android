@@ -2,7 +2,6 @@ package com.example.adopets.fragment
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -14,11 +13,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import android.graphics.Bitmap
 import android.support.v4.content.ContextCompat
 import android.content.Context
-import android.content.DialogInterface
 import android.graphics.Canvas
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.location.*
 import com.google.android.gms.maps.model.*
 import android.util.Log
@@ -57,13 +54,13 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(mMap: GoogleMap?) {
-        Permissao.validarPermissao(permissaoLocal, activity, 1)
+        if (Permissao.validarPermissao(permissaoLocal, activity, 1)) {
 
-        btn_animal.setOnClickListener {
-            startActivity(Intent(context, ListagemTodosAnimaisActivity::class.java))
-        }
+            btn_animal.setOnClickListener {
+                startActivity(Intent(context, ListagemTodosAnimaisActivity::class.java))
+            }
 
-        mMap!!.isMyLocationEnabled = true
+            mMap!!.isMyLocationEnabled = true
 
             val lugar = CameraPosition.builder()
                 .target(LatLng(-3.0589489, -59.9930218))
@@ -80,34 +77,36 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
                 override fun onMarkerClick(marker: Marker): Boolean {
                     currentMarker = marker
 
-                    val builder = AlertDialog.Builder(activity)
-                    with(builder) {
-                        setTitle("O que você deseja fazer com este animal?")
-                        setPositiveButton("Adotar", null)
-                        setNegativeButton("Ajudar", null)
-                        setNeutralButton("Cancelar", null)
-                    }
 
-                    val alertDialog = builder.create()
-                    alertDialog.show()
 
-                    val button = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE)
-                    with(button) {
-                        setPadding(0, 0, 20, 0)
-                        setTextColor(Color.RED)
-                    }
-
-                    val button2 = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE)
-                    with(button2) {
-                        setPadding(0, 0, 40, 0)
-                        setTextColor(Color.BLUE)
-                    }
-
-                    val button3 = alertDialog.getButton(DialogInterface.BUTTON_NEUTRAL)
-                    with(button3) {
-                        setPadding(0, 0, 20, 0)
-                        setTextColor(Color.DKGRAY)
-                    }
+//                    val builder = AlertDialog.Builder(activity)
+//                    with(builder) {
+//                        setTitle("O que você deseja fazer com este animal?")
+//                        setPositiveButton("Adotar", null)
+//                        setNegativeButton("Ajudar", null)
+//                        setNeutralButton("Cancelar", null)
+//                    }
+//
+//                    val alertDialog = builder.create()
+//                    alertDialog.show()
+//
+//                    val button = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE)
+//                    with(button) {
+//                        setPadding(0, 0, 20, 0)
+//                        setTextColor(Color.RED)
+//                    }
+//
+//                    val button2 = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE)
+//                    with(button2) {
+//                        setPadding(0, 0, 40, 0)
+//                        setTextColor(Color.BLUE)
+//                    }
+//
+//                    val button3 = alertDialog.getButton(DialogInterface.BUTTON_NEUTRAL)
+//                    with(button3) {
+//                        setPadding(0, 0, 20, 0)
+//                        setTextColor(Color.DKGRAY)
+//                    }
 
                     return false
                 }
@@ -254,6 +253,10 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
                 }
             }
             ref.addValueEventListener(postListener)
+
+        }
+
+
     }
 
     private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor {
