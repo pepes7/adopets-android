@@ -37,7 +37,6 @@ class ListagemTodosAnimaisActivity : AppCompatActivity() {
 //            startActivity(Intent(this, PerfilAnimalActivity::class.java))
 //        }
 
-
         auth = FirebaseAuth.getInstance()
         animaisRecuperados =  FirebaseDatabase.getInstance().reference.child("animal")
 
