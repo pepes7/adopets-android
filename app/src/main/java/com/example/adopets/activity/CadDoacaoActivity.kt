@@ -67,10 +67,7 @@ class CadDoacaoActivity : AppCompatActivity() {
         processo.id = id
         processo.motivo = mot
         processo.situacao = situDoaResp
-        database = FirebaseDatabase.getInstance().reference
-        var query =
-            database.child("usuarios").orderByChild("id").equalTo(auth!!.currentUser!!.uid)
-        processo.doador = query as Doador
+        processo.doador = auth!!.currentUser!!.uid
         processo.dataCriacao = dataAtual()
 
         val processos = database.child("processo")

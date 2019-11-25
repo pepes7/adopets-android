@@ -19,21 +19,22 @@ import android.content.pm.PackageManager
 import android.location.*
 
 import android.support.design.widget.BottomSheetBehavior
+import android.support.v7.widget.StaggeredGridLayoutManager
 import com.google.android.gms.maps.model.*
 import android.util.Log
-import android.widget.Button
-import android.widget.RelativeLayout
+import android.widget.*
 
 
-import android.widget.Toast
 import com.example.adopets.R
 import com.example.adopets.activity.ListagemTodosAnimaisActivity
+import com.example.adopets.adapter.AnimalCheckAdapter
 import com.example.adopets.helper.Permissao
 import com.example.adopets.model.Animal
 import com.example.adopets.model.Usuario
 import com.example.adopets.utils.animalUtilAll
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_mapa.*
 
 class MapaFragment : Fragment(), OnMapReadyCallback {
 
@@ -45,9 +46,19 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
     val firebaseDatabase = FirebaseDatabase.getInstance()
     private lateinit var database: DatabaseReference
 
-        
+
     private lateinit var bparent: RelativeLayout
 
+    //checkpoint, ao clicar lista animais no mesmo local
+    private lateinit var btn_check: Button
+
+    //sair da listagem
+    private lateinit var btn_volta: ImageView
+
+    //layouts de exibicao para trocar conforme o clicar
+    private lateinit var linearDicas: LinearLayout
+    private lateinit var linearListaPets: LinearLayout
+    private lateinit var adapterAnimal: AnimalCheckAdapter
 
 
     override fun onCreateView(
@@ -59,8 +70,25 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
         btn_animal = root.findViewById(R.id.add)
 
 
+        btn_check = root.findViewById(R.id.btn_checkpoint)
+        btn_volta = root.findViewById(R.id.voltar)
 
-        bparent= root.findViewById(R.id.bottom_sheet_parent)
+        linearDicas = root.findViewById(R.id.linkTelasDicas)
+        linearListaPets = root.findViewById(R.id.animaisLocal)
+
+        btn_check.setOnClickListener {
+            linearDicas.visibility = View.GONE
+            linearListaPets.visibility = View.VISIBLE
+            //chame a listagem aqui, a lista ja esta visivel
+        }
+
+        btn_volta.setOnClickListener {
+            linearListaPets.visibility = View.GONE
+            linearDicas.visibility = View.VISIBLE
+        }
+
+
+        bparent = root.findViewById(R.id.bottom_sheet_parent)
         var bsBehavior: BottomSheetBehavior<View>
         bsBehavior = BottomSheetBehavior.from(bparent)
         bsBehavior.peekHeight = 100
@@ -96,53 +124,84 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
                 override fun onMarkerClick(marker: Marker): Boolean {
                     currentMarker = marker
 
+                    linearDicas.visibility = View.GONE
+                    linearListaPets.visibility = View.VISIBLE
+
+                    val latitude = marker.position.latitude
+                    val longitude = marker.position.longitude
+
+                    val addressList: List<Address>
+
+                    val geocoder = Geocoder(context)
+
+                    addressList = geocoder.getFromLocation(latitude, longitude, 1)
+
+                    var address = addressList[0]
+
+                    Log.d(
+                        "adressList-> ",
+                        address.postalCode
+                    )
+
+                    val cep = address.postalCode
+
+                    val animaisRecuperados =
+                        FirebaseDatabase.getInstance().reference.child("animal")
+
+                    var animais = arrayListOf<Animal>()
+
+                    recyclerViewAnimais.layoutManager =
+                        StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                    recyclerViewAnimais.hasFixedSize()
+                    adapterAnimal = AnimalCheckAdapter(context!!, animais)
+                    recyclerViewAnimais.adapter = adapterAnimal
 
 
-//                    val builder = AlertDialog.Builder(activity)
-//                    with(builder) {
-//                        setTitle("O que você deseja fazer com este animal?")
-//                        setPositiveButton("Adotar", null)
-//                        setNegativeButton("Ajudar", null)
-//                        setNeutralButton("Cancelar", null)
-//                    }
-//
-//                    val alertDialog = builder.create()
-//                    alertDialog.show()
-//
-//                    val button = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE)
-//                    with(button) {
-//                        setPadding(0, 0, 20, 0)
-//                        setTextColor(Color.RED)
-//                    }
-//
-//                    val button2 = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE)
-//                    with(button2) {
-//                        setPadding(0, 0, 40, 0)
-//                        setTextColor(Color.BLUE)
-//                    }
-//
-//                    val button3 = alertDialog.getButton(DialogInterface.BUTTON_NEUTRAL)
-//                    with(button3) {
-//                        setPadding(0, 0, 20, 0)
-//                        setTextColor(Color.DKGRAY)
-//                    }
+                    var query = database.child("usuarios").orderByChild("cep").equalTo(cep)
+                    query.addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onCancelled(p0: DatabaseError) {
 
+                        }
+
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            for (snapshot in dataSnapshot.children) {
+                                val usuario = snapshot.getValue(Usuario::class.java)
+                                var query = FirebaseDatabase.getInstance().reference.child("animal")
+                                    .orderByChild("doador").equalTo(usuario!!.id)
+                                query.addListenerForSingleValueEvent(object : ValueEventListener {
+                                    override fun onDataChange(p0: DataSnapshot) {
+                                        animais.clear()
+                                        for (snapshot in p0.children) {
+                                            val animal = snapshot.getValue(Animal::class.java)
+                                            animais.add(animal!!)
+                                        }
+                                        animais.reverse()
+                                        adapterAnimal.notifyDataSetChanged()
+                                    }
+
+                                    override fun onCancelled(p0: DatabaseError) {
+
+                                    }
+                                })
+                            }
+                        }
+                    })
                     return false
                 }
             })
 
-            mMap.setOnMapClickListener(object : GoogleMap.OnMapClickListener {
-                override fun onMapClick(latLng: LatLng) {
-                    currentMarker = null
-                }
-            })
+            mMap.setOnMapClickListener(
+                object : GoogleMap.OnMapClickListener {
+                    override fun onMapClick(latLng: LatLng) {
+                        currentMarker = null
+                    }
+                })
 
             locationManager =
                 activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
             var lat = 0.0
             var long = 0.0
-
 
             class myLocationListener : LocationListener {
                 override fun onProviderEnabled(p0: String?) {
@@ -167,8 +226,6 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
 //                    )
 
 
-
-            
                 }
 
             }
@@ -203,11 +260,14 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
                     for (postSnapshot in dataSnapshot.children) {
                         val animal = postSnapshot.getValue(Animal::class.java)
                         var query =
-                            database.child("usuarios").orderByChild("id").equalTo(animal!!.doador)
-                        query.addListenerForSingleValueEvent(object : ValueEventListener {
+                            database.child("usuarios").orderByChild("id")
+                                .equalTo(animal!!.doador)
+                        query.addListenerForSingleValueEvent(object :
+                            ValueEventListener {
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
                                 for (snapshot in dataSnapshot.children) {
-                                    val usuario = snapshot.getValue(Usuario::class.java!!)
+                                    val usuario =
+                                        snapshot.getValue(Usuario::class.java!!)
                                     var rua = usuario!!.rua
                                     var complemento = usuario!!.complemento
                                     var bairro = usuario!!.bairro
@@ -222,9 +282,13 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
 
                                     val geocoder = Geocoder(context)
 
-                                    addressList = geocoder.getFromLocationName(location, 1)
+                                    addressList =
+                                        geocoder.getFromLocationName(location, 1)
                                     if (addressList.isEmpty()) {
-                                        Log.d("endereço nulo", "nenhum endereço na lista")
+                                        Log.d(
+                                            "endereço nulo",
+                                            "nenhum endereço na lista"
+                                        )
                                     } else {
                                         Log.d("endereço preenchida", "lista tem valor")
 
@@ -240,7 +304,8 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
 //                                                        " " + address.url
 //                                             )
 
-                                        val latLng = LatLng(address.latitude, address.longitude)
+                                        val latLng =
+                                            LatLng(address.latitude, address.longitude)
 
                                         mMap.addMarker(
                                             MarkerOptions().position(latLng)
@@ -252,14 +317,6 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
                                                 )
                                         )
                                     }
-
-//                                        mMap.moveCamera(
-//                                            CameraUpdateFactory.newLatLngZoom(
-//                                                latLng,
-//                                                14.9f
-//                                            )
-//                                        )
-
                                 }
                             }
 
@@ -271,7 +328,11 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
-                    Toast.makeText(context, "Erro ao carregar os animais", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        context,
+                        "Erro ao carregar os animais",
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                 }
             }
@@ -282,7 +343,10 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
 
     }
 
-    private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor {
+    private fun bitmapDescriptorFromVector(
+        context: Context,
+        vectorResId: Int
+    ): BitmapDescriptor {
         val vectorDrawable = ContextCompat.getDrawable(context, vectorResId)
         vectorDrawable!!.setBounds(
             0,
