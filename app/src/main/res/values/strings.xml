@@ -32,6 +32,8 @@
     <string name="sair">Sair</string>
     <string name="descricao_sair">Encerrar sessão</string>
 
+    <string name="default_notification_channel_id">fcm_default_channel</string>
+
     <string-array name="form_moradia">
         <item> </item>
         <item>Casa (dono)</item>
