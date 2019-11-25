@@ -32,7 +32,7 @@ class AjudadosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view: View = inflater.inflate(R.layout.fragment_doados, container, false)
+        val view: View = inflater!!.inflate(R.layout.fragment_ajudados, container, false)
 
         btn_dismiss = view.findViewById(R.id.dismiss)
         btn_dismiss.setOnClickListener {
@@ -66,30 +66,30 @@ class AjudadosFragment : Fragment() {
 
 
     private fun recuperarAnimal(){
-     /*   animaisRecuperados.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-            }
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                animais.clear()
-                for (d in dataSnapshot.children){
-                    val u = d.getValue(Animal::class.java)
-
-                    //verifica se o usuário atual fez a doaçaõ
-                    if(u!!.adotante.equals(auth!!.currentUser!!.uid)){
-                        animais.add(u!!)
-                    }
-
-
-                }
-
-                Collections.reverse(animais)
-                adapterAnimal.notifyDataSetChanged()
-            }
-
-        })
-
-   */ }
+        /*   animaisRecuperados.addValueEventListener(object : ValueEventListener {
+               override fun onCancelled(p0: DatabaseError) {
+               }
+   
+               override fun onDataChange(dataSnapshot: DataSnapshot) {
+                   animais.clear()
+                   for (d in dataSnapshot.children){
+                       val u = d.getValue(Animal::class.java)
+   
+                       //verifica se o usuário atual fez a doaçaõ
+                       if(u!!.adotante.equals(auth!!.currentUser!!.uid)){
+                           animais.add(u!!)
+                       }
+   
+   
+                   }
+   
+                   Collections.reverse(animais)
+                   adapterAnimal.notifyDataSetChanged()
+               }
+   
+           })
+   
+      */ }
 
     private fun animais(): List<Animal> {
 
@@ -116,4 +116,4 @@ class AjudadosFragment : Fragment() {
     }
 
 
-    }
+}

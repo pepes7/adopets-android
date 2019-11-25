@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.DicaCastracaoActivity">
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondaryS"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="Dicas e manuais"
+            app:titleTextColor="#FFFFFFFF" />
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+            <ImageView
+                    android:layout_width="115dp"
+                    android:layout_height="97dp"
+                    app:srcCompat="@drawable/castracao" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:gravity="center"
+                    android:text="CASTRAÇÃO"
+                    android:textColor="@color/colorSecondaryS"
+                    android:textSize="20dp" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="A castração proporciona muitos benefícios: reduz a marcação de território, as fugas, a agressividade, o risco de câncer, a superpopulação e a longevidade, por exemplo."
+                    android:textColor="@color/colorSecondaryS"
+                    android:textSize="16sp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Em gatos"
+                    android:textColor="@color/colorSecondaryS"
+                    android:textSize="18dp" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                <ImageView
+                        android:layout_width="94dp"
+                        android:layout_height="250dp"
+                        app:srcCompat="@drawable/castracao_gato" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text=" O ideal é sempre castrar seu pet antes do primeiro cio, que ocorre aos 6 meses de idade"
+                            android:textSize="15sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text=" Antes de a castração ser feita, o animal precisa estar em jejum por 12 horas"
+                            android:textSize="15sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Para a recuperação, tire tudo que possa se tornar um esconderijo ou pontos estratégicos em que seu pet costuma se esconder"
+                            android:textSize="15sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Depois da castração, evite brincadeiras com seu pet durante este período, deixe-o descansar"
+                            android:textSize="15sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Em cachorros"
+                    android:textColor="@color/colorSecondaryS"
+                    android:textSize="18dp" />
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                <ImageView
+                        android:layout_width="94dp"
+                        android:layout_height="180dp"
+                        app:srcCompat="@drawable/castracao_cachorro" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Exames pré-operatórios são necessários para identificar infecção"
+                            android:textSize="15sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="O ideal é castrar antes do primeiro cio, que no caso dos cachorros ocorre entre os 6 e 9 meses de vida"
+                            android:textSize="15sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Para a recuperação, verifique os pontos duas vezes ao dia"
+                            android:textSize="15sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Depois da castração, não deixe seu cão pular ou correr por no mínimo dez dias"
+                            android:textSize="15sp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+</android.support.constraint.ConstraintLayout>
