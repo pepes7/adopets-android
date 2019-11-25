@@ -99,22 +99,12 @@
             app:layout_constraintStart_toStartOf="@+id/imageView4" android:layout_marginLeft="8dp"
             app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
 
-    <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp" app:layout_constraintTop_toBottomOf="@+id/card_login"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" android:layout_marginTop="24dp"/>
-
         <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:layout_marginLeft="2dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:drawableLeft="@drawable/ic_sign"
@@ -123,18 +113,20 @@
                 android:textColor="@android:color/black"
                 app:fontFamily="@font/nunito_light"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.319"
+                app:layout_constraintHorizontal_bias="0.327"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sign_in_button" />
+                tools:layout_editor_absoluteY="602dp" />
 
         <TextView
-            android:text="Cadastre-se"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView6" app:fontFamily="@font/nunito_semibold"
-            android:textColor="@color/colorBtnEdge2" app:layout_constraintStart_toEndOf="@+id/textView4"
-            android:layout_marginLeft="2dp" android:layout_marginStart="2dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/sign_in_button" android:onClick="telaCadastro"/>
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="telaCadastro"
+                android:text="Cadastre-se"
+                android:textColor="@color/colorBtnEdge2"
+                app:fontFamily="@font/nunito_semibold"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                tools:layout_editor_absoluteY="602dp" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
 
