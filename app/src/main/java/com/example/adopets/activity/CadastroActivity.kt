@@ -1,5 +1,6 @@
 package com.example.adopets.activity
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -19,6 +20,7 @@ class CadastroActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
@@ -29,6 +31,7 @@ class CadastroActivity : AppCompatActivity() {
     }
 
     fun cadastrar(view: View) {
+        var camposVazios = ""
 
         var nome = editTextNome.text.toString()
         var email = editTextEmail.text.toString()
@@ -39,19 +42,23 @@ class CadastroActivity : AppCompatActivity() {
         if (nome.isEmpty()) {
             editTextNome.error = "Campo obrigatório!"
             valido = false
+            camposVazios += "Nome Completo; "
         }
 
         if (email.isEmpty()) {
             editTextEmail.error = "Campo obrigatório!"
             valido = false
+            camposVazios += "E-mail; "
         }
 
         if (senha.isEmpty()) {
             editTextSenha.error = "Campo obrigatório!"
             valido = false
+            camposVazios += "Senha."
         }
 
-        if (valido) {
+        if (camposVazios.equals("") && valido) {
+
             val u = Usuario()
             u.email = email
             u.nome = nome
@@ -62,7 +69,25 @@ class CadastroActivity : AppCompatActivity() {
             intent.putExtra("nome", nome)
             intent.putExtra("senha", senha)
             startActivity(intent)
+
+        } else {
+            alertaCamposVazios(camposVazios)
         }
+
     }
+
+    fun alertaCamposVazios(campos: String) {
+        val builder = AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog)
+        builder.setTitle("Ops...")
+        builder.setMessage("Todos estes campos são obrigatórios, você tem que preencher: " + campos)
+        builder.setCancelable(false)
+        builder.setPositiveButton("Ok, irei preencher") { dialogInterface, i -> }
+
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+
 
 }

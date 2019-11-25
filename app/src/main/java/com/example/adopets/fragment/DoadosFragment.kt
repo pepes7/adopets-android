@@ -37,7 +37,7 @@ class DoadosFragment : Fragment() {
 
         btn_dismiss = view.findViewById(R.id.dismiss)
         btn_dismiss.setOnClickListener {
-         cardView2.visibility = View.GONE
+            cardView2.visibility = View.GONE
 
         }
         auth = FirebaseAuth.getInstance()
@@ -57,10 +57,10 @@ class DoadosFragment : Fragment() {
         return view
     }
 
-   // fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-     //   savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-       // return inflater!!.inflate(R.layout.fragment_doados, container, false)
+    // fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    //   savedInstanceState: Bundle?): View? {
+    // Inflate the layout for this fragment
+    // return inflater!!.inflate(R.layout.fragment_doados, container, false)
     //}
 
 

@@ -1,145 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activity.CadDoacaoActivity">
 
-    <TextView
-            android:id="@+id/textView29"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginLeft="44dp"
-            android:text="Doacao responsavel e quando deseja-se..."
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layatividade"
-            app:layout_constraintVertical_bias="0.051" />
 
-    <TextView
-            android:id="@+id/textView24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="12dp"
-            android:text="Por que você quer doá-lo?"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView28" />
-
-    <EditText
-            android:id="@+id/motivo"
+    <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_pet2"
+            android:layout_height="match_parent">
 
-            android:drawablePadding="6dp"
-            android:hint="Motivo"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView24"
-            app:layout_constraintVertical_bias="0.022" />
-
-    <TextView
-            android:id="@+id/textView28"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cadastro Doacao"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-            android:id="@+id/layatividade"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.584"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView23">
-
-        <LinearLayout
-                android:id="@+id/radios_atividade"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-            <ImageView
-                    android:layout_width="183dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                    android:src="@drawable/bottom_doe" />
-
-            <ImageView
-
-                    android:layout_width="119dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                    android:src="@drawable/slider1" />
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="wrap_content"
+        <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:scaleType="centerCrop"
+                android:src="@drawable/group"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioGroup
-                    android:id="@+id/situacao"
+
+        <ImageView
+
+                android:id="@+id/imageView9"
+                android:layout_width="101dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/ic_adopets"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="5dp"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardCornerRadius="@dimen/border_radius_cardView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView9">
+
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:visibility="visible"
-                    tools:visibility="visible">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <RadioButton
-                        android:id="@+id/rb_adotado"
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:drawablePadding="6dp"
+                        android:fontFamily="@font/nunito_regular"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="Qual o tipo da doação?"
+                        android:textColor="@color/colorBackground"
+                        android:textSize="20sp"
+                        android:visibility="visible" />
+
+                <LinearLayout
+                        android:id="@+id/layatividade"
                         android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                        android:checked="true"
-                        android:padding="8dp"
-                        android:text="Doação responsável" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
 
-                <RadioButton
-                        android:id="@+id/rb_ajudado"
-                        android:layout_width="113dp"
+                    <LinearLayout
+                            android:id="@+id/doacR"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                        <ImageView
+                                android:adjustViewBounds="false"
+                                android:clickable="true"
+                                app:layout_constraintVertical_bias="0"
+                                app:srcCompat="@drawable/slider2"
+                                tools:ignore="VectorDrawableCompat"
+                                android:id="@+id/dr"
+                                android:layout_width="94dp"
+                                android:layout_height="90dp" />
+
+                        <TextView
+                                android:id="@+id/situDR"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:text="Doação responsável" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:id="@+id/doac"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                        <ImageView
+                                android:adjustViewBounds="false"
+                                android:clickable="true"
+                                app:layout_constraintVertical_bias="0"
+                                app:srcCompat="@drawable/slider4"
+                                tools:ignore="VectorDrawableCompat"
+                                android:id="@+id/d"
+                                android:layout_width="101dp"
+                                android:layout_height="90dp"
+                                android:src="@drawable/slider4" />
+
+                        <TextView
+                                android:id="@+id/situD"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:text="Doação comum" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                        android:id="@+id/informacao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="15dp"
+
+
+                        android:drawableRight="@android:drawable/ic_menu_info_details"
+                        android:drawablePadding="6dp"
+                        android:fontFamily="@font/nunito_regular"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="Doação responsável é quando você quer saber, a partir de um formulário, como será a vida e as condições de moradia do seu animalzinho após a adoção pelo candidato a adotante escolhido por você."
+                        android:textSize="17dp" />
+
+                <TextView
+                        android:id="@+id/informacao2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="15dp"
+
+
+                        android:drawableRight="@android:drawable/ic_menu_info_details"
+                        android:drawablePadding="6dp"
+                        android:fontFamily="@font/nunito_regular"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="Doação comum é quando você deseja apenas pôr o pet para doação, sem precisar ter respostas do candidato a adotante. Por exemplo, você encontrou um animalzinho de rua, não tem vínculo com ele e precisa doar, esta é uma ótima alternativa."
+                        android:textSize="17dp"
+                        android:visibility="gone" />
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginRight="15dp"
+                        android:drawablePadding="6dp"
+                        android:fontFamily="@font/nunito_regular"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="Por que você quer doá-lo?"
+                        android:textColor="@color/colorBackground"
+                        android:textSize="20sp"
+                        android:visibility="visible" />
+
+                <android.support.design.widget.TextInputLayout
+
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:hint="Motivo">
 
-                        android:layout_weight="1"
-                        android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-                        android:padding="8dp"
-                        android:text="Doação" />
-            </RadioGroup>
-        </LinearLayout>
+                    <EditText
+                            android:id="@+id/motivo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginRight="20dp"
+                            android:drawableLeft="@drawable/ic_patinha"
+                            android:drawablePadding="6dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:ems="10"
+                            android:inputType="textMultiLine"
 
-    </LinearLayout>
+                            android:textSize="20sp"
+                            android:visibility="visible" />
+                </android.support.design.widget.TextInputLayout>
 
-    <TextView
-            android:id="@+id/textView23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/motivo" />
 
-    <Button
-            android:id="@+id/btn_finalizar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Finalizar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView29" />
+                <Button
+                        android:id="@+id/btn_finalizar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/btn_login"
+                        android:text="FINALIZAR" />
 
-</android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

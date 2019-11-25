@@ -5,167 +5,277 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activity.CadServicoActivity">
-
-    <TextView
-            android:id="@+id/textView25"
-            android:layout_width="wrap_content"
+    <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cadastro serviço voluntario"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/group"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
 
-    <Spinner
-            android:id="@+id/spinnerServico"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="156dp"
-            android:textSize="20sp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imageView9"
+            android:layout_width="101dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/ic_adopets"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView30"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-            android:id="@+id/textView30"
-            android:layout_width="match_parent"
+    <android.support.v7.widget.CardView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:drawablePadding="6dp"
-            android:fontFamily="@font/nunito_regular"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:text="O pet precisa de..."
-            android:textColor="@color/colorBackground"
-            android:textSize="20sp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView25"
-            app:layout_constraintVertical_bias="0.022" />
-
-    <android.support.design.widget.TextInputLayout
-            android:id="@+id/layoutDataIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Data de início"
-            android:visibility="visible"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="5dp"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            app:cardCornerRadius="@dimen/border_radius_cardView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerServico"
-            app:layout_constraintVertical_bias="0.026">
+            app:layout_constraintTop_toBottomOf="@+id/imageView9">
 
-        <EditText
-                android:id="@+id/dataInicio"
+
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-
-                android:layout_marginLeft="20dp"
-
-                android:layout_marginTop="5dp"
-
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:drawableStart="@drawable/ic_calendar"
-                android:drawableLeft="@drawable/ic_calendar"
-                android:drawablePadding="6dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:importantForAutofill="no"
-                android:inputType="date"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textColor="@android:color/black"
-                android:textSize="20dp"
-                android:visibility="visible"
-                tools:targetApi="o" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-            android:id="@+id/layoutDataFim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Data de término"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutDataIn"
-            app:layout_constraintVertical_bias="0.026">
-
-        <EditText
-                android:id="@+id/dataFim"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-
-                android:layout_marginLeft="20dp"
-
-                android:layout_marginTop="5dp"
-
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:drawableStart="@drawable/ic_calendar"
-                android:drawableLeft="@drawable/ic_calendar"
-                android:drawablePadding="6dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:importantForAutofill="no"
-                android:inputType="date"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textColor="@android:color/black"
-                android:textSize="20dp"
-                android:visibility="visible"
-                tools:targetApi="o" />
-
-    </android.support.design.widget.TextInputLayout>
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:drawablePadding="6dp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="O pet precisa de..."
+                    android:textColor="@color/colorBackground"
+                    android:textSize="20sp"
+                    android:visibility="visible" />
 
 
-    <android.support.design.widget.TextInputLayout
-            android:id="@+id/layoutDescricao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Conte-nos mais sobre o serviço"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutDataFim"
-            app:layout_constraintVertical_bias="0.016">
+            <Spinner
+                    android:id="@+id/spinnerServico"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="19sp"
+                    android:visibility="visible"/>
 
-        <EditText
-                android:id="@+id/descricao"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp"
-                android:drawableLeft="@drawable/ic_pet2"
-                android:drawablePadding="6dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textSize="20sp" />
+            <TextView
+                    android:id="@+id/informacao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="15dp"
 
-    </android.support.design.widget.TextInputLayout>
 
-    <Button
-            android:id="@+id/btn_finalizar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Finalizar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutDescricao" />
+                    android:drawableRight="@android:drawable/ic_menu_info_details"
+                    android:drawablePadding="6dp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Lar Temporário é para quando o seu pet precisar ficar na casa de outra pessoa, caso você viaje, por exemplo."
+                    android:textSize="17dp"
+                    android:visibility="visible" />
+
+            <TextView
+                    android:id="@+id/informacao2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="15dp"
+
+
+                    android:drawableRight="@android:drawable/ic_menu_info_details"
+                    android:drawablePadding="6dp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Tratamento médico é para quando o seu pet precisar de algum cuidado específico e algum voluntário possa ajudar."
+                    android:textSize="17dp"
+                    android:visibility="gone" />
+
+            <TextView
+                    android:id="@+id/informacao3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="15dp"
+
+
+                    android:drawableRight="@android:drawable/ic_menu_info_details"
+                    android:drawablePadding="6dp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Ajuda financeira com medicamentos refere-se a contribuição ou custeio financeiro quanto aos remédios que o seu pet precise tomar."
+                    android:textSize="17dp"
+                    android:visibility="gone" />
+
+            <TextView
+                    android:id="@+id/informacao4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="15dp"
+
+
+                    android:drawableRight="@android:drawable/ic_menu_info_details"
+                    android:drawablePadding="6dp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Tirar fotografias ou passear com o pet são atividades de lazer que o seu animalzinho pode ter com o voluntário. Aliás, você poderá adicionar as fotografias no perfil do seu pet aqui no Adopets!"
+                    android:textSize="17dp"
+                    android:visibility="gone" />
+
+            <android.support.design.widget.TextInputLayout
+                    android:id="@+id/layoutDataIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Data de início"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerServico"
+                    app:layout_constraintVertical_bias="0.026">
+
+                <EditText
+                        android:id="@+id/dataInicio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+
+                        android:drawableTint="#A44812"
+                        android:layout_marginLeft="20dp"
+
+                        android:layout_marginTop="5dp"
+
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginRight="20dp"
+                        android:drawableStart="@drawable/ic_calendar"
+                        android:drawableLeft="@drawable/ic_calendar"
+                        android:drawablePadding="6dp"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:importantForAutofill="no"
+                        android:inputType="date"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="20dp"
+                        android:visibility="visible"
+                        tools:targetApi="o" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    android:id="@+id/layoutDataFim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Data de término"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutDataIn"
+                    app:layout_constraintVertical_bias="0.026">
+
+                <EditText
+                        android:id="@+id/dataFim"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:drawableTint="#A44812"
+
+                        android:layout_marginLeft="20dp"
+
+                        android:layout_marginTop="5dp"
+
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginRight="20dp"
+                        android:drawableStart="@drawable/ic_calendar"
+                        android:drawableLeft="@drawable/ic_calendar"
+                        android:drawablePadding="6dp"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:importantForAutofill="no"
+                        android:inputType="date"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="20dp"
+                        android:visibility="visible"
+                        tools:targetApi="o" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                    android:id="@+id/layoutDescricao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Conte-nos mais sobre o serviço"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutDataFim"
+                    app:layout_constraintVertical_bias="0.016">
+
+                <EditText
+                        android:id="@+id/descricao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:drawableLeft="@drawable/ic_necessidade"
+                        android:drawablePadding="6dp"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:textSize="20sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                    android:id="@+id/btn_finalizar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_volunt"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="FINALIZAR"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutDescricao" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
 
 </android.support.constraint.ConstraintLayout>

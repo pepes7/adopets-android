@@ -126,11 +126,13 @@
         <item>Outro</item>
     </string-array>
 
+
     <string-array name="servico">
-        <item> </item>
-        <item>Lar Temporário</item>
+        <item>Lar temporário</item>
         <item>Tratamento médico</item>
         <item>Ajuda financeira com medicamentos</item>
+        <item>Passear com o pet</item>
+        <item>Tirar fotografias</item>
     </string-array>
 
 </resources>
