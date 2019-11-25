@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import java.util.ArrayList
 
-class CandidatosAdapter(private val context: Context, private val listCandidatos: ArrayList<Usuario>, private val listaFormulario : ArrayList<Formulario>) : RecyclerView.Adapter<CandidatosAdapter.MyViewHolder>(){
+class CandidatosAdapter(private val context: Context, private val listCandidatos: ArrayList<Usuario>, private val listaFormulario : ArrayList<Formulario>,private val idAnimal : String) : RecyclerView.Adapter<CandidatosAdapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): MyViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.interessados_adotar,viewGroup,false)
@@ -47,6 +47,8 @@ class CandidatosAdapter(private val context: Context, private val listCandidatos
             intent.putExtra("foto",usuario.foto)
             intent.putExtra("telefone",usuario.telefone)
             intent.putExtra("email",usuario.email)
+            intent.putExtra("idUsuario",usuario.id)
+            intent.putExtra("idAnimal",idAnimal)
 
             //dados do seu formulario
             intent.putExtra("pgtResidencia", formulario.pgtResidencia)

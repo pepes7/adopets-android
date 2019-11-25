@@ -45,7 +45,7 @@ class ListagemTodosAnimaisActivity : AppCompatActivity() {
         recyclerViewTodosAnimais.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerViewTodosAnimais.hasFixedSize()
 
-        adapterAnimal = AnimalAdapter2(this,animais)
+        adapterAnimal = AnimalAdapter2(this,animais,auth!!.currentUser!!.uid)
 
         recyclerViewTodosAnimais.adapter = adapterAnimal
 

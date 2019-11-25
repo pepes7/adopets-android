@@ -10,13 +10,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.adopets.R
 import com.example.adopets.activity.PerfilAnimalActivity
+import com.example.adopets.activity.PerfilAnimalDoacaoActivity
 import com.example.adopets.model.Animal
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.list_view_animais.view.*
 import java.util.ArrayList
 
-class AnimalAdapter(private val context: Context, private val listAnimais: ArrayList<Animal>) : RecyclerView.Adapter<AnimalAdapter.MyViewHolder>(){
+class AnimalAdapter(private val context: Context, private val listAnimais: ArrayList<Animal>,private val tela : String) : RecyclerView.Adapter<AnimalAdapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): MyViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.list_view_animais,viewGroup,false)
@@ -37,24 +38,46 @@ class AnimalAdapter(private val context: Context, private val listAnimais: Array
 
         //metodo de click
         myViewHolder.itemView.setOnClickListener {
-            val intent = Intent(context, PerfilAnimalActivity::class.java)
+            if(tela.equals("adocao")){
+                val intent = Intent(context, PerfilAnimalDoacaoActivity::class.java)
 
-            intent.putExtra("nome",animal.nome)
-            intent.putExtra("sexo",animal.sexo)
-            intent.putExtra("bairro",animal.bairro)
-            intent.putExtra("id", animal.id)
-            intent.putExtra("foto",animal.foto)
-            intent.putExtra("situacao", animal.situacao)
-            intent.putExtra("raca",animal.raca)
-            intent.putExtra("descricao",animal.descricao)
-            intent.putExtra("tamanho",animal.tamanho)
-            intent.putExtra("necessidade",animal.necessidade)
-            intent.putExtra("tipo",animal.tipo)
-            intent.putExtra("dataNasc",animal.dataNasc)
-            intent.putExtra("doador",animal.doador)
-            
+                intent.putExtra("nome",animal.nome)
+                intent.putExtra("sexo",animal.sexo)
+                intent.putExtra("bairro",animal.bairro)
+                intent.putExtra("id", animal.id)
+                intent.putExtra("foto",animal.foto)
+                intent.putExtra("situacao", animal.situacao)
+                intent.putExtra("raca",animal.raca)
+                intent.putExtra("descricao",animal.descricao)
+                intent.putExtra("tamanho",animal.tamanho)
+                intent.putExtra("necessidade",animal.necessidade)
+                intent.putExtra("tipo",animal.tipo)
+                intent.putExtra("dataNasc",animal.dataNasc)
+                intent.putExtra("doador",animal.doador)
 
-            context.startActivity(intent)
+                context.startActivity(intent)
+
+            }else{
+                val intent = Intent(context, PerfilAnimalActivity::class.java)
+
+                intent.putExtra("nome",animal.nome)
+                intent.putExtra("sexo",animal.sexo)
+                intent.putExtra("bairro",animal.bairro)
+                intent.putExtra("id", animal.id)
+                intent.putExtra("foto",animal.foto)
+                intent.putExtra("situacao", animal.situacao)
+                intent.putExtra("raca",animal.raca)
+                intent.putExtra("descricao",animal.descricao)
+                intent.putExtra("tamanho",animal.tamanho)
+                intent.putExtra("necessidade",animal.necessidade)
+                intent.putExtra("tipo",animal.tipo)
+                intent.putExtra("dataNasc",animal.dataNasc)
+                intent.putExtra("doador",animal.doador)
+
+
+                context.startActivity(intent)
+            }
+
         }
 
         //pega a primeira imagem da lista

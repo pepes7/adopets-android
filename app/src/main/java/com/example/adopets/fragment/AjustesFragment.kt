@@ -12,9 +12,11 @@ import android.widget.ImageButton
 import android.widget.ImageSwitcher
 import android.widget.ImageView
 import com.example.adopets.R
+import com.example.adopets.activity.ListagemFavoritosActivity
 import com.example.adopets.activity.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_ajustes.*
+import kotlinx.android.synthetic.main.fragment_ajustes.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,6 +46,10 @@ class AjustesFragment : Fragment() {
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
 
+        }
+
+        view.imageView10.setOnClickListener{
+            startActivity(Intent(context,ListagemFavoritosActivity::class.java))
         }
 
         // Inflate the layout for this fragment

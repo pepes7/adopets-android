@@ -87,7 +87,8 @@ class Animal(
     var necessidade: String = "",
     var tipo: String = "",
     var dataNasc: String = "",
-    var doador: String = ""
+    var doador: String = "",
+    var favorito : String = ""
 )
 
 class AnimalProcesso(
@@ -107,4 +108,12 @@ class Processo(
 class AdotanteProcesso(
     var adotante: Adotante = Adotante(),
     var processo: Processo = Processo()
+)
+
+class AnimalAdotado(
+    var idAnimal : String = "",
+    var idDoador : String = "",
+    var idAdotante : String = "",
+    var id : String = "",
+    var aceitou : String = ""
 )

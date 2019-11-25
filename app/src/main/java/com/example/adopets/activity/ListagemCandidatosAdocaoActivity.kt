@@ -18,6 +18,7 @@ class ListagemCandidatosAdocaoActivity : AppCompatActivity() {
     private lateinit var usuariosRecuperados : DatabaseReference
     private lateinit var formulariosRecuperados : DatabaseReference
     private lateinit var adapterCandidato: CandidatosAdapter
+    private lateinit var data : Bundle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,11 +28,12 @@ class ListagemCandidatosAdocaoActivity : AppCompatActivity() {
 
         formulariosRecuperados =  FirebaseDatabase.getInstance().reference.child("formulario")
 
+        data = intent.extras
 
         recyclerViewTodosAdotantes.layoutManager = LinearLayoutManager(this)
         recyclerViewTodosAdotantes.hasFixedSize()
 
-        adapterCandidato = CandidatosAdapter(this, usuarios,formularios)
+        adapterCandidato = CandidatosAdapter(this, usuarios,formularios,data!!.getString("id"))
 
         recyclerViewTodosAdotantes.adapter = adapterCandidato
 
@@ -42,7 +44,6 @@ class ListagemCandidatosAdocaoActivity : AppCompatActivity() {
     }
 
     fun recuperarFormulario(){
-        var data = intent.extras
 
         formulariosRecuperados.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {

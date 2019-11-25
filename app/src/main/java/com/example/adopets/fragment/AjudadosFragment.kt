@@ -48,7 +48,7 @@ class AjudadosFragment : Fragment() {
         recyclerViewAnimais.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerViewAnimais.hasFixedSize()
 
-        adapterAnimal = AnimalAdapter(context!!,animais)
+        adapterAnimal = AnimalAdapter(context!!,animais,"ajudados")
 
         recyclerViewAnimais.adapter = adapterAnimal
 
