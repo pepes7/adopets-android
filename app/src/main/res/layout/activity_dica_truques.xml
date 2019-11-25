@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.DicaTruquesActivity">
+
+
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBtnEdge2"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="Dicas e manuais"
+            app:titleTextColor="#FFFFFFFF" />
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+            <ImageView
+                    android:layout_width="115dp"
+                    android:layout_height="97dp"
+                    app:srcCompat="@drawable/truque_pano" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:gravity="center"
+                    android:text="TRUQUE DO PANO"
+                    android:textColor="@color/colorBtnEdge2"
+                    android:textSize="20dp" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Sabe aqueles dias em que os vizinhos estão soltando fogos de artificio ou fazendo muito barulho e seu animalzinho fica com medo? Entenda como fazer com que ele se sinta melhor. Trata-se de uma técnica simples que consiste em atar o cão com um pano para que a circulação sanguínea do corpo seja estimulada, e assim, amenizar as tensões e diminuir a irritabilidade."
+                    android:textColor="@color/colorBtnPrimary"
+                    android:textSize="16sp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Passo a passo"
+                    android:textColor="@color/colorBtnEdge2"
+                    android:textSize="18dp" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                <ImageView
+                        android:layout_width="94dp"
+                        android:layout_height="230dp"
+                        app:srcCompat="@drawable/pano" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text=" Coloque a faixa na altura do peito do pet"
+                            android:textSize="15sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text=" Cruze as pontas depois do pescoço, na região do dorso"
+                            android:textSize="15sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text=" Depois, faça o mesmo para baixo, sob o dorso"
+                            android:textSize="15sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text=" Por fim, dê um nó firme perto da coluna"
+                            android:textSize="15sp" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Importante: garanta que a faixa esteja bem presa ao corpo do cachorro, mas sem apertá-lo"
+                            android:textSize="15sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

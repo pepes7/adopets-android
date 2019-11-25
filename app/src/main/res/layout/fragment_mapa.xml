@@ -151,15 +151,15 @@
                                     android:adjustViewBounds="false"
                                     android:clickable="true"
                                     app:layout_constraintVertical_bias="0"
-                                    app:srcCompat="@drawable/slider2"
+                                    app:srcCompat="@drawable/castracao"
                                     tools:ignore="VectorDrawableCompat" />
 
                             <TextView
-                                    android:id="@+id/situDR"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="5dp"
                                     android:layout_weight="1"
+                                    android:textStyle="bold"
                                     android:text="Castração" />
 
                         </LinearLayout>
@@ -180,11 +180,11 @@
                                     android:adjustViewBounds="false"
                                     android:clickable="true"
                                     app:layout_constraintVertical_bias="0"
-                                    app:srcCompat="@drawable/slider3"
+                                    app:srcCompat="@drawable/verao"
                                     tools:ignore="VectorDrawableCompat" />
 
                             <TextView
-
+                                    android:textStyle="bold"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="5dp"
@@ -209,7 +209,7 @@
                                     android:adjustViewBounds="false"
                                     android:clickable="true"
                                     app:layout_constraintVertical_bias="0"
-                                    app:srcCompat="@drawable/slider1"
+                                    app:srcCompat="@drawable/agua"
                                     tools:ignore="VectorDrawableCompat" />
 
                             <TextView
@@ -217,7 +217,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="5dp"
                                     android:layout_weight="1"
-                                    android:text="Agua" />
+                                    android:textStyle="bold"
+                                    android:text="Água" />
 
                         </LinearLayout>
 
@@ -247,7 +248,7 @@
                                     android:adjustViewBounds="false"
                                     android:clickable="true"
                                     app:layout_constraintVertical_bias="0"
-                                    app:srcCompat="@drawable/slider2"
+                                    app:srcCompat="@drawable/limpeza_ouvido"
                                     tools:ignore="VectorDrawableCompat" />
 
                             <TextView
@@ -255,8 +256,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="5dp"
                                     android:layout_weight="1"
+                                    android:textStyle="bold"
                                     android:text="Ouvido" />
-
                         </LinearLayout>
 
                         <LinearLayout
@@ -275,7 +276,7 @@
                                     android:adjustViewBounds="false"
                                     android:clickable="true"
                                     app:layout_constraintVertical_bias="0"
-                                    app:srcCompat="@drawable/slider3"
+                                    app:srcCompat="@drawable/truque_pano"
                                     tools:ignore="VectorDrawableCompat" />
 
                             <TextView
@@ -284,6 +285,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="5dp"
                                     android:layout_weight="1"
+                                    android:textStyle="bold"
                                     android:text="Truques" />
 
                         </LinearLayout>
@@ -304,7 +306,7 @@
                                     android:adjustViewBounds="false"
                                     android:clickable="true"
                                     app:layout_constraintVertical_bias="0"
-                                    app:srcCompat="@drawable/slider1"
+                                    app:srcCompat="@drawable/higiene"
                                     tools:ignore="VectorDrawableCompat" />
 
                             <TextView
@@ -312,6 +314,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="5dp"
                                     android:layout_weight="1"
+                                    android:textStyle="bold"
                                     android:text="Higiene" />
 
                         </LinearLayout>

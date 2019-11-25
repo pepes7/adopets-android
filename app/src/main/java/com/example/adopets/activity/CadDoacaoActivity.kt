@@ -4,8 +4,8 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.RadioButton
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import com.example.adopets.R
 import com.example.adopets.model.Doador
 import com.example.adopets.model.Processo
@@ -29,12 +29,50 @@ class CadDoacaoActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
     private lateinit var storageReference: StorageReference
     private lateinit var auth: FirebaseAuth
+    private lateinit var situDr: LinearLayout
+    private lateinit var situD: LinearLayout
+    private lateinit var btn_finalizar: Button
+    private lateinit var dr: ImageView
+    private lateinit var d: ImageView
+    var situDoacao = ""
+    private lateinit var inform: TextView
+    private lateinit var inform2: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cad_doacao)
 
+        inform = findViewById(R.id.informacao)
+        inform2 = findViewById(R.id.informacao2)
+        situD = findViewById(R.id.doac)
+        situDr = findViewById(R.id.doacR)
+        dr = findViewById(R.id.dr)
+        d = findViewById(R.id.d)
+
+        btn_finalizar = findViewById(R.id.btn_finalizar)
+
+        btn_finalizar.setOnClickListener{
+            cadastrarDoacao()
+        }
+
+        dr.setOnClickListener {
+            situDoacao = "Doação responsável"
+            inform.visibility = View.VISIBLE
+            inform2.visibility = View.GONE
+            situD.setBackgroundResource(R.drawable.common_google_signin_btn_icon_light_normal_background)
+            situDr.setBackgroundResource(R.drawable.common_google_signin_btn_icon_dark_normal_background)
+        }
+
+        d.setOnClickListener {
+
+            situDoacao = "Doação comum"
+            inform2.visibility = View.VISIBLE
+            inform.visibility = View.GONE
+            situDr.setBackgroundResource(R.drawable.common_google_signin_btn_icon_light_normal_background)
+            situD.setBackgroundResource(R.drawable.common_google_signin_btn_icon_dark_normal_background)
+
+        }
 
         database = FirebaseDatabase.getInstance().reference
         storageReference = FirebaseStorage.getInstance().reference
@@ -47,10 +85,10 @@ class CadDoacaoActivity : AppCompatActivity() {
     fun cadastrarDoacao(){
 
         var mot = motivo.text.toString()
-        val idR = situacao.checkedRadioButtonId
-        val selectedButton = findViewById<RadioButton>(idR)
+        //val idR = situacao.checkedRadioButtonId
+        //val selectedButton = findViewById<RadioButton>(idR)
         //Seta o tipo ao Objeto
-        var situDoaResp = selectedButton.text.toString()
+        //var situDoaResp = selectedButton.text.toString()
 
         if (mot.isEmpty()) {
             motivo.error = "É necessário o motivo da doação!"
@@ -66,7 +104,8 @@ class CadDoacaoActivity : AppCompatActivity() {
         val processo = Processo()
         processo.id = id
         processo.motivo = mot
-        processo.situacao = situDoaResp
+        processo.situacao = situDoacao
+
         processo.doador = auth!!.currentUser!!.uid
         processo.dataCriacao = dataAtual()
 

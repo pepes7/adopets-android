@@ -26,7 +26,7 @@ import android.widget.*
 
 
 import com.example.adopets.R
-import com.example.adopets.activity.ListagemTodosAnimaisActivity
+import com.example.adopets.activity.*
 import com.example.adopets.adapter.AnimalCheckAdapter
 import com.example.adopets.helper.Permissao
 import com.example.adopets.model.Animal
@@ -60,6 +60,15 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
     private lateinit var linearListaPets: LinearLayout
     private lateinit var adapterAnimal: AnimalCheckAdapter
 
+    //dicas e manuais
+    private lateinit var castracao: ImageView
+    private lateinit var verao: ImageView
+    private lateinit var higiene: ImageView
+    private lateinit var agua: ImageView
+    private lateinit var ouvido: ImageView
+    private lateinit var truque: ImageView
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,6 +77,36 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_mapa, container, false)
         btn_animal = root.findViewById(R.id.add)
+
+
+        btn_animal = root.findViewById(R.id.add)
+
+        agua = root.findViewById(R.id.agua)
+        ouvido = root.findViewById(R.id.limpezaOuvido)
+        truque = root.findViewById(R.id.truques)
+        higiene = root.findViewById(R.id.higiene)
+        verao = root.findViewById(R.id.verao)
+        castracao = root.findViewById(R.id.castracao)
+
+        castracao.setOnClickListener {
+            startActivity(Intent(context, DicaCastracaoActivity::class.java))
+        }
+        verao.setOnClickListener {
+            startActivity(Intent(context, DicaVeraoActivity::class.java))
+        }
+        higiene.setOnClickListener {
+            startActivity(Intent(context, DicaHigieneActivity::class.java))
+        }
+
+        agua.setOnClickListener {
+            startActivity(Intent(context, DicaAguaActivity::class.java))
+        }
+        ouvido.setOnClickListener {
+            startActivity(Intent(context, DicaOuvidoActivity::class.java))
+        }
+        truque.setOnClickListener {
+            startActivity(Intent(context, DicaTruquesActivity::class.java))
+        }
 
 
         btn_check = root.findViewById(R.id.btn_checkpoint)
@@ -86,7 +125,6 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
             linearListaPets.visibility = View.GONE
             linearDicas.visibility = View.VISIBLE
         }
-
 
         bparent = root.findViewById(R.id.bottom_sheet_parent)
         var bsBehavior: BottomSheetBehavior<View>
@@ -180,6 +218,7 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
                                     }
 
                                     override fun onCancelled(p0: DatabaseError) {
+
 
                                     }
                                 })
