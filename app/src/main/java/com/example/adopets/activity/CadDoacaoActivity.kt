@@ -105,6 +105,7 @@ class CadDoacaoActivity : AppCompatActivity() {
         processo.id = id
         processo.motivo = mot
         processo.situacao = situDoacao
+
         processo.doador = auth!!.currentUser!!.uid
         processo.dataCriacao = dataAtual()
 

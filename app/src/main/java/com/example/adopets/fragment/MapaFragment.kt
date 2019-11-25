@@ -60,8 +60,6 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
     private lateinit var linearListaPets: LinearLayout
     private lateinit var adapterAnimal: AnimalCheckAdapter
 
-
-
     //dicas e manuais
     private lateinit var castracao: ImageView
     private lateinit var verao: ImageView
@@ -69,6 +67,7 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
     private lateinit var agua: ImageView
     private lateinit var ouvido: ImageView
     private lateinit var truque: ImageView
+
 
 
     override fun onCreateView(
@@ -126,7 +125,6 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
             linearListaPets.visibility = View.GONE
             linearDicas.visibility = View.VISIBLE
         }
-
 
         bparent = root.findViewById(R.id.bottom_sheet_parent)
         var bsBehavior: BottomSheetBehavior<View>
@@ -220,6 +218,7 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
                                     }
 
                                     override fun onCancelled(p0: DatabaseError) {
+
 
                                     }
                                 })
