@@ -8,6 +8,6 @@ class DicaOuvidoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ouvido)
+        setContentView(R.layout.activity_dica_ouvido)
     }
 }

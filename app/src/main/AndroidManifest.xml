@@ -21,14 +21,13 @@
             android:roundIcon="@drawable/logo_icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.DicaHigieneActivity"></activity>
-        <activity android:name=".activity.DicaOuvidoActivity" />
         <activity android:name=".activity.DicaTruquesActivity" />
-        <activity android:name=".activity.DicaOuvidoActivity" />
         <activity android:name=".activity.DicaVeraoActivity" />
         <activity android:name=".activity.DicaCastracaoActivity" />
         <activity android:name=".activity.DicaAguaActivity" />
         <activity android:name=".activity.ListagemFavoritosActivity" />
+        <activity android:name=".activity.DicaHigieneActivity"></activity>
+        <activity android:name=".activity.DicaOuvidoActivity" />
         <activity android:name=".activity.CadServicoActivity" />
         <activity android:name=".activity.CadDoacaoActivity" />
         <activity android:name=".activity.GaleriaFotosActivity" />
